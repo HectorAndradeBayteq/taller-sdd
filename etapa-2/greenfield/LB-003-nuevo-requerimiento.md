@@ -115,8 +115,6 @@ Si no has hecho commit el agente te puede asistir en eso previo a la integració
 
 Este mensaje te confirma que la integración fue completada.
 
-<img src="assets/img-19.png" alt="Captura de Pantalla 2026-05-14 a la(s) 22.51.54" style="max-width: 100%; height: auto;" />
-
 ## Conclusión
 
 Este laboratorio recorre el ciclo completo de **Specification-Driven Development (SDD)** para un requerimiento nuevo en un proyecto *greenfield*: desde un requerimiento de negocio y un diseño en Figma hasta código integrado en la rama de desarrollo, con el agente de IA como ejecutor y la persona como implementador.
