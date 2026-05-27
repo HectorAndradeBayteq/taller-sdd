@@ -1,0 +1,30 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "mcp": {
+      "lab-inseguro": {
+          "enabled": true,
+          "type": "local",
+          "command": [
+              "node",
+              "H:\\PROJECTS\\BAYTEQ\\taller-sdd\\etapa-1\\laboratorios\\security\\mcp-server-inseguro\\index.mjs"
+          ]
+      }
+  },
+  "provider": {
+    "lmstudio": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "LM Studio (local)",
+      "options": {
+        "baseURL": "http://192.168.1.109:1234/v1"
+      },
+      "models": {
+        "qwen/qwen2.5-coder-14b": {
+          "name": "Qwen 2.5 Coder 14B (local)"
+        },
+        "qwen/qwen3.5-9b": {
+          "name": "Qwen 3.5 9B (local)"
+        }
+      }
+    }
+  }
+}

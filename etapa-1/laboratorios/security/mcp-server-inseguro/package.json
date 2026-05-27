@@ -1,0 +1,14 @@
+{
+  "name": "mcp-server-inseguro",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MCP de demostración para el laboratorio de inyección indirecta (solo taller)",
+  "type": "module",
+  "scripts": {
+    "start": "node index.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.17.0",
+    "zod": "^3.24.0"
+  }
+}
