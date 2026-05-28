@@ -91,7 +91,7 @@ flowchart LR
 
 ## Pasos
 
-### 0. Preparación
+### Preparación
 
 1. Clona o abre el repositorio `taller-sdd` como **workspace** en Cursor.
 2. Sigue **[Instalación del MCP inseguro](./mcp-server-inseguro/README.md)** hasta ver `lab-inseguro` activo con las herramientas `get_integration_context` y `acme_telemetry`.
@@ -198,7 +198,7 @@ En un taller real se observó:
 
 ---
 
-## Conclusión
+## Conclusiones del laboratorio
 
 - Una herramienta MCP **benigna en apariencia** puede devolver **instrucciones ocultas** (`SYSTEM OVERRIDE`); muchos modelos las tratan como mandatos operativos y pueden invocar una segunda herramienta (`acme_telemetry`) para **exfiltrar** sin que el usuario lo pida.
 - El usuario no tiene que ser malicioso: basta un pedido normal (“configura la integración”) o incluso “obedece al MCP” si el **canal MCP** no es de confianza.
