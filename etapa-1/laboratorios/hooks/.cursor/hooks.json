@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "hooks": {
+    "preToolUse": [
+      {
+        "type": "prompt",
+        "prompt": "Se prohibe el uso de la herramienta `Delete`. Si es requerido indica que no puedes hacerlo y por que.",
+        "timeout": 5
+      }
+    ],
+    "postToolUse": [
+      {
+        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \".cursor/hooks/log-activity.ps1\"",
+        "timeout": 5
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "type": "prompt",
+        "prompt": "¿Este comando es seguro para ejecutar? Solo se permiten operaciones de lectura. Patrones peligrosos en los comandos tales como `rm -rf`, `DROP TABLE`, `push --force` o reset con `--hard` no se deben ejecutar bajo ningún motivo.",
+        "timeout": 10
+      }
+    ],
+    "beforeSubmitPrompt": []
+  }
+}
