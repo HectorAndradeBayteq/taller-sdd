@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "chrome-devtools": {
+      "command": "npx",
+      "args": ["-y", "chrome-devtools-mcp@latest"]
+    }
+  },
+
+  // Incluir el MCP de Figma
+  "figma": {
+    "command": "npx",
+    "args": ["-y", "figma-mcp@latest"]
+  }
+}
