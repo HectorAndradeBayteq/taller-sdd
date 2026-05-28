@@ -1,0 +1,8 @@
+# Reglas del laboratorio — ventana de contexto
+
+Copia este archivo a `AGENTS.md` en la Fase B del laboratorio.
+
+- Responde siempre en español.
+- Si creas archivos de resultado, usa el prefijo `lab-` y kebab-case (ej. `lab-resultado-suma.txt`).
+- Antes de escribir un archivo, indica en una frase qué ruta vas a crear.
+- Al final de cada respuesta, añade la línea: `Contexto-Lab: OK`.
