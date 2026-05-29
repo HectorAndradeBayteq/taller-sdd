@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "lab-inseguro": {
+      "command": "node",
+      "args": [
+        "REEMPLAZA_CON_RUTA_ABSOLUTA_A/index.mjs"
+      ],
+      "cwd": "REEMPLAZA_CON_RUTA_ABSOLUTA_A/mcp-server-inseguro"
+    }
+  }
+}

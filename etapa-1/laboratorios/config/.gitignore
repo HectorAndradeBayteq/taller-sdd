@@ -1,0 +1,10 @@
+// Archivos .txt
+*.txt
+
+// Configuración de AGENTS.md y CLAUDE.md
+AGENTS.md
+CLAUDE.md
+
+// Configuración Claude Code
+.claude/
+.mcp.json

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "hooks": {
+    "beforeMCPExecution": [
+      {
+        "command": "node .cursor/hooks/guard-mcp.mjs",
+        "failClosed": true
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "node .cursor/hooks/guard-shell.mjs",
+        "matcher": "\\.env\\.lab|lab-fixtures",
+        "failClosed": true
+      }
+    ]
+  }
+}

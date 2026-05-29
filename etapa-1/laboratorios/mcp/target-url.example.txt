@@ -1,0 +1,4 @@
+# Renombra esta copia a target-url.txt y pon tu URL abajo.
+# Ver pasos en README.md (sección «Indicar la URL en un archivo»).
+
+https://example.com
