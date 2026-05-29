@@ -10,4 +10,4 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 
 El ejercicio práctico consistirá en la implementación de 3 funcionalidadeds de una aplicación de banca móvil utilizando estos conceptos.
 
-<img src="assets/img-19.png" alt="Referencia de diseño" style="max-width: 100%; height: auto;" />
+<img src="assets/img-19.png" style="max-width: 100%;" />
