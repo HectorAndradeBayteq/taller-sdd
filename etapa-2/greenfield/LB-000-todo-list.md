@@ -168,21 +168,21 @@ Implementa una **aplicación simple de to-dos** que permita **gestionar tareas d
 
 Solicitamos al agente que nos proponga historias de usuario para la implementación: 
 
-<img src="assets/LB-000-img-2.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-2.png" style="width: 400px; max-width: 100%;" />
 
 Si es necesario podemos usar el skill de clarificación para darle más detalle a la especificación:
 
-<img src="assets/LB-000-img-3.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-3.png" style="width: 400px; max-width: 100%;" />
 
 La sesión de aclaración se agregará a la especificación y adicionalmente hace los cambios necesarios en el contenido.
 
-<img src="assets/LB-000-img-4.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-4.png" style="width: 400px; max-width: 100%;" />
 
 ## Paso 4: Creación de artefactos de planificación
 
 En caso de estar conforme con la especificación se puede pasar a la planificación:
 
-<img src="assets/LB-000-img-5.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-5.png" style="width: 400px; max-width: 100%;" />
 
 Esto crea los artefactos necesarios para posteriormente generar las tareas de implementación, los artefactos principales son:
 
@@ -199,11 +199,11 @@ Esto crea los artefactos necesarios para posteriormente generar las tareas de im
 
 Debemos revisar todos los artefactos generados y a continuación pasar a la planificación de tareas:
 
-<img src="assets/LB-000-img-6.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-6.png" style="width: 400px; max-width: 100%;" />
 
 Esto puede cambiar el contenido de los artefactos y podria quedar inconsistente, por tanto para asegurarnos de la consistencia de todo el Spec podemos ejecutar un análisis del Spec:
 
-<img src="assets/LB-000-img-7.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-7.png" style="width: 400px; max-width: 100%;" />
 
 Si hay algun hallazgo importante del analisis podemos pedirle que nos ayude a correguirlo, con el proposito de tener el Spec listo para la implementación.
 
@@ -211,7 +211,7 @@ Si hay algun hallazgo importante del analisis podemos pedirle que nos ayude a co
 
 Ejecutar el skill de implementación:
 
-<img src="assets/LB-000-img-8.png" style="max-width: 100%;" />
+<img src="assets/LB-000-img-8.png" style="width: 400px; max-width: 100%;" />
 
 ## Conclusión
 
