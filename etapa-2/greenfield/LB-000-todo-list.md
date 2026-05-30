@@ -142,6 +142,10 @@ specify init .
 
 <img src="assets/LB-000-img-1.png" style="max-width: 100%;" />
 
+Luego tienes que pedir la creación de la constitución:
+
+<img src="assets/LB-000-img-0.png" style="width: 400px; max-width: 100%;" />
+
 ## Paso 3: Llevar el requerimiento a historias de usuario
 
 > ***Requerimiento:** 
