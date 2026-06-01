@@ -1,14 +1,5 @@
 # Ejercicio 0: Implementación de una aplicación de To-Dos simple
 
-## Objetivo
-
-Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** en un escenario *greenfield*. A diferencia de los ejercicios posteriores —donde la aplicación base ya existe— aquí el punto de partida es un proyecto vacío.
-Los objetivos son:
-
-1. **Crear una aplicación desde cero**: levantar el proyecto base de la app de to-dos (estructura, dependencias y configuración inicial) sin código previo de referencia.
-2. **Construir un harness simple para agentes**: definir el contexto mínimo que guiará al agente de IA durante la implementación —por ejemplo `AGENTS.md`, convenciones del proyecto y la estructura de carpetas para specs, historias y tareas.
-3. **Ejecutar el flujo de implementación completo**: recorrer las etapas de SDD —definición de historia de usuario, planificación de tareas, detalle técnico, implementación e integración— usando el requerimiento descrito a continuación.
-
 > ***Requerimiento:** 
 Implementa una **aplicación simple de to-dos** que permita **gestionar tareas de forma completa.** 
 **Flujo** **por pasos**. Incluye:*
@@ -140,11 +131,11 @@ Instalación del Development Toolkit para SDD, en este caso Speckit
 specify init .
 ```
 
-<img src="assets/LB-000-img-1.png" style="max-width: 100%;" />
+<img src="../assets/LB-000-img-1.png" style="max-width: 100%;" />
 
 Luego tienes que pedir la creación de la constitución:
 
-<img src="assets/LB-000-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-0.png" style="width: 400px; max-width: 100%;" />
 
 ## Paso 3: Llevar el requerimiento a historias de usuario
 
@@ -172,21 +163,21 @@ Implementa una **aplicación simple de to-dos** que permita **gestionar tareas d
 
 Solicitamos al agente que nos proponga historias de usuario para la implementación: 
 
-<img src="assets/LB-000-img-2.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-2.png" style="width: 400px; max-width: 100%;" />
 
 Si es necesario podemos usar el skill de clarificación para darle más detalle a la especificación:
 
-<img src="assets/LB-000-img-3.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-3.png" style="width: 400px; max-width: 100%;" />
 
 La sesión de aclaración se agregará a la especificación y adicionalmente hace los cambios necesarios en el contenido.
 
-<img src="assets/LB-000-img-4.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-4.png" style="width: 400px; max-width: 100%;" />
 
 ## Paso 4: Creación de artefactos de planificación
 
 En caso de estar conforme con la especificación se puede pasar a la planificación:
 
-<img src="assets/LB-000-img-5.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-5.png" style="width: 400px; max-width: 100%;" />
 
 Esto crea los artefactos necesarios para posteriormente generar las tareas de implementación, los artefactos principales son:
 
@@ -203,11 +194,11 @@ Esto crea los artefactos necesarios para posteriormente generar las tareas de im
 
 Debemos revisar todos los artefactos generados y a continuación pasar a la planificación de tareas:
 
-<img src="assets/LB-000-img-6.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-6.png" style="width: 400px; max-width: 100%;" />
 
 Esto puede cambiar el contenido de los artefactos y podria quedar inconsistente, por tanto para asegurarnos de la consistencia de todo el Spec podemos ejecutar un análisis del Spec:
 
-<img src="assets/LB-000-img-7.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-7.png" style="width: 400px; max-width: 100%;" />
 
 Si hay algun hallazgo importante del analisis podemos pedirle que nos ayude a correguirlo, con el proposito de tener el Spec listo para la implementación.
 
@@ -215,7 +206,7 @@ Si hay algun hallazgo importante del analisis podemos pedirle que nos ayude a co
 
 Ejecutar el skill de implementación:
 
-<img src="assets/LB-000-img-8.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-8.png" style="width: 400px; max-width: 100%;" />
 
 ## Conclusión
 

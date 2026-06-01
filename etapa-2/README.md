@@ -4,7 +4,7 @@
 
 El objetivo de este taller de **SDD (Spec Driven Development)** es aterrizar en un flujo real los conceptos presentados previamente sobre desarrollo asistido por agentes de IA. A través de un enfoque práctico, se trabajará desde la construcción del **harness de agentes** —incluyendo archivos como `AGENTS.md`, `MEMORY.md`, Skills, Plugins, ADRs y documentos de diseño— para entender cómo estructurar el contexto, las reglas y las capacidades que utilizarán los agentes durante la implementación.
 
-Posteriormente, el taller se enfocará en la creación de **Specs dentro de un flujo Agile**, transformando requerimientos en documentación técnica, historias de usuario y tareas implementables. El objetivo es mostrar cómo SDD permite pasar de conceptos teóricos a un proceso más estructurado, consistente y preparado para iteraciones de desarrollo guiadas por IA.
+Posteriormente, el taller se enfocará en la creación de **Specs dentro de un flujo**, transformando requerimientos en documentación técnica, historias de usuario y tareas implementables. El objetivo es mostrar cómo SDD permite pasar de conceptos teóricos a un proceso más estructurado, consistente y preparado para iteraciones de desarrollo guiadas por IA.
 
 ## Pre-requisitos
 
@@ -30,7 +30,7 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 
 ## Principales archivos
 
-<img src="assets/LB-000-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
 
 ## AGENTS.md
 
@@ -94,7 +94,7 @@ Los ADRs se limitan a registrar la decisión y pueden incluir ejemplos básicos.
 > Usaremos **Base UI** (`@base-ui/react`) como biblioteca de componentes base del proyecto. Los primitivos de Base UI deben usarse **prioritariamente** frente a HTML nativo cuando exista un componente equivalente que cubra el caso (accesibilidad, teclado, ARIA, patrones compuestos). Solo cuando Base UI no ofrezca una pieza adecuada se evaluara HTML nativo u otra dependencia, documentando la excepcion.
 > La documentacion del paquete y el indice orientado a LLMs estan en Base UI - documentacion.
 
-<img src="assets/LB-000-img-2.png" style="max-width: 100%;" />
+<img src="assets/LB-001-img-2.png" style="max-width: 100%;" />
 
 ## DESIGN.md
 
@@ -139,7 +139,7 @@ Su objetivo es transformar una necesidad de negocio en tareas implementables, ve
 
 ## Flujo Agile
 
-<img src="assets/LB-000-img-3.png" style="max-width: 100%;" />
+<img src="assets/LB-001-img-3.png" style="max-width: 100%;" />
 
 El flujo Agile de generación de Specs cubre todo el ciclo de trabajo, desde el ingreso del requerimiento hasta la publicación de la implementación. El proceso inicia con la definición del requerimiento, donde se transforma la necesidad funcional en historias de usuario claras y alineadas con los objetivos del proyecto mediante comandos como `/story-define`.
 
@@ -151,25 +151,44 @@ Finalmente, los cambios pasan por un proceso de integración y validación antes
 
 ## Flujo Speckit
 
-<img src="assets/LB-000-img-4.png" style="max-width: 100%;" />
+<img src="assets/LB-001-img-4.png" style="max-width: 100%;" />
 
 ## Implementación de ejercicios
 
 > **Tip:** Cada implementación debe correr en una sesión de chat independiente, si hay que hacer ajustes podrían hacerlo en otra sesión independiente pero dándole todo el contexto
 > 
 
+### To-Do List App
+
+Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** en un escenario *greenfield*. Los objetivos son:
+
+1. **Crear una aplicación desde cero**: levantar el proyecto base de la app de to-dos (estructura, dependencias y configuración inicial) sin código previo de referencia.
+2. **Construir un harness simple para agentes**: definir el contexto mínimo que guiará al agente de IA durante la implementación —por ejemplo `AGENTS.md`, convenciones del proyecto y la estructura de carpetas para specs, historias y tareas.
+3. **Ejecutar el flujo de implementación completo**: recorrer las etapas de SDD —definición de historia de usuario, planificación de tareas, detalle técnico, implementación e integración— usando el requerimiento descrito a continuación.
+
 [Ejercicio 0: Todo list (Speckit)](greenfield/LB-000-todo-list.md)
 
-[Ejercicio 0: Todo list (Agile)](https://app.notion.com/p/Ejercicio-0-Todo-list-Agile-36f6805d884a80e38b5ee0f7c8633f03?pvs=21)
+### Banca Móvil App
 
-Completa
+Este ejercicio permite aplicar el flujo de **Specification-Driven Development (SDD)** en un escenario de desarrollo de una aplicación financiera. Los objetivos son:
 
-[Ejercicio 1: Implementación simple (Agile)](https://app.notion.com/p/Ejercicio-1-Implementaci-n-simple-Agile-3606805d884a80e9b025fa9f7c7f8d3b?pvs=21)
+1. **Implementar funcionalidades a partir de especificaciones existentes**: utilizar historias de usuario, tareas y detalles técnicos previamente definidos para construir las funcionalidades del sistema de manera incremental.
 
-[Ejercicio 1: Implementación simple (Speckit)](greenfield/LB-001-implementacion-simple.md)
+2. **Desarrollar las capacidades fundamentales de la aplicación**: implementar la pantalla de autenticación y el control de acceso, estableciendo la base para la gestión segura de usuarios y la navegación protegida.
 
-[Ejercicio 2: Implementación de múltiples tareas](https://app.notion.com/p/Ejercicio-2-Implementaci-n-de-m-ltiples-tareas-3606805d884a8032880bd1629c47eef0?pvs=21)
+3. **Construir la experiencia principal del usuario**: desarrollar la pantalla de posición consolidada como punto central de consulta, permitiendo visualizar la información financiera relevante de manera integrada.
 
-[Ejercicio 3: Implementación de un nuevo requerimiento (Agile)](https://app.notion.com/p/Ejercicio-3-Implementaci-n-de-un-nuevo-requerimiento-Agile-3606805d884a80c28169c6f1f152e509?pvs=21)
+4. **Implementar un flujo de negocio completo**: desarrollar el proceso de transferencia entre cuentas, incluyendo validaciones, interacción con servicios y actualización de la información presentada al usuario.
 
-[Ejercicio 4: Modificación](https://app.notion.com/p/Ejercicio-4-Modificaci-n-3656805d884a808ca0feca745fd4ec6b?pvs=21)
+5. **Ejecutar el flujo de implementación guiado por especificaciones**: recorrer las etapas de análisis técnico, implementación, validación e integración de cada historia de usuario, utilizando agentes de IA como apoyo para la construcción de software alineada con las especificaciones definidas.
+
+6. **Aplicar prácticas de desarrollo iterativo**: completar cada historia de usuario de forma incremental, verificando que los criterios de aceptación, las reglas de negocio y los requisitos técnicos sean satisfechos antes de avanzar a la siguiente funcionalidad.
+
+
+[Ejercicio 1: Autenticación](greenfield/LB-001-implementacion-simple.md)
+
+[Ejercicio 2: Posición consolidada](greenfield/LB-002-multiples-tareas.md)
+
+[Ejercicio 3: Transferencia entre cuentas propias](greenfield/LB-003-nuevo-requerimiento.md)
+
+[Ejercicio 4: Modificación](greenfield/LB-004-modificacion.md)
