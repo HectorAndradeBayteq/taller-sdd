@@ -94,7 +94,7 @@ Los ADRs se limitan a registrar la decisión y pueden incluir ejemplos básicos.
 > Usaremos **Base UI** (`@base-ui/react`) como biblioteca de componentes base del proyecto. Los primitivos de Base UI deben usarse **prioritariamente** frente a HTML nativo cuando exista un componente equivalente que cubra el caso (accesibilidad, teclado, ARIA, patrones compuestos). Solo cuando Base UI no ofrezca una pieza adecuada se evaluara HTML nativo u otra dependencia, documentando la excepcion.
 > La documentacion del paquete y el indice orientado a LLMs estan en Base UI - documentacion.
 
-<img src="assets/LB-000-img-2.png" style="width: 400px; max-width: 100%;" />
+<img src="assets/LB-000-img-2.png" style="max-width: 100%;" />
 
 ## DESIGN.md
 
