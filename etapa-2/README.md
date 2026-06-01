@@ -181,22 +181,21 @@ Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** 
 
 ### Banca Móvil App
 
-<img src="assets/intro-img-5.png" style="max-width: 100%;" />
-
 Este ejercicio permite aplicar el flujo de **Specification-Driven Development (SDD)** en un escenario de desarrollo de una aplicación financiera. Los objetivos son:
 
 1. **Implementar funcionalidades a partir de especificaciones existentes**: utilizar historias de usuario, tareas y detalles técnicos previamente definidos para construir las funcionalidades del sistema de manera incremental.
 
-2. **Desarrollar las capacidades fundamentales de la aplicación**: implementar la pantalla de autenticación y el control de acceso, estableciendo la base para la gestión segura de usuarios y la navegación protegida.
+2. **Desarrollar las capacidades fundamentales de la aplicación**: implementar la pantalla de autenticación y el control de acceso.
 
 3. **Construir la experiencia principal del usuario**: desarrollar la pantalla de posición consolidada como punto central de consulta, permitiendo visualizar la información financiera relevante de manera integrada.
 
-4. **Implementar un flujo de negocio completo**: desarrollar el proceso de transferencia entre cuentas, incluyendo validaciones, interacción con servicios y actualización de la información presentada al usuario.
+4. **Implementar un flujo de negocio completo**: desarrollar el proceso de transferencia entre cuentas propias, incluyendo validaciones, interacción con servicios y actualización de la información presentada al usuario.
 
 5. **Ejecutar el flujo de implementación guiado por especificaciones**: recorrer las etapas de análisis técnico, implementación, validación e integración de cada historia de usuario, utilizando agentes de IA como apoyo para la construcción de software alineada con las especificaciones definidas.
 
 6. **Aplicar prácticas de desarrollo iterativo**: completar cada historia de usuario de forma incremental, verificando que los criterios de aceptación, las reglas de negocio y los requisitos técnicos sean satisfechos antes de avanzar a la siguiente funcionalidad.
 
+<img src="assets/intro-img-5.png" style="max-width: 100%;" />
 
 [Ejercicio 1: Autenticación](greenfield/LB-001-implementacion-simple.md)
 
