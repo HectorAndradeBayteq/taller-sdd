@@ -1,4 +1,4 @@
-# Laboratorio 1: Desarrollo asistido por IA y Agent Loop
+# Laboratorio extra: Desarrollo asistido por IA y Agent Loop
 
 ## Objetivo
 
@@ -415,7 +415,7 @@ Controles adicionales en planes Teams/Enterprise: [Cursor · Pricing](https://cu
 - **Privacy Mode** limita retención y entrenamiento, pero no elimina el paso por backend ni todas las transferencias.
 - Los **system prompts internos** y parte del ranking de contexto son **opacos**; las reglas y el `@` son las palancas principales que sí controlas desde el repo.
 
-Tras el taller, continúa con [Laboratorio 2: Agentes y subagentes](../agents/README.md) para ver cómo se descompone el trabajo en agentes especializados sobre este mismo bucle.
+Si aún no lo hiciste, recorre antes la secuencia numerada empezando por [Laboratorio 1: Agentes y subagentes](../agents/README.md), donde se aplica este bucle con delegación y subagentes en la práctica.
 
 ---
 
