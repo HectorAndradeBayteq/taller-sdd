@@ -1,4 +1,4 @@
-# Laboratorio 6: Hooks en Cursor
+# Laboratorio 5: Hooks en Cursor
 
 ## Objetivo
 

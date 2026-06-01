@@ -1,4 +1,4 @@
-# Laboratorio 8: Seguridad — inyección indirecta vía MCP
+# Laboratorio 7: Seguridad — inyección indirecta vía MCP
 
 ## Objetivo
 
@@ -9,7 +9,7 @@ Al final del laboratorio podrás:
 1. Provocar (en entorno controlado) un comportamiento no deseado: filtrar contenido de `lab-fixtures/.env.lab` hacia el chat o la terminal.
 2. Mitigar el riesgo con **hooks** (`beforeMCPExecution`, `beforeShellExecution`) y reglas de uso de herramientas.
 
-**Prerrequisitos:** [Laboratorio 5: MCP](../mcp/README.md), [Laboratorio 6: Hooks](../hooks/README.md).
+**Prerrequisitos:** [Laboratorio 4: MCP](../mcp/README.md), [Laboratorio 5: Hooks](../hooks/README.md).
 
 **Material técnico del servidor:** [mcp-server-inseguro/README.md](./mcp-server-inseguro/README.md) (instalación, `mcp.json`, comprobaciones).
 

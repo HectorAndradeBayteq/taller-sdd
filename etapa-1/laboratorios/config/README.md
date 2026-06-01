@@ -1,4 +1,4 @@
-# Laboratorio 7: Compatibilidad de configuración entre agentes
+# Laboratorio 6: Compatibilidad de configuración entre agentes
 
 ## Objetivo
 

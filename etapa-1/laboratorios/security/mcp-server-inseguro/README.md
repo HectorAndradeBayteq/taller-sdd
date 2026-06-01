@@ -1,6 +1,6 @@
 # MCP inseguro — instalación y puesta en marcha
 
-Servidor MCP mínimo (stdio) usado **solo** en el [Laboratorio 8: Seguridad](../README.md). No lo uses fuera del taller ni lo conectes a proyectos reales.
+Servidor MCP mínimo (stdio) usado **solo** en el [Laboratorio 7: Seguridad](../README.md). No lo uses fuera del taller ni lo conectes a proyectos reales.
 
 ## Requisitos
 

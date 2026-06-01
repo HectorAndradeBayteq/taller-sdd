@@ -1,4 +1,4 @@
-# Laboratorio 3: Prompts y skills
+# Laboratorio 2: Prompts y skills
 
 ## Objetivo
 
@@ -12,7 +12,8 @@ Al final del laboratorio podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agent Loop](../agent-loop/README.md) — contexto sobre cómo el agente inyecta instrucciones y ejecuta herramientas.
+- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — orquestación y delegación en Cursor.
+- Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — marco teórico del bucle agente–herramientas.
 - Claude Code CLI instalado y autenticado.
 - Este repositorio abierto como **workspace** (Cursor o terminal en la carpeta del lab).
 
@@ -250,9 +251,9 @@ skills/
 - El **frontmatter** (`name`, `description`) y el **cuerpo** definen el contrato de la skill; cuanto más explícitos sean formato, pasos y límites, más predecible será el comportamiento.
 - **`skill-creator`** aporta un ciclo Create → Eval → Improve → Benchmark con agentes especializados; es la palanca para calidad antes de compartir skills en equipo.
 - El scope **proyecto** (`.claude/skills/`) permite alinear skills con el repo y revisarlas en PR; el scope **global** sirve para convenciones personales transversales.
-- Las skills se relacionan con el **agent loop** del Laboratorio 1: son contexto persistente que el agente carga bajo demanda, similar en espíritu a reglas y prompts reutilizables en Cursor.
+- Las skills se relacionan con el **agent loop** (ver [Laboratorio extra](../agent-loop/README.md)): son contexto persistente que el agente carga bajo demanda, similar en espíritu a reglas y prompts reutilizables en Cursor.
 
-Tras el taller, continúa con [Laboratorio 4: Ventana de contexto y atención](../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
+Tras el taller, continúa con [Laboratorio 3: Ventana de contexto y atención](../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
 
 ---
 

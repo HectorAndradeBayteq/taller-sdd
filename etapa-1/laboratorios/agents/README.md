@@ -1,4 +1,4 @@
-# Laboratorio 2: Agentes y subagentes
+# Laboratorio 1: Agentes y subagentes
 
 ## Objetivo
 
@@ -12,13 +12,13 @@ Al final del laboratorio podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y ejecución de tools por el IDE.
 - Carpeta `etapa-1/laboratorios/agents` abierta como **workspace** en Cursor.
+- Familiaridad básica con el modo **Agent** de Cursor (el [Laboratorio extra: Agent Loop](../agent-loop/README.md) profundiza en el bucle agente–herramientas).
 - Modo **Agent** con permiso para lanzar subagentes (`Task`) y aprobar herramientas cuando Cursor lo solicite.
 
 **Material técnico del laboratorio:** políticas en [`AGENTS.md`](./AGENTS.md) (permisos, logging, estándares de salida) y definiciones de agentes en [`.cursor/agents/`](./.cursor/agents/).
 
-> Este laboratorio **no usa skills**. Contrasta con [Laboratorio 3: Prompts y skills](../skills/README.md), centrado en comandos reutilizables en Claude Code.
+> Este laboratorio **no usa skills**. Contrasta con [Laboratorio 2: Prompts y skills](../skills/README.md), centrado en comandos reutilizables en Claude Code.
 
 ---
 
@@ -26,7 +26,7 @@ Al final del laboratorio podrás:
 
 ### Agente principal vs subagentes
 
-En Cursor, un **agente** puede delegar trabajo lanzando **subagentes** con la herramienta `Task`. Cada subagente corre en su propio contexto (o con instrucciones acotadas) y devuelve un resultado al padre. El **agent loop** del Laboratorio 1 sigue aplicando: el modelo pide `Task`; Cursor ejecuta el subagente; el resultado vuelve al coordinador.
+En Cursor, un **agente** puede delegar trabajo lanzando **subagentes** con la herramienta `Task`. Cada subagente corre en su propio contexto (o con instrucciones acotadas) y devuelve un resultado al padre. El **agent loop** sigue aplicando: el modelo pide `Task`; Cursor ejecuta el subagente; el resultado vuelve al coordinador (marco teórico en el [Laboratorio extra](../agent-loop/README.md)).
 
 Este lab modela un equipo de catálogo:
 
@@ -263,9 +263,9 @@ agents/
 - Un **subagente anidado** (`buscador-opiniones` → `analizador-sentimiento`) modela pipelines de dos fases con profundidad acotada.
 - Los **logs por instancia** en `output/<slug>/log/` hacen auditable el flujo multiagente (quién hizo qué y cuándo).
 - **`AGENTS.md`** centraliza activación, mínimo privilegio y formatos de salida — patrón escalable antes de añadir MCP u hooks.
-- Este lab es la versión **mínima solo agentes**; el [Laboratorio 3](../skills/README.md) cubre skills reutilizables en otro runtime (Claude Code).
+- Este lab es la versión **mínima solo agentes**; el [Laboratorio 2](../skills/README.md) cubre skills reutilizables en otro runtime (Claude Code).
 
-Tras el taller, continúa con [Laboratorio 3: Prompts y skills](../skills/README.md) para comparar skills vs agentes, o con [Laboratorio 4: Ventana de contexto](../context/README.md) para entender límites de contexto cuando orquestas varios subagentes.
+Tras el taller, continúa con [Laboratorio 2: Prompts y skills](../skills/README.md) para comparar skills vs agentes, o con [Laboratorio 3: Ventana de contexto](../context/README.md) para entender límites de contexto cuando orquestas varios subagentes.
 
 ---
 
@@ -275,7 +275,7 @@ Tras el taller, continúa con [Laboratorio 3: Prompts y skills](../skills/README
 |------|--------|
 | Subagentes en Cursor | [Cursor — Subagents](https://cursor.com/docs/agent/subagents) |
 | AGENTS.md en proyectos | [Cursor — AGENTS.md](https://cursor.com/docs/agent/AGENTS.md) |
-| Agent loop (contexto) | [Laboratorio 1: Agent Loop](../agent-loop/README.md) |
-| Skills (contraste) | [Laboratorio 3: Prompts y skills](../skills/README.md) |
-| Hooks (control posterior) | [Laboratorio 6: Hooks](../hooks/README.md) |
+| Agent loop (contexto) | [Laboratorio extra: Agent Loop](../agent-loop/README.md) |
+| Skills (contraste) | [Laboratorio 2: Prompts y skills](../skills/README.md) |
+| Hooks (control posterior) | [Laboratorio 5: Hooks](../hooks/README.md) |
 | Políticas del lab | [`AGENTS.md`](./AGENTS.md) |

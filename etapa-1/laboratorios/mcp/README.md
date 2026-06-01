@@ -1,4 +1,4 @@
-# Laboratorio 5: MCP (Model Context Protocol)
+# Laboratorio 4: MCP (Model Context Protocol)
 
 ## Objetivo
 
@@ -12,7 +12,8 @@ Al final del laboratorio podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y quién ejecuta cada acción (IDE vs modelo).
+- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — orquestación en Cursor.
+- Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y quién ejecuta cada acción (IDE vs modelo).
 - **Node.js** v20.19 o superior (LTS reciente).
 - **Google Chrome** actual (el servidor soporta oficialmente Chrome / Chrome for Testing).
 - **npm** (incluido con Node).
@@ -207,7 +208,7 @@ Validación:
 
 2. ¿Por qué `target-url.txt` está en `.gitignore` y `mcp.json` no?
 
-3. Antes de añadir más servidores en `mcp.json`, ¿qué preguntas harías en un repo con datos sensibles? (Relaciona con [Laboratorio 8: Seguridad](../security/README.md).)
+3. Antes de añadir más servidores en `mcp.json`, ¿qué preguntas harías en un repo con datos sensibles? (Relaciona con [Laboratorio 7: Seguridad](../security/README.md).)
 
 ---
 
@@ -217,9 +218,9 @@ Validación:
 - La configuración en **`.cursor/mcp.json`** versiona la integración por proyecto; el equipo comparte el mismo servidor al clonar el repo.
 - **Chrome DevTools MCP** cubre navegación, evaluación de script, consola y capturas sin añadir Playwright al proyecto.
 - Separar **`target-url.txt`** (local, gitignored) de la config MCP reduce fugas de enlaces personales al repositorio.
-- El patrón agente → tool MCP → Chrome es el mismo **agent loop** del Laboratorio 1, con un proveedor de herramientas adicional.
+- El patrón agente → tool MCP → Chrome es el mismo **agent loop** (ver [Laboratorio extra](../agent-loop/README.md)), con un proveedor de herramientas adicional.
 
-Tras el taller, continúa con [Laboratorio 6: Hooks](../hooks/README.md) para observar y controlar el comportamiento del agente (incluidas tool calls) antes y después de cada acción.
+Tras el taller, continúa con [Laboratorio 5: Hooks](../hooks/README.md) para observar y controlar el comportamiento del agente (incluidas tool calls) antes y después de cada acción.
 
 ---
 
@@ -230,5 +231,5 @@ Tras el taller, continúa con [Laboratorio 6: Hooks](../hooks/README.md) para ob
 | MCP en Cursor | [Cursor — MCP / mcp.json](https://cursor.com/docs/context/mcp) |
 | Servidor del lab | [chrome-devtools-mcp](https://github.com/ChromeDevTools/chrome-devtools-mcp) |
 | Especificación MCP | [Model Context Protocol](https://modelcontextprotocol.io/) |
-| Agent loop (contexto) | [Laboratorio 1: Agent Loop](../agent-loop/README.md) |
-| Seguridad y MCP | [Laboratorio 8: Seguridad](../security/README.md) |
+| Agent loop (contexto) | [Laboratorio extra: Agent Loop](../agent-loop/README.md) |
+| Seguridad y MCP | [Laboratorio 7: Seguridad](../security/README.md) |

@@ -1,4 +1,4 @@
-# Laboratorio 4: Ventana de contexto y atención
+# Laboratorio 3: Ventana de contexto y atención
 
 ## Objetivo
 
@@ -12,7 +12,8 @@ Al final del laboratorio podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Desarrollo asistido por IA y Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y capas de contexto local.
+- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — delegación y subagentes en Cursor.
+- Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y capas de contexto local.
 - Cursor instalado con modo **Agent** disponible.
 - Familiaridad básica con el chat del IDE.
 
@@ -52,7 +53,7 @@ Tener espacio libre en la barra no garantiza que el modelo **priorice** bien cad
 - Mantener prompts acotados y archivos relevantes explícitos (`@archivo`).
 - Dividir tareas grandes en hilos o cambios con contexto limpio.
 
-Referencia conceptual: documentación de [Rules](https://cursor.com/docs/rules) y el marco del [Laboratorio 1](../agent-loop/README.md) sobre contexto local vs. recuperado.
+Referencia conceptual: documentación de [Rules](https://cursor.com/docs/rules) y el marco del [Laboratorio extra](../agent-loop/README.md) sobre contexto local vs. recuperado.
 
 ---
 
@@ -215,7 +216,7 @@ En el mismo chat de la Fase B (o uno nuevo **con** `AGENTS.md`), envía estas pr
 Puedes copiar esto a `notas-contexto.md` durante el taller:
 
 ```md
-# Registro — Laboratorio 4
+# Registro — Laboratorio 3
 
 Participante:
 Fecha:
@@ -264,7 +265,7 @@ Tras el taller, aplica una revisión en un proyecto real: lista MCP y skills act
 
 ## Referencias
 
-- [Laboratorio 1 — Agent Loop](../agent-loop/README.md)
-- [Laboratorio 7 — AGENTS.md y configuración](../config/README.md)
+- [Laboratorio extra — Agent Loop](../agent-loop/README.md)
+- [Laboratorio 6 — AGENTS.md y configuración](../config/README.md)
 - [Cursor Rules](https://cursor.com/docs/rules)
 - Imagen de referencia del panel Context (captura del taller en `assets/` o la proporcionada por el instructor)
