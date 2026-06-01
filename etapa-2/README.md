@@ -24,7 +24,7 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 | Skills | .cursor/skills .codex/skills .claude/skills .agents/skills | .claude/skills | .codex/skills .agents/skills | .github/skills .claude/skills .agents/skills |
 | Hooks | .cursor/hooks | .claude/hooks | .agents/hooks .codex/hooks | .github/hooks |
 | Subagents | .cursor/agents | .claude/agents | .codex/agents | .github/agents |
-| MCP | .cursor/mcp.json | .claude/mcp.json | .vscode/mcp.json | .codex/config.toml |
+| MCP | .cursor/mcp.json | .mcp.json | .vscode/mcp.json | .codex/config.toml |
 | ADRs | docs/adr/ | docs/adr/ |  | docs/adr/ (Agente especializado) |
 | DESIGN.md |  | lo considera |  |  |
 
@@ -67,6 +67,8 @@ Para explorar que skills te pueden servir en tu stack tecnológico podrias usar 
 npx autoskills
 ```
 
+También puedes consultar [skills.sh](https://www.skills.sh/): un directorio abierto de skills listos para instalar con `npx skills add`. Sirve para descubrir capacidades ya probadas por la comunidad y como referencia al diseñar los skills propios del proyecto.
+
 ## Plugins
 
 Son extensiones que agregan capacidades adicionales al agente base. Funcionan como módulos especializados que permiten que la IA interactúe con sistemas externos, automatice tareas o incorpore nuevas herramientas dentro del flujo de trabajo.
@@ -94,7 +96,7 @@ Los ADRs se limitan a registrar la decisión y pueden incluir ejemplos básicos.
 > Usaremos **Base UI** (`@base-ui/react`) como biblioteca de componentes base del proyecto. Los primitivos de Base UI deben usarse **prioritariamente** frente a HTML nativo cuando exista un componente equivalente que cubra el caso (accesibilidad, teclado, ARIA, patrones compuestos). Solo cuando Base UI no ofrezca una pieza adecuada se evaluara HTML nativo u otra dependencia, documentando la excepcion.
 > La documentacion del paquete y el indice orientado a LLMs estan en Base UI - documentacion.
 
-<img src="assets/intro-img-2.png" style="max-width: 100%;" />
+<img src="assets/intro-img-2.png" style="width: 400px; max-width: 100%;" />
 
 ## DESIGN.md
 

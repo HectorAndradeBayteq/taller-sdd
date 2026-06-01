@@ -61,7 +61,7 @@ Cada uno incluye un checklist de descubrimiento obligatorio antes de actuar.
 
 ## **Decisiones arquitectónicas (`docs/adr/`)**
 
-Siete ADRs ya aceptados que el agente puede consultar:
+ADRs ya aceptados que el agente puede consultar:
 
 - App Router exclusivo
 - Tailwind CSS
@@ -70,8 +70,6 @@ Siete ADRs ya aceptados que el agente puede consultar:
 - Estrategia de pruebas con Vitest
 - Base UI como librería de componentes
 - TSDoc para documentación de API
-
-Varios ADRs enlazan explícitamente con `AGENTS.md` y los subagentes.
 
 ## **Sistema de diseño (`DESIGN.md`)**
 
@@ -116,7 +114,7 @@ La herramienta (Vitest, ESLint) es el **mecanismo**; el quality gate es la **p
 Conocimiento sobre framework
 
 ```bash
-npx skills add [https://github.com/vercel-labs/next-skills](https://github.com/vercel-labs/next-skills) --skill next-best-practices
+npx skills add https://github.com/vercel-labs/next-skills --skill next-best-practices
 ```
 
 Habilidades utilitarias para la implementación con specs
@@ -171,7 +169,7 @@ Si es necesario podemos usar el skill de clarificación para darle más detalle 
 
 La sesión de aclaración se agregará a la especificación y adicionalmente hace los cambios necesarios en el contenido.
 
-<img src="../assets/LB-000-img-4.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-000-img-4.png" style="width: 600px; max-width: 100%;" />
 
 ## Paso 4: Creación de artefactos de planificación
 
@@ -207,6 +205,22 @@ Si hay algun hallazgo importante del analisis podemos pedirle que nos ayude a co
 Ejecutar el skill de implementación:
 
 <img src="../assets/LB-000-img-8.png" style="width: 400px; max-width: 100%;" />
+
+## Paso 7: Despliegue
+
+Luego de implementar si ya estamos conformes con el resultado y queremos pasar a los distintos ambientes de despliegue, podemos preparar la entrega en 2 pasos:
+
+### Ejecutamos un Code Review
+
+<img src="../assets/LB-000-img-9.png" style="width: 400px; max-width: 100%;" />
+
+Esto ejecuta el suite completo de control y pruebas para garantizar la calidad del entregable si es necesario correcciones el agente los pruebe resolver proactivamente.
+
+### Proponemos un Pull Request para el despliegue en ambientes
+
+<img src="../assets/LB-000-img-10.png" style="width: 400px; max-width: 100%;" />
+
+De esta manera hemos cubierto el proceso de desarrollo de punta a punta totalmente asistido por el agente de IA.
 
 ## Conclusión
 
