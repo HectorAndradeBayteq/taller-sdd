@@ -179,7 +179,7 @@ Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** 
 
 ### Banca Móvil App
 
-<img src="assets/intro-img-6.png" style="max-width: 100%;" />
+<img src="assets/intro-img-5.png" style="max-width: 100%;" />
 
 Este ejercicio permite aplicar el flujo de **Specification-Driven Development (SDD)** en un escenario de desarrollo de una aplicación financiera. Los objetivos son:
 
