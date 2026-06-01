@@ -30,7 +30,7 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 
 ## Principales archivos
 
-<img src="assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="assets/LB-001-img-0.png" style="width: 300px; max-width: 100%;" />
 
 ## AGENTS.md
 
@@ -74,7 +74,7 @@ Son extensiones que agregan capacidades adicionales al agente base. Funcionan co
 - Buscar el plugin de Figma e instalarlo.
 - Revisar que esté instalado el MCP y los Skills de Figma.
 
-<img src="assets/LB-001-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="assets/LB-001-img-1.png" style="max-width: 100%;" />
 
 ## ADRs (Architecture Decision Records)
 
@@ -150,6 +150,18 @@ Cada historia se implementa de manera aislada en una rama de implementación ded
 Finalmente, los cambios pasan por un proceso de integración y validación antes de su publicación. Mediante `/story-integrate`, los cambios se incorporan a la rama de desarrollo, donde se realizan revisiones de código y generación de Pull Requests usando `/code-review` y `/git-pr`. Esto permite mantener un flujo controlado, incremental y alineado entre especificación, implementación y despliegue.
 
 ## Flujo Speckit
+
+Este flujo de Specification-Driven Development (SDD) con Speckit organiza el desarrollo en etapas claramente definidas para asegurar que cada cambio esté basado en una especificación verificable antes de escribir código.
+
+El proceso inicia con un requerimiento o historia de usuario. A partir de este insumo, se utilizan los comandos /speckit-specify y /speckit-clarify para crear y refinar la especificación, definiendo el alcance, los requisitos y los criterios de aceptación.
+
+Una vez aprobada la especificación, se ejecuta /speckit-plan para generar el plan técnico de implementación, donde se documentan las decisiones de diseño, arquitectura, dependencias y estrategia de pruebas.
+
+Posteriormente, mediante /speckit-tasks y /speckit-analyze, el plan se transforma en un conjunto de tareas concretas y verificables que servirán como guía para la implementación.
+
+Con las tareas definidas, /speckit-implement ejecuta el trabajo necesario para producir el código, las pruebas y la documentación requeridos por la especificación.
+
+Finalmente, los cambios se preparan para revisión utilizando /git-commit y /git-pr, generando el Pull Request que, una vez aprobado, continúa hacia el despliegue. De esta forma, cada entrega mantiene una trazabilidad completa desde el requerimiento inicial hasta la solución implementada.
 
 <img src="assets/LB-001-img-4.png" style="max-width: 100%;" />
 
