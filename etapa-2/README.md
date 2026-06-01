@@ -30,7 +30,7 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 
 ## Principales archivos
 
-<img src="assets/LB-001-img-0.png" style="width: 300px; max-width: 100%;" />
+<img src="assets/intro-img-0.png" style="width: 300px; max-width: 100%;" />
 
 ## AGENTS.md
 
@@ -74,7 +74,7 @@ Son extensiones que agregan capacidades adicionales al agente base. Funcionan co
 - Buscar el plugin de Figma e instalarlo.
 - Revisar que esté instalado el MCP y los Skills de Figma.
 
-<img src="assets/LB-001-img-1.png" style="max-width: 100%;" />
+<img src="assets/intro-img-1.png" style="max-width: 100%;" />
 
 ## ADRs (Architecture Decision Records)
 
@@ -94,7 +94,7 @@ Los ADRs se limitan a registrar la decisión y pueden incluir ejemplos básicos.
 > Usaremos **Base UI** (`@base-ui/react`) como biblioteca de componentes base del proyecto. Los primitivos de Base UI deben usarse **prioritariamente** frente a HTML nativo cuando exista un componente equivalente que cubra el caso (accesibilidad, teclado, ARIA, patrones compuestos). Solo cuando Base UI no ofrezca una pieza adecuada se evaluara HTML nativo u otra dependencia, documentando la excepcion.
 > La documentacion del paquete y el indice orientado a LLMs estan en Base UI - documentacion.
 
-<img src="assets/LB-001-img-2.png" style="max-width: 100%;" />
+<img src="assets/intro-img-2.png" style="max-width: 100%;" />
 
 ## DESIGN.md
 
@@ -139,7 +139,7 @@ Su objetivo es transformar una necesidad de negocio en tareas implementables, ve
 
 ## Flujo Agile
 
-<img src="assets/LB-001-img-3.png" style="max-width: 100%;" />
+<img src="assets/intro-img-3.png" style="max-width: 100%;" />
 
 El flujo Agile de generación de Specs cubre todo el ciclo de trabajo, desde el ingreso del requerimiento hasta la publicación de la implementación. El proceso inicia con la definición del requerimiento, donde se transforma la necesidad funcional en historias de usuario claras y alineadas con los objetivos del proyecto mediante comandos como `/story-define`.
 
@@ -163,12 +163,9 @@ Con las tareas definidas, /speckit-implement ejecuta el trabajo necesario para p
 
 Finalmente, los cambios se preparan para revisión utilizando /git-commit y /git-pr, generando el Pull Request que, una vez aprobado, continúa hacia el despliegue. De esta forma, cada entrega mantiene una trazabilidad completa desde el requerimiento inicial hasta la solución implementada.
 
-<img src="assets/LB-001-img-4.png" style="max-width: 100%;" />
+<img src="assets/intro-img-4.png" style="max-width: 100%;" />
 
 ## Implementación de ejercicios
-
-> **Tip:** Cada implementación debe correr en una sesión de chat independiente, si hay que hacer ajustes podrían hacerlo en otra sesión independiente pero dándole todo el contexto
-> 
 
 ### To-Do List App
 

@@ -1,50 +1,39 @@
 # Ejercicio 1: Implementación simple desde una historia con una tarea
 
-## Objetivo
+# Paso 1: Descargar proyecto base y abrirlo en Cursor
 
-Observar la documentación creada (historia de usuario y tarea técnica), ejecutar la implementación de la tarea y asegurar que el resultado final sea el esperado.
+```bash
+git clone https://github.com/juanca202/exercise-mobile.git
+```
 
-Este ejercicio introduce el flujo de implementación con el grado mínimo de complejidad: una **historia de usuario ya definida** con **una única tarea técnica** en estado **Ready**, lista para desarrollar de punta a punta.
-
-## Documentación de referencia
-
-| Artefacto | Ubicación |
-|-----------|-----------|
-| Historia de usuario | `todo-app/docs/specs/user-stories/US-001-gestion-tareas/README.md` |
-| Tarea técnica | `todo-app/docs/specs/user-stories/US-001-gestion-tareas/TK-001-implementar-app-todos.md` |
-| Progreso | `todo-app/docs/specs/user-stories/US-001-gestion-tareas/progress.md` |
-| Harness de agentes | `todo-app/AGENTS.md` |
+Este proyecto base no es solo un *scaffold* de Next.js: ya trae un **harness para agentes de IA** — un conjunto de reglas, memoria, skills y subagentes especializados que orientan a Cursor (y herramientas compatibles) sobre **cómo trabajar en este repositorio**. El agente sabe dónde consultar decisiones, qué convenciones respetar y cuándo delegar en especialistas (UI, pruebas, documentación), reduciendo alucinaciones y desvíos respecto al stack real del proyecto.
 
 ## Ejecución del flujo
 
-### Paso 1 — Revisar la documentación
+### Paso 1: Pasar el requerimiento a una Spec
 
-1. Lee la historia de usuario (`README.md`) y verifica que los criterios de aceptación (`BR-XX`, `SC-XX`) cubren el requerimiento del Ejercicio 0.
-2. Lee la tarea técnica (`TK-001`) y confirma que el plan de implementación, dependencias y referencias son claros.
-3. Verifica que la tarea esté en estado **Ready**.
+Llama al skill de /speckit-specify incluyendo la historia de usuario y el documentos técnicos relacionados
 
-### Paso 2 — Implementación
+<img src="../assets/LB-001-img-0.png" style="max-width: 100%;" />
 
-Usa el skill **`/story-implement`** indicando la historia `US-001-gestion-tareas` (o la tarea `TK-001`).
+### Paso 2: Planifica la implementación
 
-Antes de continuar, asegúrate de que:
-- El repositorio tenga un working tree limpio.
-- Estés en la rama `feature/US-001-gestion-tareas`.
+Siguiente paso es ejecutar la planificación de la especificación:
 
-### Paso 3 — Validación
+<img src="../assets/LB-001-img-1.png" style="max-width: 100%;" />
 
-Comprueba manualmente que la aplicación cumple:
+### Paso 2: Planifica la implementación
 
-- CRUD completo de tareas (crear, listar, editar, eliminar).
-- Título obligatorio al crear o editar.
-- Prioridad restringida a alta, media o baja.
-- Tareas completadas distinguibles visualmente de las pendientes.
-- Listado ordenado por prioridad (alta → media → baja) de forma predeterminada.
+<img src="../assets/LB-001-img-2.png" style="max-width: 100%;" />
 
-Para ejecutar la app:
+### Paso 3: Implementa el Spec
 
-```bash
-cd todo-app
-npm install
-npm run dev
-```
+<img src="../assets/LB-001-img-3.png" style="max-width: 100%;" />
+
+### Paso 3: Valida y corrige 
+
+**Escribir en el chat:** usa el MCP de Figma y revisa que el diseño del html sea fiel al diseño de Figma si es necesario lo puedes rehacer
+
+<img src="../assets/LB-001-img-4.png" style="max-width: 100%;" />
+
+**Escribir en el chat:** Guarda en memoria persistente que en clases de tailwindcss con colores específicos preferir usar las variables desde @src/theme/index.css a colores fijos, lo mismo con espacios, tamaños, etc, no agregues nuevas variables al theme, si no encuentras una variable que se ajuste, deja la clase tal como esta
