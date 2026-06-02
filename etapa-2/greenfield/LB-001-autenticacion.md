@@ -11,7 +11,7 @@ Este proyecto base no es solo un *scaffold* de Next.js: ya trae un **harness 
 
 ## Ejecución del flujo
 
-### Paso 1: Pasar el requerimiento a una Spec
+### Paso 1: Transformar Historia de Usuario en una Spec
 
 Llama al skill de /speckit-specify incluyendo la historia de usuario y el documentos técnicos relacionados
 
@@ -55,4 +55,4 @@ El recorrido sigue las etapas del toolkit de especificación:
 
 El aprendizaje central es que **tener specs previas no elimina la revisión humana**: la primera implementación puede cumplir la lógica funcional y aun así desviarse del diseño o de las convenciones del proyecto. La fase de validación —comparar con Figma, iterar correcciones y persistir preferencias en `MEMORY.md`— cierra el ciclo y mejora las iteraciones siguientes.
 
-Al terminar este ejercicio tendrás la **pantalla de autenticación** implementada y habrás practicado el camino más directo del flujo Speckit sobre un proyecto *greenfield* con harness ya configurado. Ese resultado es la base para los laboratorios siguientes, donde el alcance crece: historias con **múltiples tareas**, **requerimientos nuevos** desde cero con el flujo Agile (`/story-define`, `/story-plan`, `/story-implement`) y **modificaciones** sobre funcionalidades existentes.
+Al terminar este ejercicio tendrás la **pantalla de autenticación** implementada y habrás practicado el camino más directo del flujo Speckit sobre un proyecto *greenfield* con harness ya configurado. Ese resultado es la base para los laboratorios siguientes, donde el alcance crece: pantallas con **múltiples tareas**, un **flujo de negocio multi-paso** con reglas de negocio y **modificaciones** sobre funcionalidades existentes.

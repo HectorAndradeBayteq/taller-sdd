@@ -2,7 +2,7 @@
 
 ## Ejecución del flujo
 
-### Paso 1: Pasar el requerimiento a una Spec
+### Paso 1: Transformar Historia de Usuario en una Spec
 
 Invoca el skill `/speckit-specify` incluyendo la historia de usuario y los documentos técnicos relacionados.
 
@@ -40,9 +40,9 @@ Ejecuta `/speckit-analyze` para revisar que la spec, el plan y las tareas estén
 
 ### Paso 6: Valida y corrige
 
-**Escribir en el chat:** Usa el MCP de Figma y revisa que el diseño del HTML sea fiel al de Figma; si es necesario, rehazlo.
+Revisa que los criterios de aceptación se cumplan, si hay inconsistencias en UI, puedes pedir correcciones, por ejemplo:
 
-<img src="../assets/LB-001-img-4.png" style="width: 400px; max-width: 100%;" />
+**Escribir en el chat:** Usa el MCP de Figma y revisa que el diseño del HTML sea fiel al de Figma; si es necesario, rehazlo.
 
 ## Paso 7: Despliegue
 
@@ -75,4 +75,4 @@ El recorrido extiende el flujo Speckit del ejercicio 1 con etapas adicionales de
 
 Este ejercicio deja dos aprendizajes centrales. El primero: **a mayor complejidad de pantalla, mayor valor tiene clarificar la spec durante la planificación** —cuando una vista agrupa varios componentes reutilizables y comportamientos de sesión, dejar nombres, responsabilidades e interacciones implícitas genera implementaciones inconsistentes. El segundo: **`/speckit-analyze` cierra la brecha entre documentación y ejecución** —aunque cada artefacto se genere por separado, solo un análisis explícito de coherencia garantiza que spec, plan y tareas describan el mismo alcance antes de escribir código.
 
-Al terminar este ejercicio tendrás la **pantalla de posición consolidada** implementada —con carrusel de cuentas, barra de navegación, listado de movimientos, accesos directos y control de sesión— y habrás practicado cómo escalar el flujo Speckit de una tarea a **múltiples tareas coordinadas**, con refinamiento y verificación de artefactos. Ese resultado prepara el terreno para los laboratorios siguientes: un **requerimiento nuevo desde cero** con el flujo Agile (`/story-define`, `/story-plan`, `/story-implement`) y **modificaciones** sobre funcionalidades ya existentes.
+Al terminar este ejercicio tendrás la **pantalla de posición consolidada** implementada —con carrusel de cuentas, barra de navegación, listado de movimientos, accesos directos y control de sesión— y habrás practicado cómo escalar el flujo Speckit de una tarea a **múltiples tareas coordinadas**, con refinamiento y verificación de artefactos. Ese resultado prepara el terreno para el laboratorio siguiente: el **flujo de transferencia entre cuentas propias** (asistente multi-paso con reglas de negocio) y, más adelante, **modificaciones** sobre funcionalidades ya existentes.

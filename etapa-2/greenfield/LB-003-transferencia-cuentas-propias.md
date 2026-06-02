@@ -1,136 +1,105 @@
-# Ejercicio 3: Implementación de un nuevo requerimiento
+# Ejercicio 3: Transferencia entre cuentas propias
 
-## Objetivo
+## Requerimiento
 
-Implementar un requerimiento de negocio nuevo siguiendo el flujo completo de **Specification-Driven Development (SDD)**: definir la historia de usuario, planificar y detallar sus tareas técnicas, ejecutar la implementación e integrar el resultado. El punto de partida es el requerimiento descrito más abajo; el contexto del proyecto —harness de agentes, convenciones, referencias de diseño en Figma, ADRs y demás insumos técnicos ya disponibles— sustenta cada paso del proceso.
-
-La persona revisa y valida cada hito antes de continuar (**Human-in-the-Loop**): alcance de la historia, granularidad de las tareas, detalle técnico y aceptación del código.
-
-> ***Requerimiento:** 
-Implementa el flujo de **transferencia entre cuentas propias** para **usuarios ya autenticados.** 
-**Flujo** **por pasos**. Incluye:*
-> 
+> Implementa el flujo de **transferencia entre cuentas propias** para **usuarios ya autenticados.**
+> **Flujo por pasos**. Incluye:
+>
 > - Selección de tipo de transferencia
 > - Ingreso de datos de la transferencia
 > - Verificación de datos para confirmar
 > - Confirmación de éxito
-> 
-> **Reglas de negocio:** 
-> 
+>
+> **Reglas de negocio:**
+>
 > - Solo permitir transferencias entre $5 - $2000
-
-## Referencia de diseño
-
-<img src="assets/LB-003-img-1.png" style="max-width: 100%;" />
-
-https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD
+>
+> **Referencia de diseño**
+>
+> <img src="../assets/LB-003-img-1.png" style="max-width: 100%;" />
+>
+> Diseño de Figma: https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD
 
 ## Ejecución del flujo
 
-### Paso 1 - Definición de historia de usuario
+### Paso 1: Transformar el requerimiento en una Spec
 
-Usamos el skill **/story-define** y le proporcionamos el requerimiento que necesitamos implementar. Como esta tarea requiere un **mayor nivel de razonamiento** para analizar y planificar correctamente la solución, es recomendable utilizar un modelo con capacidades avanzadas de razonamiento, como **Sonnet 4.6 Thinking**.
+Invoca el skill `/speckit-specify` incluyendo el requerimiento anterior, el enlace de Figma y los documentos técnicos relacionados del repositorio (ADRs, convenciones, `DESIGN.md`, etc.).
 
-<img src="assets/LB-003-img-2.png" style="max-width: 100%;" />
+<img src="../assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
 
-Al terminar la ejecución nos mostrará un pequeño resumen de lo creado. 
+Revisa la spec generada: debe cubrir los cuatro pasos del flujo, la regla de montos ($5–$2000) y los criterios de aceptación verificables antes de continuar.
 
-<img src="assets/LB-003-img-3.png" style="max-width: 100%;" />
+### Paso 2: Planifica la implementación
 
-Dependiendo del modelo LLM que utilicemos —y considerando que los modelos LLM no son determinísticos, por lo que no siempre generan exactamente la misma respuesta—, el agente podría sugerir o no continuar con el paso de planificación de **Tareas preliminares**, siempre y cuando la historia de usuario pase las validaciones de **INVEST** y **DoR** y sea marcada como **Ready**, de no ser el caso es necesario aclarar las duda con el agente hasta que todos los criterios se marque que **“Cumple”**.
+Ejecuta la planificación de la especificación con `/speckit-plan`:
 
-<img src="assets/LB-003-img-4.png" style="max-width: 100%;" />
+<img src="../assets/LB-001-img-1.png" style="width: 400px; max-width: 100%;" />
 
-Verificar que todos los criterios en Resultado esté marcado como Cumple y que el estado de la historia esté en **Ready**
+Durante la planificación, refina la spec con los siguientes prompts (ajusta según lo que proponga el agente):
 
-<img src="assets/LB-003-img-5.png" style="max-width: 100%;" />
+**Escribir en el chat:** `/speckit-clarify` El flujo debe implementarse como un asistente de cuatro pasos: selección de tipo, ingreso de datos, verificación y confirmación de éxito. (Incluir screenshot de Figma)
 
-Si el agente pudo analizar y validar la historia sin requerir información adicional, podría sugerir continuar con el paso de planificación de tareas preliminares.
+**Escribir en el chat:** `/speckit-clarify` Validar el monto en el paso de ingreso: solo permitir transferencias entre $5 y $2000 inclusive; mostrar mensaje de error claro si el monto está fuera de rango.
 
-Antes de continuar, debes revisar completamente la historia de usuario y asegurarte de que cubra todos los criterios funcionales y requisitos esperados para la solución.
+**Escribir en el chat:** `/speckit-clarify` En el paso de verificación, mostrar un resumen de cuenta origen, cuenta destino y monto antes de confirmar.
 
-> **Nota:** este es un proceso continuo que debe realizarse cada vez que el agente finaliza una tarea. Este enfoque se conoce como ***Human-in-the-Loop***, donde una persona revisa, valida y guía el trabajo generado por la IA antes de continuar con el siguiente paso.
-> 
+**Escribir en el chat:** `/speckit-clarify` La pantalla de éxito debe permitir iniciar otra transferencia o volver a la posición consolidada.
 
-### Paso 2 - Planificación preliminar de tareas
+### Paso 3: Crea las tareas de implementación
 
-Si nos ofrece planificar las tareas le indicamos **“Continuar”**.
+<img src="../assets/LB-001-img-2.png" style="width: 400px; max-width: 100%;" />
 
-Si el proceso ya terminó en ese punto, puedes indicarle que utilice el skill **/story-plan** y proporcionarle la carpeta de la historia de usuario. Esto le indica al agente que debe analizar la historia y realizar una planificación preliminar de las tareas necesarias para su implementación.
+### Paso 4: Analiza la coherencia entre artefactos
 
-<img src="assets/LB-003-img-6.png" style="max-width: 100%;" />
+Ejecuta `/speckit-analyze` para revisar que la spec, el plan y las tareas estén alineados. Corrige las inconsistencias detectadas antes de implementar.
 
-El agente analiza el requerimiento, las reglas de negocio y los criterios de aceptación de la historia. Con base en esa información, identifica las tareas necesarias para implementar la solución y crea el esqueleto inicial de cada tarea en estado **Draft**.
+<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
 
-<img src="assets/LB-003-img-7.png" style="max-width: 100%;" />
+### Paso 5: Implementa el Spec
 
-El proceso puede finalizar en ese punto o el agente puede sugerir continuar directamente con la implementación. Sin embargo, es importante tener en cuenta que las tareas no son realmente implementables si aún no cuentan con suficiente detalle técnico. Antes de iniciar la implementación, debemos enriquecer cada tarea con la información técnica necesaria para que el agente pueda ejecutarlas correctamente.
+<img src="../assets/LB-001-img-3.png" style="width: 400px; max-width: 100%;" />
 
-<img src="assets/LB-003-img-8.png" style="max-width: 100%;" />
+### Paso 6: Valida y corrige
 
-Debemos revisar si las tareas propuestas cubren completamente la implementación esperada. En caso contrario, podemos indicarle al agente que agregue tareas adicionales o realizar ajustes sobre las tareas sugeridas.
+Revisa que los criterios de aceptación se cumplan —en especial la regla de montos y la navegación entre los cuatro pasos. Si hay inconsistencias en UI, puedes pedir correcciones, por ejemplo:
 
-<img src="assets/LB-003-img-9.png" style="max-width: 100%;" />
+**Escribir en el chat:** Usa el MCP de Figma y revisa que el diseño del HTML sea fiel al de Figma en cada paso del flujo; si es necesario, rehazlo.
 
-> **Tip:** Cada vez que el agente finaliza una tarea, mostrará las opciones **Undo all** y **Keep all**.
-> 
-> - Usa **Keep all** si deseas conservar y confirmar todos los cambios realizados hasta ese momento.
-> - Usa **Undo all** si los cambios no cumplen con lo esperado y quieres que el agente descarte todo lo realizado para volver a empezar desde cero.
+**Escribir en el chat:** Verifica que el mensaje de error por monto fuera de rango ($5–$2000) sea visible y coherente con el diseño.
 
-### Paso 3 - Planificación técnica tarea por tarea
+## Paso 7: Despliegue
 
-Cuando estemos de acuerdo con las tareas a implementar, debemos agregar el detalle técnico de cada una. Lo más importante en esta etapa es definir claramente las **dependencias**, las **referencias** necesarias y el **plan de implementación** que seguirá el agente.
+Luego de implementar, si ya estamos conformes con el resultado y queremos pasar a los distintos ambientes de despliegue, podemos preparar la entrega en 2 pasos:
 
-<img src="assets/LB-003-img-10.png" style="max-width: 100%;" />
+### Ejecutamos un Code Review
 
-<img src="assets/LB-003-img-11.png" style="max-width: 100%;" />
+<img src="../assets/LB-000-img-9.png" style="width: 400px; max-width: 100%;" />
 
-### Paso 4 - Implementación
+Esto ejecuta el suite completo de control y pruebas para garantizar la calidad del entregable; si es necesario, el agente puede resolver las correcciones de forma proactiva.
 
-Antes de continuar, debes revisar que el repositorio esté limpio sin cambios pendientes, y que todas las tareas a implementar estén en estado **Ready.**
+### Proponemos un Pull Request para el despliegue en ambientes
 
-<img src="assets/LB-003-img-12.png" style="max-width: 100%;" />
+<img src="../assets/LB-000-img-10.png" style="width: 400px; max-width: 100%;" />
 
-El agente te mostrara las tareas que tienes pendientes para implementar
+De esta manera hemos cubierto el proceso de desarrollo de punta a punta totalmente asistido por el agente de IA.
 
-<img src="assets/LB-003-img-13.png" style="max-width: 100%;" />
-
-Al terminar cada tarea, el agente debe esperar tu revisión. Puedes iterar en cambios hasta que el resultado sea aceptable para ti. Una vez aprobado, puedes presionar **Keep all** antes de indicarle al agente que continúe con la siguiente tarea.
-
-<img src="assets/LB-003-img-14.png" style="max-width: 100%;" />
-
-Al finalizar todas las tareas asignadas, puedes iniciar la fase de pruebas para completar la historia de usuario, indicando que deseas continuar.
-
-<img src="assets/LB-003-img-15.png" style="max-width: 100%;" />
-
-Si deseas conocer el estado de la implementación o quieres saber que se hizo en cada tarea, puedes abrir el archivo **progress.md** dentro de la carpeta de la historia de usuario.
-
-<img src="assets/LB-003-img-16.png" style="max-width: 100%;" />
-
-Aquí es el espacio para las últimas revisiones y validaciones si estas confirme con la implementación puedes continuar con el siguiente paso.
-
-### Paso 5 - Integración
-
-En este paso tienes que pasar tu historia implementada a tu rama de desarrollo y finaliza tu implementación.
-
-<img src="assets/LB-003-img-17.png" style="max-width: 100%;" />
-
-Si no has hecho commit el agente te puede asistir en eso previo a la integración a tu rama de desarrollo.
-
-<img src="assets/LB-003-img-18.png" style="max-width: 100%;" />
-
-Este mensaje te confirma que la integración fue completada.
+> **Alternativa — flujo Agile:** si prefieres levantar la historia desde cero con `/story-define`, `/story-plan` y `/story-implement`, sigue el laboratorio [LB-003 (Agile)](LB-003-transferencia-cuentas-propias-agile.md).
 
 ## Conclusión
 
-Este laboratorio recorre el ciclo completo de **Specification-Driven Development (SDD)** para un requerimiento nuevo en un proyecto *greenfield*: desde un requerimiento de negocio y un diseño en Figma hasta código integrado en la rama de desarrollo, con el agente de IA como ejecutor y la persona como implementador.
+Este laboratorio aplica **Specification-Driven Development (SDD)** al flujo de negocio más completo de la app de banca móvil: la **transferencia entre cuentas propias**, un asistente de varios pasos con validaciones de negocio y pantallas enlazadas en Figma.
 
-El flujo se organiza en **cinco pasos encadenados**, cada uno con un artefacto y un estado claros:
+El recorrido extiende el flujo Speckit de los ejercicios 1 y 2:
 
-1. **Definición de historia de usuario** (`/story-define`): el requerimiento se convierte en una historia documentada, validada con **INVEST** y **Definition of Ready (DoR)**. La historia solo avanza cuando queda en estado **Ready** y todos los criterios figuran como **Cumple**.
-2. **Planificación preliminar** (`/story-plan`): el agente descompone la historia en tareas en estado **Draft**, alineadas a criterios de aceptación y reglas de negocio. Aquí se revisa cobertura funcional antes de escribir código.
-3. **Planificación técnica**: cada tarea se enriquece con dependencias, referencias y un plan de implementación concreto hasta quedar **Ready** para ejecución.
-4. **Implementación** (`/story-implement`): el agente ejecuta tarea por tarea; tras cada una, la persona revisa, itera si hace falta y confirma con **Keep all** (o descarta con **Undo all**). El archivo **progress.md** registra el avance.
-5. **Integración**: la historia se integra a la rama de desarrollo (con apoyo del agente en commit si es necesario), cerrando el ciclo de entrega.
+1. **Especificación** (`/speckit-specify`): el requerimiento, la referencia de Figma y la documentación técnica del repositorio se transforman en una especificación con alcance, criterios de aceptación y reglas de negocio verificables (montos, pasos del wizard).
+2. **Planificación y clarificación** (`/speckit-plan` + `/speckit-clarify`): se refinan decisiones concretas —estructura del asistente de cuatro pasos, validación de montos, pantalla de resumen y de éxito— antes de que el agente genere código.
+3. **Tareas** (`/speckit-tasks`): el plan se descompone en trabajo concreto que cubre cada paso del flujo y su integración con el resto de la app.
+4. **Análisis de coherencia** (`/speckit-analyze`): se revisa que spec, plan y tareas describan el mismo alcance antes de implementar.
+5. **Implementación** (`/speckit-implement`): el agente produce el flujo completo alineado a la spec refinada.
+6. **Validación y corrección**: la persona revisa criterios funcionales y fidelidad visual frente a Figma (vía MCP), con especial atención a la regla $5–$2000 y a la navegación entre pasos.
+7. **Despliegue**: code review automatizado y apertura de PR para integrar el entregable.
 
-El hilo conductor del proceso es **Human-in-the-Loop**: la IA acelera análisis, planificación e implementación, pero las decisiones de calidad —alcance de la historia, granularidad de tareas, detalle técnico y aceptación del código— permanecen en manos del equipo. No se trata de delegar el criterio, sino de combinar velocidad de generación con revisión humana en cada hito.
+El aprendizaje central es que **un flujo de negocio multi-paso exige la misma disciplina de especificación que una pantalla única, pero con más puntos de clarificación**: nombres de pasos, validaciones, resumen previo a confirmar y rutas de salida deben quedar explícitos en la spec antes de implementar; de lo contrario, el agente improvisa transiciones o omite reglas de negocio.
+
+Al terminar este ejercicio tendrás el **flujo de transferencia entre cuentas propias** implementado y habrás practicado cómo escalar Speckit de pantallas aisladas a un **proceso guiado por pasos con reglas de negocio**. Ese resultado prepara el terreno para el laboratorio siguiente: **modificaciones** sobre funcionalidades ya existentes.

@@ -28,6 +28,7 @@ Implementa una **aplicación simple de to-dos** que permita **gestionar tareas d
 
 ```bash
 git clone https://github.com/juanca202/exercise-to-do.git
+npm install
 ```
 
 Este proyecto base no es solo un *scaffold* de Next.js: ya trae un **harness para agentes de IA** — un conjunto de reglas, memoria, skills y subagentes especializados que orientan a Cursor (y herramientas compatibles) sobre **cómo trabajar en este repositorio**. El agente sabe dónde consultar decisiones, qué convenciones respetar y cuándo delegar en especialistas (UI, pruebas, documentación), reduciendo alucinaciones y desvíos respecto al stack real del proyecto.
