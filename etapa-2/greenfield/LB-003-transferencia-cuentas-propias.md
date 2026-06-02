@@ -38,13 +38,10 @@ Ejecuta la planificación de la especificación con `/speckit-plan`:
 
 Durante la planificación, refina la spec con los siguientes prompts (ajusta según lo que proponga el agente):
 
-**Escribir en el chat:** `/speckit-clarify` El flujo debe implementarse como un asistente de cuatro pasos: selección de tipo, ingreso de datos, verificación y confirmación de éxito. (Incluir screenshot de Figma)
-
-**Escribir en el chat:** `/speckit-clarify` Validar el monto en el paso de ingreso: solo permitir transferencias entre $5 y $2000 inclusive; mostrar mensaje de error claro si el monto está fuera de rango.
-
-**Escribir en el chat:** `/speckit-clarify` En el paso de verificación, mostrar un resumen de cuenta origen, cuenta destino y monto antes de confirmar.
-
-**Escribir en el chat:** `/speckit-clarify` La pantalla de éxito debe permitir iniciar otra transferencia o volver a la posición consolidada.
+**Escribir en el chat:** `/speckit-clarify` Incluir la referencias de diseno de las pantallas de flujo - **Paso 1 — Selección de tipo de transferencia:** [Figma node 36-1459](https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD?node-id=36-1459&m=dev)
+- **Paso 2 — Ingreso de datos de la transferencia:** [Figma node 36-1794](https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD?node-id=36-1794&m=dev)
+- **Paso 3 — Revisión y confirmación:** [Figma node 1-2920](https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD?node-id=1-2920&m=dev)
+- **Paso 4 — Comprobante de éxito:** [Figma node 1-2984](https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD?node-id=1-2984&m=dev)
 
 ### Paso 3: Crea las tareas de implementación
 
