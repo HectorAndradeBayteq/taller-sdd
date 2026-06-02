@@ -26,7 +26,7 @@
 
 Invoca el skill `/speckit-specify` incluyendo el requerimiento anterior, el enlace de Figma y los documentos técnicos relacionados del repositorio (ADRs, convenciones, `DESIGN.md`, etc.).
 
-<img src="../assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-003-speckit-img-1.png" style="width: 400px; max-width: 100%;" />
 
 Revisa la spec generada: debe cubrir los cuatro pasos del flujo, la regla de montos ($5–$2000) y los criterios de aceptación verificables antes de continuar.
 
