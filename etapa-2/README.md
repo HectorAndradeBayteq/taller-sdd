@@ -197,10 +197,10 @@ Este ejercicio permite aplicar el flujo de **Specification-Driven Development (S
 
 <img src="assets/intro-img-5.png" style="max-width: 100%;" />
 
-[Ejercicio 1: Autenticación](greenfield/LB-001-implementacion-simple.md)
+[Ejercicio 1: Autenticación](greenfield/LB-001-autenticacion.md)
 
-[Ejercicio 2: Posición consolidada](greenfield/LB-002-multiples-tareas.md)
+[Ejercicio 2: Posición consolidada](greenfield/LB-002-posicion-consolidada.md)
 
-[Ejercicio 3: Transferencia entre cuentas propias](greenfield/LB-003-nuevo-requerimiento.md)
+[Ejercicio 3: Transferencia entre cuentas propias](greenfield/LB-003-transferencia-cuentas-propias.md)
 
 [Ejercicio 4: Modificación](greenfield/LB-004-modificacion.md)
