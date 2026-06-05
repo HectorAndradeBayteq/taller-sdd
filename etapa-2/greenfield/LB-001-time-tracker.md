@@ -1,5 +1,14 @@
 # Ejercicio 1: Implementación de una aplicación Time Tracker
 
+# Paso 1: Descargar proyecto base y abrirlo en Cursor
+
+```bash
+git clone https://github.com/juanca202/exercise-time-tracker.git
+npm install
+```
+
+# Paso 2: Implementación usando SpeckKit
+
 ## Objetivo
 
 Implementar una herramienta de uso personal para registrar el tiempo dedicado a tareas dentro de proyectos, ya sea en tiempo real (temporizador) o de forma diferida (manual), permitiendo visualizar los totales acumulados por mes.
