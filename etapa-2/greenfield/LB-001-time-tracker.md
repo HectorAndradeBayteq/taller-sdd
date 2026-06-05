@@ -1,5 +1,7 @@
 # Ejercicio 1: Implementación de una aplicación Time Tracker
 
+> **¿Dudas antes de empezar?** Consulta el [FAQ de la etapa 2](../faq.md): insumos para la especificación, wireframes vs prototipos, ADRs y flujo con Speckit.
+
 # Paso 1: Descargar proyecto base y abrirlo en Cursor
 
 ```bash
@@ -12,6 +14,8 @@ npm install
 Analizamos el requerimiento, los elementos gráficos proporcionados y si es necesario establecer decisiones arquitectónicas (ADRs) previas a la implementación.
 
 # Paso 3: Implementación usando SpeckKit
+
+<img src="../assets/speckit-workflow.png" style="max-width: 100%;" />
 
 ## Objetivo
 

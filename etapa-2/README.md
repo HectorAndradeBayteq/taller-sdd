@@ -169,6 +169,8 @@ Finalmente, los cambios se preparan para revisión utilizando /git-commit y /git
 
 ## Implementación de ejercicios
 
+> **¿Dudas antes de ejecutar un ejercicio?** Revisa el [FAQ](faq.md) de la etapa 2: preparación de insumos, clarificación de la spec, validación y comandos de Speckit.
+
 ### To-Do List App
 
 Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** en un escenario *greenfield*. Los objetivos son:
