@@ -46,19 +46,13 @@ Revisa que los criterios de aceptación se cumplan, si hay inconsistencias en UI
 
 ## Paso 7: Despliegue
 
-Luego de implementar si ya estamos conformes con el resultado y queremos pasar a los distintos ambientes de despliegue, podemos preparar la entrega en 2 pasos:
-
-### Ejecutamos un Code Review
-
-<img src="../assets/LB-000-img-9.png" style="width: 400px; max-width: 100%;" />
-
-Esto ejecuta el suite completo de control y pruebas para garantizar la calidad del entregable si es necesario correcciones el agente los pruebe resolver proactivamente.
-
-### Proponemos un Pull Request para el despliegue en ambientes
+Luego de implementar si ya estamos conformes con el resultado y queremos pasar a los distintos ambientes de despliegue, podemos preparar la entrega.
 
 <img src="../assets/LB-000-img-10.png" style="width: 400px; max-width: 100%;" />
 
-De esta manera hemos cubierto el proceso de desarrollo de punta a punta totalmente asistido por el agente de IA.
+Esto nos sugerirá ejecutar el Code Review y el conjunto completo de controles y pruebas para garantizar la calidad del entregable. Si se identifican problemas o incumplimientos, el agente intentará corregirlos y validarlos de forma proactiva antes de dar por finalizado el trabajo.
+
+Una vez superado el Quality Gate, el agente propondrá la creación del Pull Request (PR). De esta manera, habremos cubierto el proceso de desarrollo de punta a punta con el acompañamiento y la asistencia continua del agente de IA.
 
 ## Conclusión
 
