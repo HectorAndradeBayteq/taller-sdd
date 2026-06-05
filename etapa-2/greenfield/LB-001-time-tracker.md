@@ -60,23 +60,26 @@ Vista con temporizador activo, entrada manual y listado de tareas recientes.
 
 Modal para asociar una tarea a un proyecto existente.
 
-<img src="../assets/LB-TT-img-2.png" style="max-width: 100%;" />
+<img src="../assets/LB-TT-img-2.png" style="width: 400px; max-width: 100%;" />
 
 #### Proyectos
 
 Listado de proyectos con totales por proyecto. Reutiliza la navegación lateral y los patrones de tarjeta definidos en `DESIGN.md` y en los wireframes de Tareas e Historial.
 
+<img src="../assets/LB-TT-img-5.png" style="max-width: 100%;" />
+
 #### Nuevo Proyecto
 
 Modal de creación con nombre obligatorio y descripción opcional.
 
-<img src="../assets/LB-TT-img-4.png" style="max-width: 100%;" />
+<img src="../assets/LB-TT-img-4.png" style="width: 400px; max-width: 100%;" />
 
 #### Historial de Registros
 
 Vista de historial con selector de período, resumen por proyecto y tabla de registros.
 
 <img src="../assets/LB-TT-img-3.png" style="max-width: 100%;" />
+
 ## Conclusión
 
 Este laboratorio consolida SDD en un segundo *greenfield* y suma una capa que el ejercicio 0 apenas introduce: **diseño como insumo de la spec**. `[DESIGN.md](../assets/DESIGN.md)` fija tokens y convenciones; los wireframes fijan layout y composición por pantalla. Sin ambos, el agente tiende a cumplir la lógica funcional pero improvisar la interfaz.
