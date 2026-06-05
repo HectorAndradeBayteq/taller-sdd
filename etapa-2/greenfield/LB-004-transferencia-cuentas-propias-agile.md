@@ -1,6 +1,6 @@
-# Ejercicio 3 (alternativa Agile): Transferencia entre cuentas propias
+# Ejercicio 4 (alternativa Agile): Transferencia entre cuentas propias
 
-> **Nota:** el laboratorio principal del ejercicio 3 usa el flujo Speckit. Consulta [LB-003-transferencia-cuentas-propias.md](LB-003-transferencia-cuentas-propias.md). Este documento conserva el flujo con `/story-define`, `/story-plan` y `/story-implement`.
+> **Nota:** el laboratorio principal del ejercicio 4 usa el flujo Speckit. Consulta [LB-004-transferencia-cuentas-propias.md](LB-004-transferencia-cuentas-propias.md). Este documento conserva el flujo con `/story-define`, `/story-plan` y `/story-implement`.
 
 ## Objetivo
 
@@ -23,7 +23,7 @@ Implementa el flujo de **transferencia entre cuentas propias** para **usuario
 > 
 > ***Referencia de diseño***
 > 
-> <img src="../assets/LB-003-img-1.png" style="max-width: 100%;" />
+> <img src="../assets/LB-004-img-1.png" style="max-width: 100%;" />
 > 
 > Diseño de Figma: https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD
 
@@ -33,19 +33,19 @@ Implementa el flujo de **transferencia entre cuentas propias** para **usuario
 
 Usamos el skill **/story-define** y le proporcionamos el requerimiento que necesitamos implementar. Como esta tarea requiere un **mayor nivel de razonamiento** para analizar y planificar correctamente la solución, es recomendable utilizar un modelo con capacidades avanzadas de razonamiento, como **Sonnet 4.6 Thinking**.
 
-<img src="../assets/LB-003-img-2.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-2.png" style="max-width: 100%;" />
 
 Al terminar la ejecución nos mostrará un pequeño resumen de lo creado. 
 
-<img src="../assets/LB-003-img-3.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-3.png" style="max-width: 100%;" />
 
 Dependiendo del modelo LLM que utilicemos —y considerando que los modelos LLM no son determinísticos, por lo que no siempre generan exactamente la misma respuesta—, el agente podría sugerir o no continuar con el paso de planificación de **Tareas preliminares**, siempre y cuando la historia de usuario pase las validaciones de **INVEST** y **DoR** y sea marcada como **Ready**, de no ser el caso es necesario aclarar las duda con el agente hasta que todos los criterios se marque que **“Cumple”**.
 
-<img src="../assets/LB-003-img-4.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-4.png" style="max-width: 100%;" />
 
 Verificar que todos los criterios en Resultado esté marcado como Cumple y que el estado de la historia esté en **Ready**
 
-<img src="../assets/LB-003-img-5.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-5.png" style="max-width: 100%;" />
 
 Si el agente pudo analizar y validar la historia sin requerir información adicional, podría sugerir continuar con el paso de planificación de tareas preliminares.
 
@@ -60,19 +60,19 @@ Si nos ofrece planificar las tareas le indicamos **“Continuar”**.
 
 Si el proceso ya terminó en ese punto, puedes indicarle que utilice el skill **/story-plan** y proporcionarle la carpeta de la historia de usuario. Esto le indica al agente que debe analizar la historia y realizar una planificación preliminar de las tareas necesarias para su implementación.
 
-<img src="../assets/LB-003-img-6.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-6.png" style="max-width: 100%;" />
 
 El agente analiza el requerimiento, las reglas de negocio y los criterios de aceptación de la historia. Con base en esa información, identifica las tareas necesarias para implementar la solución y crea el esqueleto inicial de cada tarea en estado **Draft**.
 
-<img src="../assets/LB-003-img-7.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-7.png" style="max-width: 100%;" />
 
 El proceso puede finalizar en ese punto o el agente puede sugerir continuar directamente con la implementación. Sin embargo, es importante tener en cuenta que las tareas no son realmente implementables si aún no cuentan con suficiente detalle técnico. Antes de iniciar la implementación, debemos enriquecer cada tarea con la información técnica necesaria para que el agente pueda ejecutarlas correctamente.
 
-<img src="../assets/LB-003-img-8.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-8.png" style="max-width: 100%;" />
 
 Debemos revisar si las tareas propuestas cubren completamente la implementación esperada. En caso contrario, podemos indicarle al agente que agregue tareas adicionales o realizar ajustes sobre las tareas sugeridas.
 
-<img src="../assets/LB-003-img-9.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-9.png" style="max-width: 100%;" />
 
 > **Tip:** Cada vez que el agente finaliza una tarea, mostrará las opciones **Undo all** y **Keep all**.
 > 
@@ -83,31 +83,31 @@ Debemos revisar si las tareas propuestas cubren completamente la implementación
 
 Cuando estemos de acuerdo con las tareas a implementar, debemos agregar el detalle técnico de cada una. Lo más importante en esta etapa es definir claramente las **dependencias**, las **referencias** necesarias y el **plan de implementación** que seguirá el agente.
 
-<img src="../assets/LB-003-img-10.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-10.png" style="max-width: 100%;" />
 
-<img src="../assets/LB-003-img-11.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-11.png" style="max-width: 100%;" />
 
 ### Paso 4 - Implementación
 
 Antes de continuar, debes revisar que el repositorio esté limpio sin cambios pendientes, y que todas las tareas a implementar estén en estado **Ready.**
 
-<img src="../assets/LB-003-img-12.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-12.png" style="max-width: 100%;" />
 
 El agente te mostrara las tareas que tienes pendientes para implementar
 
-<img src="../assets/LB-003-img-13.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-13.png" style="max-width: 100%;" />
 
 Al terminar cada tarea, el agente debe esperar tu revisión. Puedes iterar en cambios hasta que el resultado sea aceptable para ti. Una vez aprobado, puedes presionar **Keep all** antes de indicarle al agente que continúe con la siguiente tarea.
 
-<img src="../assets/LB-003-img-14.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-14.png" style="max-width: 100%;" />
 
 Al finalizar todas las tareas asignadas, puedes iniciar la fase de pruebas para completar la historia de usuario, indicando que deseas continuar.
 
-<img src="../assets/LB-003-img-15.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-15.png" style="max-width: 100%;" />
 
 Si deseas conocer el estado de la implementación o quieres saber que se hizo en cada tarea, puedes abrir el archivo **progress.md** dentro de la carpeta de la historia de usuario.
 
-<img src="../assets/LB-003-img-16.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-16.png" style="max-width: 100%;" />
 
 Aquí es el espacio para las últimas revisiones y validaciones si estas confirme con la implementación puedes continuar con el siguiente paso.
 
@@ -115,11 +115,11 @@ Aquí es el espacio para las últimas revisiones y validaciones si estas confirm
 
 En este paso tienes que pasar tu historia implementada a tu rama de desarrollo y finaliza tu implementación.
 
-<img src="../assets/LB-003-img-17.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-17.png" style="max-width: 100%;" />
 
 Si no has hecho commit el agente te puede asistir en eso previo a la integración a tu rama de desarrollo.
 
-<img src="../assets/LB-003-img-18.png" style="max-width: 100%;" />
+<img src="../assets/LB-004-img-18.png" style="max-width: 100%;" />
 
 Este mensaje te confirma que la integración fue completada.
 

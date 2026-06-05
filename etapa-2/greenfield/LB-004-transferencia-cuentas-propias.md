@@ -1,4 +1,4 @@
-# Ejercicio 3: Transferencia entre cuentas propias
+# Ejercicio 4: Transferencia entre cuentas propias
 
 ## Requerimiento
 
@@ -16,7 +16,7 @@
 >
 > **Referencia de diseño**
 >
-> <img src="../assets/LB-003-img-1.png" style="max-width: 100%;" />
+> <img src="../assets/LB-004-img-1.png" style="max-width: 100%;" />
 >
 > Diseño de Figma: https://www.figma.com/design/7pt2W7JSic4ZoAVcgvQ5qD/Pantallas-taller-SDD
 
@@ -26,7 +26,7 @@
 
 Invoca el skill `/speckit-specify` incluyendo el requerimiento anterior, el enlace de Figma y los documentos técnicos relacionados del repositorio (ADRs, convenciones, `DESIGN.md`, etc.).
 
-<img src="../assets/LB-003-speckit-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-004-speckit-img-1.png" style="width: 400px; max-width: 100%;" />
 
 Revisa la spec generada: debe cubrir los cuatro pasos del flujo, la regla de montos ($5–$2000) y los criterios de aceptación verificables antes de continuar.
 
@@ -34,7 +34,7 @@ Revisa la spec generada: debe cubrir los cuatro pasos del flujo, la regla de mon
 
 Ejecuta la planificación de la especificación con `/speckit-plan`:
 
-<img src="../assets/LB-001-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
 
 Durante la planificación, refina la spec con los siguientes prompts (ajusta según lo que proponga el agente):
 
@@ -45,17 +45,17 @@ Durante la planificación, refina la spec con los siguientes prompts (ajusta seg
 
 ### Paso 3: Crea las tareas de implementación
 
-<img src="../assets/LB-001-img-2.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-2.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 4: Analiza la coherencia entre artefactos
 
 Ejecuta `/speckit-analyze` para revisar que la spec, el plan y las tareas estén alineados. Corrige las inconsistencias detectadas antes de implementar.
 
-<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-003-img-1.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 5: Implementa el Spec
 
-<img src="../assets/LB-001-img-3.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-3.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 6: Valida y corrige
 
@@ -81,13 +81,13 @@ Esto ejecuta el suite completo de control y pruebas para garantizar la calidad d
 
 De esta manera hemos cubierto el proceso de desarrollo de punta a punta totalmente asistido por el agente de IA.
 
-> **Alternativa — flujo Agile:** si prefieres levantar la historia desde cero con `/story-define`, `/story-plan` y `/story-implement`, sigue el laboratorio [LB-003 (Agile)](LB-003-transferencia-cuentas-propias-agile.md).
+> **Alternativa — flujo Agile:** si prefieres levantar la historia desde cero con `/story-define`, `/story-plan` y `/story-implement`, sigue el laboratorio [LB-004 (Agile)](LB-004-transferencia-cuentas-propias-agile.md).
 
 ## Conclusión
 
 Este laboratorio aplica **Specification-Driven Development (SDD)** al flujo de negocio más completo de la app de banca móvil: la **transferencia entre cuentas propias**, un asistente de varios pasos con validaciones de negocio y pantallas enlazadas en Figma.
 
-El recorrido extiende el flujo Speckit de los ejercicios 1 y 2:
+El recorrido extiende el flujo Speckit de los ejercicios 2 y 3:
 
 1. **Especificación** (`/speckit-specify`): el requerimiento, la referencia de Figma y la documentación técnica del repositorio se transforman en una especificación con alcance, criterios de aceptación y reglas de negocio verificables (montos, pasos del wizard).
 2. **Planificación y clarificación** (`/speckit-plan` + `/speckit-clarify`): se refinan decisiones concretas —estructura del asistente de cuatro pasos, validación de montos, pantalla de resumen y de éxito— antes de que el agente genere código.

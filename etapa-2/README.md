@@ -179,6 +179,17 @@ Este ejercicio introduce el flujo de **Specification-Driven Development (SDD)** 
 
 [Ejercicio 0: Todo list (Speckit)](greenfield/LB-000-todo-list.md)
 
+### Time Tracker App
+
+Este ejercicio refuerza el flujo de **Specification-Driven Development (SDD)** en un segundo proyecto *greenfield*. Los objetivos son:
+
+1. **Reutilizar el harness y Speckit** aprendidos en el ejercicio 0, sin repetir la configuración inicial desde cero.
+2. **Especificar un dominio distinto**: temporizador activo, entradas manuales, proyectos y resumen de horas con reglas de negocio propias.
+3. **Alinear la implementación con recursos de diseño**: usar [`assets/DESIGN.md`](assets/DESIGN.md) como fuente de verdad visual (tokens, tipografía, patrones) y los wireframes del laboratorio como referencia de layout y componentes por pantalla.
+4. **Completar otro ciclo spec → plan → tareas → implementación → integración** sobre el repositorio base del time tracker, validando la UI frente a esos insumos de diseño.
+
+[Ejercicio 1: Time Tracker (Speckit)](greenfield/LB-001-time-tracker.md)
+
 ### Banca Móvil App
 
 Este ejercicio permite aplicar el flujo de **Specification-Driven Development (SDD)** en un escenario de desarrollo de una aplicación financiera. Los objetivos son:
@@ -197,10 +208,10 @@ Este ejercicio permite aplicar el flujo de **Specification-Driven Development (S
 
 <img src="assets/intro-img-5.png" style="max-width: 100%;" />
 
-[Ejercicio 1: Autenticación](greenfield/LB-001-autenticacion.md)
+[Ejercicio 2: Autenticación](greenfield/LB-002-autenticacion.md)
 
-[Ejercicio 2: Posición consolidada](greenfield/LB-002-posicion-consolidada.md)
+[Ejercicio 3: Posición consolidada](greenfield/LB-003-posicion-consolidada.md)
 
-[Ejercicio 3: Transferencia entre cuentas propias](greenfield/LB-003-transferencia-cuentas-propias.md)
+[Ejercicio 4: Transferencia entre cuentas propias](greenfield/LB-004-transferencia-cuentas-propias.md)
 
-[Ejercicio 4: Modificación](greenfield/LB-004-modificacion.md)
+[Ejercicio 5: Modificación](greenfield/LB-005-modificacion.md)

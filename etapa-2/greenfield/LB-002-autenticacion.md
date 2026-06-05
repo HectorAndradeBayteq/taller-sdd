@@ -1,4 +1,4 @@
-# Ejercicio 1: Implementación simple desde una historia con una tarea
+# Ejercicio 2: Implementación simple desde una historia con una tarea
 
 # Paso 1: Descargar proyecto base y abrirlo en Cursor
 
@@ -15,27 +15,27 @@ Este proyecto base no es solo un *scaffold* de Next.js: ya trae un **harness 
 
 Llama al skill de /speckit-specify incluyendo la historia de usuario y el documentos técnicos relacionados
 
-<img src="../assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-0.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 2: Planifica la implementación
 
 Siguiente paso es ejecutar la planificación de la especificación:
 
-<img src="../assets/LB-001-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 3: Crea las tareas de implementación
 
-<img src="../assets/LB-001-img-2.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-2.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 4: Implementa el Spec
 
-<img src="../assets/LB-001-img-3.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-3.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 3: Valida y corrige 
 
 **Escribir en el chat:** usa el MCP de Figma y revisa que el diseño del html sea fiel al diseño de Figma si es necesario lo puedes rehacer
 
-<img src="../assets/LB-001-img-4.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-4.png" style="width: 400px; max-width: 100%;" />
 
 **Escribir en el chat:** los iconos no estan respetando las proporsiones, es necesario revisarlo nuevamente
 
@@ -43,7 +43,7 @@ Siguiente paso es ejecutar la planificación de la especificación:
 
 ## Conclusión
 
-Este laboratorio aplica **Specification-Driven Development (SDD)** en el escenario más acotado de la app de banca móvil: una **historia de usuario ya definida con una sola tarea**. A diferencia del ejercicio anterior —donde levantaste el harness y la spec desde cero—, aquí el foco está en **ejecutar el flujo Speckit sobre documentación existente** y llevarla hasta código funcional.
+Este laboratorio aplica **Specification-Driven Development (SDD)** en el escenario más acotado de la app de banca móvil: una **historia de usuario ya definida con una sola tarea**. A diferencia de los ejercicios 0 y 1 —donde levantaste el harness y practicaste Speckit sobre un requerimiento nuevo en otro proyecto—, aquí el foco está en **ejecutar el flujo Speckit sobre documentación existente** y llevarla hasta código funcional.
 
 El recorrido sigue las etapas del toolkit de especificación:
 

@@ -1,4 +1,4 @@
-# Ejercicio 2: Posición consolidada
+# Ejercicio 3: Posición consolidada
 
 ## Ejecución del flujo
 
@@ -6,13 +6,13 @@
 
 Invoca el skill `/speckit-specify` incluyendo la historia de usuario y los documentos técnicos relacionados.
 
-<img src="../assets/LB-001-img-0.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-0.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 2: Planifica la implementación
 
 Ejecuta la planificación de la especificación con `/speckit-plan`:
 
-<img src="../assets/LB-001-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
 
 Durante la planificación, refina la spec con los siguientes prompts:
 
@@ -26,17 +26,17 @@ Durante la planificación, refina la spec con los siguientes prompts:
 
 ### Paso 3: Crea las tareas de implementación
 
-<img src="../assets/LB-001-img-2.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-2.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 4: Analiza la coherencia entre artefactos
 
 Ejecuta `/speckit-analyze` para revisar que la spec, el plan y las tareas estén alineados. Corrige las inconsistencias detectadas antes de implementar.
 
-<img src="../assets/LB-002-img-1.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-003-img-1.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 5: Implementa el Spec
 
-<img src="../assets/LB-001-img-3.png" style="width: 400px; max-width: 100%;" />
+<img src="../assets/LB-002-img-3.png" style="width: 400px; max-width: 100%;" />
 
 ### Paso 6: Valida y corrige
 
@@ -64,7 +64,7 @@ De esta manera hemos cubierto el proceso de desarrollo de punta a punta totalmen
 
 Este laboratorio continúa el recorrido de **Specification-Driven Development (SDD)** sobre la app de banca móvil, pero con un alcance mayor que el ejercicio anterior: una **historia de usuario con múltiples tareas** que construye la **pantalla de posición consolidada**, el punto central de consulta del usuario autenticado.
 
-El recorrido extiende el flujo Speckit del ejercicio 1 con etapas adicionales de refinamiento y verificación:
+El recorrido extiende el flujo Speckit del ejercicio 2 con etapas adicionales de refinamiento y verificación:
 
 1. **Especificación** (`/speckit-specify`): la historia de usuario y los documentos técnicos del repositorio se transforman en una especificación con alcance, criterios de aceptación y requisitos verificables.
 2. **Planificación y clarificación** (`/speckit-plan` + `/speckit-clarify`): durante la planificación se refinan decisiones concretas de diseño —componentes `accounts-carousel` y `navbar`, menú de usuario con opción de cerrar sesión, nombres de componentes como `MovementsList` y `Shortcuts`— antes de que el agente genere código.

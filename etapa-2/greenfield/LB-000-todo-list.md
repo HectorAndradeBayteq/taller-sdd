@@ -229,4 +229,4 @@ Este laboratorio introduce **Specification-Driven Development (SDD)** en un esce
 
 El flujo combina tres capas: el **proyecto base** (stack, ADRs y subagentes), el **harness ampliado** (skills y `specify init`) y los **artefactos de spec** (`spec.md`, `plan.md`, tareas, etc.) que guían al agente paso a paso. A diferencia de los ejercicios posteriores, aquí construyes tanto la aplicación como la infraestructura de contexto que la IA necesita para trabajar con criterio.
 
-Al cerrar este ejercicio tendrás una app de to-dos funcional y un spec coherente listo para implementar; ese resultado es la base sobre la que se apoyan los laboratorios siguientes, donde el foco pasa de levantar el entorno a refinar historias, tareas e integración.
+Al cerrar este ejercicio tendrás una app de to-dos funcional y un spec coherente listo para implementar. El siguiente paso es el [Ejercicio 1: Time Tracker](LB-001-time-tracker.md), donde repites el mismo flujo Speckit en un segundo proyecto *greenfield*. Después, los laboratorios de banca móvil pasan de levantar el entorno a ejecutar specs ya definidas, refinar historias y tareas, e integrar funcionalidades incrementales.
