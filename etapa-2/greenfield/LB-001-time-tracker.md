@@ -13,7 +13,7 @@ npm install
 
 Analizamos el requerimiento, los elementos gráficos proporcionados y si es necesario establecer decisiones arquitectónicas (ADRs) previas a la implementación.
 
-# Paso 3: Implementación usando SpeckKit
+# Paso 3: Implementación usando SpecKit
 
 <img src="../assets/speckit-workflow.png" style="max-width: 100%;" />
 
