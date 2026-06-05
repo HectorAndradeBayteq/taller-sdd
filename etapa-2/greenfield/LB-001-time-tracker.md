@@ -7,7 +7,11 @@ git clone https://github.com/juanca202/exercise-time-tracker.git
 npm install
 ```
 
-# Paso 2: Implementación usando SpeckKit
+# Paso 2: Analizar si requerimos ADRs previos a la implementación
+
+Analizamos el requerimiento, los elementos gráficos proporcionados y si es necesario establecer decisiones arquitectónicas (ADRs) previas a la implementación.
+
+# Paso 3: Implementación usando SpeckKit
 
 ## Objetivo
 
@@ -30,7 +34,8 @@ El sistema resolverá exclusivamente el flujo principal:
 - **Estructura:** Un **Proyecto** contiene muchas **Tareas**. Una Tarea pertenece obligatoriamente a un único Proyecto.
 - **Relación:** Un **Registro de Tiempo** pertenece obligatoriamente a una única Tarea.
 - **Concurrencia:** El sistema solo puede tener un (1) temporizador activo ("en ejecución") a la vez en toda la aplicación.
-- **Integridad:** Todo Registro de Tiempo debe almacenar: *Fecha, Hora Inicio, Hora Fin y Duración* (calculada). No se permiten duraciones menores o iguales a cero.
+- **Integridad (temporizador):** Los registros generados por el temporizador deben almacenar *Fecha, Hora Inicio, Hora Fin* y **Duración** (calculada a partir del intervalo entre inicio y fin). No se permiten duraciones menores o iguales a cero.
+- **Integridad (manual):** Los registros manuales deben almacenar *Fecha* y **Duración** (ingresada por el usuario). *Hora Inicio* y *Hora Fin* no son obligatorias. No se permiten duraciones menores o iguales a cero.
 - **Cálculos:** El total de horas de una Tarea es la suma de sus registros. El total de un Proyecto es la suma de las horas de todas sus tareas.
 
 ## Criterios de Aceptación
@@ -44,11 +49,11 @@ El sistema resolverá exclusivamente el flujo principal:
 
 - **Iniciar Temporizador:** Al activar el temporizador en una tarea, el sistema guarda localmente el estado "En Ejecución" con la hora e identificador de la tarea actual.
 - **Cambio Automático:** Si se inicia un temporizador mientras existe otro activo en otra tarea, el sistema debe **detener automáticamente el anterior** (calculando y guardando su registro de tiempo según *RN-04*) antes de iniciar el nuevo.
-- **Detener Temporizador:** Al detener el temporizador activo, el sistema calcula la diferencia entre la hora de inicio y fin, generando y persistiendo el **Registro de Tiempo** de forma inmediata.
+- **Detener Temporizador:** Al detener el temporizador activo, el sistema registra la *Hora Fin*, calcula la **Duración** a partir de la *Hora Inicio* y el instante de detención, y persiste el **Registro de Tiempo** de forma inmediata.
 
 ### **3. Ingreso Manual y Reportes**
 
-- **Registro Manual:** El usuario puede crear un Registro de Tiempo directamente en una tarea ingresando Tarea, *Fecha, Tiempo*.
+- **Registro Manual:** El usuario puede crear un Registro de Tiempo directamente en una tarea ingresando *Tarea, Fecha* y **Duración**. No se requieren *Hora Inicio* ni *Hora Fin* en este flujo.
 - **Visualización:** El sistema debe leer del almacenamiento y mostrar en la interfaz el historial de registros, así como los tiempos totales calculados por tarea y por proyecto.
 
 ## Referencia de diseño
