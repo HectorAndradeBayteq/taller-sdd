@@ -13,7 +13,7 @@ Posteriormente, el taller se enfocará en la creación de **Specs dentro de un f
 - Cuenta de Figma creada: [https://www.figma.com/](https://www.figma.com/)
 - Git instalado: [https://git-scm.com/install/](https://git-scm.com/install/)
 - Github CLI (MAC: `brew install gh`, PC: `winget install --id GitHub.cli`)
-- Speckit instalado: [https://github.com/github/spec-kit#-get-started](https://github.com/github/spec-kit#-get-started)
+- Speckit instalado: [speckit-install.md](speckit-install.md) (referencia oficial: [spec-kit](https://github.com/github/spec-kit#-get-started))
 
 # Harness de agentes (SDD harness)
 
