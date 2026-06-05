@@ -21,7 +21,7 @@ Analizamos el requerimiento, los elementos gráficos proporcionados y si es nece
 
 Implementar una herramienta de uso personal para registrar el tiempo dedicado a tareas dentro de proyectos, ya sea en tiempo real (temporizador) o de forma diferida (manual), permitiendo visualizar los totales acumulados por mes.
 
-Además del dominio funcional, el ejercicio practica el uso de `**[DESIGN.md](../assets/DESIGN.md)**` y **wireframes** como insumos de la especificación, de modo que la UI generada respete tokens, patrones y layout acordados antes de escribir código. 
+Además del dominio funcional, el ejercicio practica el uso de **[DESIGN.md](../assets/DESIGN.md)** y **wireframes** como insumos de la especificación, de modo que la UI generada respete tokens, patrones y layout acordados antes de escribir código. 
 
 ## Alcance
 
@@ -64,7 +64,7 @@ El sistema resolverá exclusivamente el flujo principal:
 
 ### Sistema de diseño
 
-- `**[DESIGN.md](../assets/DESIGN.md)`** (tema *Precision Focus*): sistema de diseño del laboratorio con paleta, tipografía, espaciado y patrones de componentes. Cópialo a la raíz del repositorio del time tracker antes de especificar o implementar.
+- **[DESIGN.md](../assets/DESIGN.md)** (tema *Precision Focus*): sistema de diseño del laboratorio con paleta, tipografía, espaciado y patrones de componentes. Cópialo a la raíz del repositorio del time tracker antes de especificar o implementar.
 
 ### Wireframes
 
@@ -82,7 +82,7 @@ Modal para asociar una tarea a un proyecto existente.
 
 #### Proyectos
 
-Listado de proyectos con totales por proyecto. Reutiliza la navegación lateral y los patrones de tarjeta definidos en `DESIGN.md` y en los wireframes de Tareas e Historial.
+Listado de proyectos con totales por proyecto. Reutiliza la navegación lateral y los patrones de tarjeta definidos en [DESIGN.md](../assets/DESIGN.md) y en los wireframes de Tareas e Historial.
 
 <img src="../assets/LB-TT-img-5.png" style="max-width: 100%;" />
 
@@ -100,8 +100,8 @@ Vista de historial con selector de período, resumen por proyecto y tabla de reg
 
 ## Conclusión
 
-Este laboratorio consolida SDD en un segundo *greenfield* y suma una capa que el ejercicio 0 apenas introduce: **diseño como insumo de la spec**. `[DESIGN.md](../assets/DESIGN.md)` fija tokens y convenciones; los wireframes fijan layout y composición por pantalla. Sin ambos, el agente tiende a cumplir la lógica funcional pero improvisar la interfaz.
+Este laboratorio consolida SDD en un segundo *greenfield* y suma una capa que el ejercicio 0 apenas introduce: **diseño como insumo de la spec**. [DESIGN.md](../assets/DESIGN.md) fija tokens y convenciones; los wireframes fijan layout y composición por pantalla. Sin ambos, el agente tiende a cumplir la lógica funcional pero improvisar la interfaz.
 
-El aprendizaje central es que **funcionalidad y diseño deben especificarse juntos**: incluye `[DESIGN.md](../assets/DESIGN.md)` y wireframes en `/speckit-specify`, clarifica con `/speckit-clarify` y valida la UI antes de dar por cerrada la entrega.
+El aprendizaje central es que **funcionalidad y diseño deben especificarse juntos**: incluye [DESIGN.md](../assets/DESIGN.md) y wireframes en `/speckit-specify`, clarifica con `/speckit-clarify` y valida la UI antes de dar por cerrada la entrega.
 
 Al terminar tendrás la app de time tracker implementada y habrás practicado cómo anclar a Speckit recursos visuales reutilizables. Eso prepara los ejercicios de **banca móvil** (2 en adelante), donde el diseño en Figma cumple un rol similar sobre historias ya definidas.
