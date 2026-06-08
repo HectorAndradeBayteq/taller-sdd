@@ -215,5 +215,3 @@ Este ejercicio permite aplicar el flujo de **Specification-Driven Development (S
 [Ejercicio 3: Posición consolidada](greenfield/LB-003-posicion-consolidada.md)
 
 [Ejercicio 4: Transferencia entre cuentas propias](greenfield/LB-004-transferencia-cuentas-propias.md)
-
-[Ejercicio 5: Modificación](greenfield/LB-005-modificacion.md)
