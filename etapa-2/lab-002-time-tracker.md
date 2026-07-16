@@ -57,10 +57,6 @@ Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MC
 /work-define [REQUERIMIENTO]
 ```
 
-Indicamos al agente que ya tenemos el diseño de alta fidelidad y que actualice las referencias de los wireframes por el diseño de Figma:
-
-[https://www.figma.com/design/K6uQLWg82KsCSpHJVXSf6L/exercise-time-tracker](https://www.figma.com/design/K6uQLWg82KsCSpHJVXSf6L/exercise-time-tracker)
-
 # Paso 5: Definir casos de prueba
 
 ```bash
