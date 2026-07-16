@@ -6,6 +6,15 @@ Sigue el material de cada laboratorio en orden; cada uno construye sobre los con
 
 ---
 
+## Pre-requisitos
+
+- Cursor v3.3+ instalado: https://cursor.com/
+- Nodejs v22+ instalado: https://nodejs.org/en
+- Git instalado: https://git-scm.com/install/
+- Github CLI (MAC: `brew install gh`, PC: `winget install --id GitHub.cli`)
+
+---
+
 ## Índice de laboratorios
 
 ### [Laboratorio 1: To-Do App](./lab-001-to-do-app.md)
