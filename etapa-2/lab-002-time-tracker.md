@@ -2,7 +2,7 @@
 
 # Objetivo
 
-Comprender cómo extender y gobernar un proceso de desarrollo basado en Specification-Driven Development (SDD) mediante la integración con herramientas de gestión de proyectos y otras plataformas del ecosistema de desarrollo. A diferencia del ejercicio inicial, este laboratorio no solo se enfocará en definir claramente **qué** se desea construir a través de especificaciones, requisitos y criterios de aceptación, sino también en establecer **cómo** debe ejecutarse el proceso de desarrollo mediante flujos, integraciones, automatizaciones y controles que guíen el comportamiento del agente de IA. El objetivo es aprovechar las capacidades del agente sin renunciar a la trazabilidad, la gobernanza y la alineación con los procesos, estándares y herramientas utilizados por el equipo de desarrollo.
+Comprender cómo extender y gobernar un proceso de desarrollo basado en Specification-Driven Development (SDD) mediante la integración con otras plataformas del ecosistema de desarrollo. A diferencia del ejercicio inicial, este laboratorio no solo se enfocará en definir claramente **qué** se desea construir a través de especificaciones, requisitos y criterios de aceptación, sino también en establecer **cómo** debe ejecutarse el proceso de desarrollo mediante flujos, integraciones, automatizaciones y controles que guíen el comportamiento del agente de IA. El objetivo es aprovechar las capacidades del agente sin renunciar a la trazabilidad, la gobernanza y la alineación con los procesos, estándares y herramientas utilizados por el equipo de desarrollo.
 
 # Paso 1: Instalar proyecto base
 
@@ -46,12 +46,14 @@ Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MC
 
 ---
 
+# Paso 3: Definición de flujo de trabajo
+
 ![img-006.png](images/img-006.png)
 
 # Paso 4: Definición de historia de usuario
 
 ```bash
-# Aclaremos que cree 3 historias de usuario: Proyectos, Tareas y Historial de registros
+# Aclaremos que cree 4 historias de usuario: Layout, Proyectos, Tareas y Historial de registros
 /work-define [REQUERIMIENTO]
 ```
 

@@ -2,7 +2,7 @@
 
 # Objetivo
 
-Comprender el proceso completo de desarrollo de un proyecto nuevo utilizando Specification-Driven Development (SSD), desde la creación del *scaffolding* del proyecto y la configuración del *AI Harness* hasta la implementación de la primera funcionalidad. El ejercicio se enfocará en definir claramente **qué** se desea construir mediante especificaciones, requisitos y criterios de aceptación, evitando prescribir **cómo** debe implementarse. De esta manera, se otorgará al agente de IA la libertad de proponer y ejecutar la solución técnica más adecuada dentro de las restricciones y estándares establecidos por el proyecto.
+Comprender el proceso completo de desarrollo de un proyecto nuevo utilizando Specification-Driven Development (SSD), desde la configuración del *AI Harness* hasta la implementación de la primera funcionalidad. El ejercicio se enfocará en definir claramente **qué** se desea construir mediante especificaciones, requisitos y criterios de aceptación, evitando prescribir **cómo** debe implementarse. De esta manera, se otorgará al agente de IA la libertad de proponer y ejecutar la solución técnica más adecuada dentro de las restricciones y estándares establecidos por el proyecto.
 
 # Paso 1: Instalar proyecto base
 
@@ -80,6 +80,10 @@ npx autoskills
 
 # Skills para facilitar SSD
 npx skills add https://github.com/juanca202/ai
+
+# O se puede instalar como plugin
+/plugin marketplace add juanca202/ai
+/plugin install sdd-devkit@juanca202
 ```
 
 ## Paso 4: Definición de ADRs base
@@ -132,6 +136,18 @@ Ejecutar la auditoria de ADRs para validar que el código base sea coherente con
 ---
 
 # Implementación del Spec
+
+## Prerequisitos
+
+```bash
+# Instalación de openspec
+npm install -g @fission-ai/openspec@latest
+
+# Inicializar OpenSpec
+openspec init
+```
+
+## Flujo de trabajo
 
 ![img-001.png](images/img-001.png)
 
@@ -187,12 +203,25 @@ Ejecutar la auditoria de ADRs para validar que el código base sea coherente con
 ```bash
 # Implementa el Spec
 /openspec-apply-change
+```
 
+Al finalizar la implementación archivamos el spec y lo sincronizamos con el spec del proyecto
+
+```bash
 # Archiva el Spec y lo agrega al Spec del feature
 /openspec-archive-change
 ```
 
 ## Paso 5: Implementación requerimiento con Superpowers
+
+## Prerequisitos
+
+```bash
+# Archiva el Spec y lo agrega al Spec del feature
+/plugin install superpowers@claude-plugins-official
+```
+
+## Flujo de trabajo
 
 ![img-002.png](images/img-002.png)
 
