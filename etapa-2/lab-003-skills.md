@@ -109,7 +109,7 @@ Algunos tools dependen del modelo que tengas seleccionado
 | Leer diagnósticos del linter | ReadLints | Bash | Shell |
 | MCP | GetMcpTools / CallMcpTool / FetchMcpResource | ListMcpResourcesTool, ReadMcpResourceDirTool, ReadMcpResourceTool |  |
 | Generar imágenes cuando lo pidas explícitamente | GenerateImage | - | - |
-| Buscar y leer contenido de internet | **WebSearch / WebFetch** | **WebSearch / WebFetch** | **WebSearch / WebFetch** |
+| Buscar y leer contenido de internet | WebSearch / WebFetch | WebSearch / WebFetch | WebSearch / WebFetch |
 | Lanzar subagentes (exploración, docs, UI, tests, seguridad, CI, etc.) | Task | Agent | Subagent |
 | Preguntarte cuando esté genuinamente bloqueado en una decisión | AskQuestion | AskQuestion |  |
 | Crear y actualizar una lista de tareas estructurada | TodoWrite | Plan | TodoWrite |
