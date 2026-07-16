@@ -39,11 +39,8 @@ Luego en el chat de Claude Code escribir:
 
 Esto muestra las siguientes pantallas:
 
-![img-003.png](images/img-003.png)
-
-![img-004.png](images/img-004.png)
-
-![img-005.png](images/img-005.png)
+| ![img-003.png](images/img-003.png) | ![img-004.png](images/img-004.png) | ![img-005.png](images/img-005.png) |
+| --- | --- | --- |
 
 Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MCP.
 
