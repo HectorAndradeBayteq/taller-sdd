@@ -76,8 +76,6 @@ CLAUDE.md
 
 ## Paso 3: Herramientas para SDD
 
-Debemos analizar e investigar qué *skills* pueden ayudarnos a mejorar el desarrollo del proyecto, asegurándonos de que sean compatibles con nuestro *stack* tecnológico. Además, es importante revisar los *skills* globales disponibles para identificar aquellos que sean innecesarios, redundantes o que puedan entrar en conflicto con los *skills* específicos definidos para el proyecto.
-
 ```bash
 # Nos sugiere skills para nuestro stack tecnológico
 npx autoskills
