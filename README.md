@@ -4,4 +4,3 @@
 
 - [Etapa 1: IA y Desarrollo de software](./etapa-1/README.md)
 - [Etapa 2: Práctica controlada con el instructor](./etapa-2/README.md)
-- [Etapa 3: Práctica con un caso propuesto](./etapa-3/README.md)
