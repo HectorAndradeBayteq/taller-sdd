@@ -59,9 +59,7 @@ AGENTS.md
 - Si es preferencia o regla operativa → usar MEMORY.md
 - Si hay conflicto → ADRs tienen prioridad sobre MEMORY.md
 
-## Reglas generales 
-
-### Convenciones
+## Reglas generales
 
 ## Stack tecnológico
 ```
