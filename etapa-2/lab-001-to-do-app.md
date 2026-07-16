@@ -44,6 +44,10 @@ E --> E5[Calidad de código]
 
 ## Paso 2: Configuración de instrucciones persistentes
 
+### Qué es el AGENTS.md
+
+Define **el comportamiento operativo y las reglas generales** que los agentes de IA deben seguir dentro del repositorio.
+
 AGENTS.md
 
 ```markdown
@@ -88,8 +92,25 @@ npx skills add https://github.com/juanca202/ai
 
 ## Paso 4: Definición de ADRs base
 
+### Qué son los ADRs
+
+Son documentos donde registras **decisiones arquitectónicas importantes** de un proyecto.
+
+Sirven para: 
+
+- Evitar perder el **“por qué”** de decisiones
+- Mantener coherencia técnica
+- Ayudar a humanos y agentes de IA a no romper arquitectura
+
+Los ADRs se limitan a registrar la decisión y pueden incluir ejemplos básicos. Cuando la implementación implique complejidad técnica, se pueden utilizar **skills** para asegurar que la ejecución se realice correctamente y de forma consistente.
+
+### Fitness functions
+
+Una fitness function es una prueba automatizada que verifica que una característica arquitectónica siga cumpliéndose a medida que el sistema evoluciona.
+
+### Definición de ADRs
+
 - ADR: La arquitectura del proyecto debe ser featured based
-- ADR: Usar los estándares y convenciones de codificado de Google Style Guides
 - ADR: La documentación del código se hará usando TSDoc, se debe documentar mientras se desarrolla, no como tarea diferida, no es necesario documentar, no se exige documentar en lógica simple o trivial
 - ADR: Se adopta la siguiente estrategia para pruebas unitarias:
     - se utilizará Vitest + Testing Library para la implementación
@@ -113,6 +134,12 @@ npx skills add https://github.com/juanca202/ai
 - ADR: Uso de Base UI como libreria de componentes
 - ADR: Uso de Zurtand para manejo de estado
 
+También podemos agregar reglas generales indicandolo al agente:
+
+```bash
+Agrega como regla general que el nombre de nombres de clases, variables, metodos y rutas siempre deben estar en inglés
+```
+
 ## Paso 5: Instalación, configuración y verificación del harness base
 
 Necesitamos que el *stack* tecnológico quede claramente establecido en las instrucciones persistentes (`AGENTS.md`). Para ello, le indicamos al agente lo siguiente:
@@ -133,9 +160,32 @@ Ejecutar la auditoria de ADRs para validar que el código base sea coherente con
 - **/adr-audit** - Auditar el cumplimiento de los ADR y de `AGENTS.md` contra el estado real del repo, generando un informe priorizado en `docs/adr/audits/`
 > 
 
+## Paso 6: Sistema de diseño
+
+### Qué es el DESIGN.md
+
+Define el **sistema de diseño compartido** del proyecto para que humanos y agentes de IA generen interfaces consistentes.
+
+Su objetivo es centralizar las reglas visuales, patrones de UX y convenciones de UI que deben respetarse durante la generación o implementación de interfaces.
+
+`DESIGN.md` funciona como la fuente de verdad del diseño del producto.
+
+Extraer DESIGN.md con (https://designmd.me/)[https://designmd.me/]
+
 ---
 
 # Implementación del Spec
+
+| Framework | Contexto | Verbosidad típica | Curva de aprendizaje |
+| --- | --- | --- | --- |
+| Agile | Stories + Tasks | Baja | Baja |
+| Speckit | Specs + Implementation Plans | Media-Alta | Media |
+| OpenSpec | Specs + Change Proposals | Media | Media |
+| Superpowers | Specs + Plans | Media | Media |
+| BMAD | PRDs + Engineering Workflows | Alta | Alta |
+| GSD | Context + Execution State | Baja-Media | Media |
+| AgentOS | Workflows + Cognitive Runtime | Media | Media |
+| Kiro | Intent + Structured Context | Media | Baja-Media |
 
 ## Prerequisitos
 
