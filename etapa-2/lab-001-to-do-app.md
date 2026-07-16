@@ -92,9 +92,6 @@ npx skills add https://github.com/juanca202/ai
 # Instalación de OpenSpec
 npm install -g @fission-ai/openspec@latest
 
-# Inicializar OpenSpec
-openspec init
-
 # Instalación de Superpowers
 /plugin install superpowers@claude-plugins-official
 ```
@@ -195,6 +192,13 @@ Extraer DESIGN.md con (https://designmd.me/)[https://designmd.me/]
 | GSD | Context + Execution State | Baja-Media | Media |
 | AgentOS | Workflows + Cognitive Runtime | Media | Media |
 | Kiro | Intent + Structured Context | Media | Baja-Media |
+
+## Prerequisitos
+
+```bash
+# Inicializar OpenSpec
+openspec init
+```
 
 ## Flujo de trabajo
 
