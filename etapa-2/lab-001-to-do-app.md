@@ -93,6 +93,11 @@ npx skills add https://github.com/juanca202/ai
 npm install -g @fission-ai/openspec@latest
 
 # Instalación de Superpowers
+
+# Instalación como skills
+npx skills add https://github.com/obra/superpowers --skill brainstorming
+
+# Instalación como plugin
 /plugin install superpowers@claude-plugins-official
 ```
 
