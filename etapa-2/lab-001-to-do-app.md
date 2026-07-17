@@ -74,20 +74,26 @@ CLAUDE.md
 @AGENTS.md
 ```
 
-## Paso 3: Skills de stack
-
-Debemos analizar e investigar qué *skills* pueden ayudarnos a mejorar el desarrollo del proyecto, asegurándonos de que sean compatibles con nuestro *stack* tecnológico. Además, es importante revisar los *skills* globales disponibles para identificar aquellos que sean innecesarios, redundantes o que puedan entrar en conflicto con los *skills* específicos definidos para el proyecto.
+## Paso 3: Herramientas para SDD
 
 ```bash
 # Nos sugiere skills para nuestro stack tecnológico
 npx autoskills
 
-# Skills para facilitar SSD
+# Instalacion de SDD-Devkit
+
+# Instalación como skills
 npx skills add https://github.com/juanca202/ai
 
-# O se puede instalar como plugin
+# Instalación como plugin
 /plugin marketplace add juanca202/ai
 /plugin install sdd-devkit@juanca202
+
+# Instalación de OpenSpec
+npm install -g @fission-ai/openspec@latest
+
+# Instalación de Superpowers
+/plugin install superpowers@claude-plugins-official
 ```
 
 ## Paso 4: Definición de ADRs base
@@ -190,9 +196,6 @@ Extraer DESIGN.md con (https://designmd.me/)[https://designmd.me/]
 ## Prerequisitos
 
 ```bash
-# Instalación de openspec
-npm install -g @fission-ai/openspec@latest
-
 # Inicializar OpenSpec
 openspec init
 ```
@@ -263,13 +266,6 @@ Al finalizar la implementación archivamos el spec y lo sincronizamos con el spe
 ```
 
 ## Paso 5: Implementación requerimiento con Superpowers
-
-## Prerequisitos
-
-```bash
-# Archiva el Spec y lo agrega al Spec del feature
-/plugin install superpowers@claude-plugins-official
-```
 
 ## Flujo de trabajo
 
