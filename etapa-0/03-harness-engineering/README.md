@@ -173,6 +173,10 @@ Un mismo proyecto (Quarkus, transferencias bancarias) implementado con el mismo 
 
 **Mismo modelo, misma spec:** solo cambia cómo cada IDE envuelve al agente; la spec en `/specs` es idéntica e interoperable entre ambas herramientas.
 
+### Configuración de los agentes
+
+En [Matriz de configuración: Agentes de desarrollo IA](matriz-configuracion-agentes.md) se puede encontrar la configuración de los agentes para cada IDE.
+
 ### ¿Cómo empezar un harness nuevo?
 
 El harness se construye de forma incremental, no todo de una vez:
