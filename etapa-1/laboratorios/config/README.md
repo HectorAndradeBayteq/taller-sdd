@@ -24,6 +24,10 @@ Al final del laboratorio podrás:
 
 ## Marco teórico
 
+### Configuración de los agentes
+
+En [Matriz de configuración: Agentes de desarrollo IA](/etapa-0/03-harness-engineering/matriz-configuracion-agentes.md) se puede encontrar la configuración de los agentes para cada IDE.
+
 ### Azure MCP Server (referencia del laboratorio)
 
 En este laboratorio la referencia es el servidor **Azure MCP Server** con namespace `pricing`.
@@ -277,6 +281,104 @@ Comportamiento esperado en Claude:
 - Misma skill (`SKILL.md` sin cambios), solo cambió la carpeta contenedora (`.cursor` → `.claude`).
 
 Si el comportamiento difiere, revisa que `.claude/skills/azure-costos/SKILL.md` exista y que `.mcp.json` esté en la raíz del laboratorio, no solo dentro de `.claude/`.
+
+---
+
+### Alternativa a la copia: enlaces de directorio
+
+En lugar de copiar `.cursor` → `.claude` (paso 2 anterior), puedes crear un **enlace de directorio** que apunte `.claude/skills` directamente a `.cursor/skills`. Esto evita mantener dos copias y garantiza que cualquier cambio en la skill se refleje en ambos agentes de inmediato.
+
+#### Windows — Junction Point
+
+Un Junction Point es el enlace de directorio nativo de Windows. A diferencia del symlink real (`mklink /D`), **no requiere privilegios de administrador**.
+
+```powershell
+# Prerequisito: .claude/ debe existir y .claude\skills NO debe existir
+cmd /c mklink /J ".claude\skills" ".cursor\skills"
+```
+
+Diferencia entre tipos de enlace en Windows:
+
+| Tipo | Flag | Requiere Admin | Para |
+|---|---|---|---|
+| Junction | `/J` | No | Directorios |
+| Symlink directorio | `/D` | Sí | Directorios |
+| Hard link | `/H` | No | Archivos |
+
+Puedes verificar el junction con:
+
+```powershell
+cmd /c dir .claude
+# Debe mostrar: <JUNCTION>  skills [ruta\a\.cursor\skills]
+```
+
+#### macOS / Linux — Symlink
+
+```bash
+# Prerequisito: .claude/ debe existir y .claude/skills NO debe existir
+ln -s "$(pwd)/.cursor/skills" "$(pwd)/.claude/skills"
+```
+
+#### Comparativa
+
+| | Windows Junction | macOS / Linux Symlink |
+|---|---|---|
+| Comando | `cmd /c mklink /J destino origen` | `ln -s origen destino` |
+| Requiere admin | No | No |
+| Transparente para apps | Sí | Sí |
+| Sin duplicar archivos | Sí | Sí |
+| Funciona en red | No | Sí |
+
+**Importante:** Crea el enlace apuntando a `.cursor/skills` (no a `.cursor` completo) para que `.claude/` conserve su propio `settings.local.json` y demás archivos de configuración propios de Claude.
+
+---
+
+### Alternativa a la copia: referencias en CLAUDE.md
+
+Además de copiar o enlazar el directorio de skills, Claude Code ofrece dos formas de referenciar archivos externos desde `CLAUDE.md`. Entender la diferencia es clave para decidir cuándo usar cada una.
+
+#### `@path` — Importación directa (carga en contexto)
+
+```md
+# En CLAUDE.md
+- git workflow @docs/git-instructions.md
+- convenciones del equipo @~/.claude/team-conventions.md
+```
+
+- Claude Code **expande el import al arrancar** y carga el contenido completo en el contexto desde el inicio de la sesión, como si estuviera escrito directamente en `CLAUDE.md`.
+- Los archivos importados pueden importar otros archivos recursivamente (máximo **5 niveles** de profundidad).
+- Puedes ver qué archivos de memoria están cargados con el comando `/memory`.
+- Soporta rutas relativas al proyecto y rutas absolutas (incluidas rutas del home del usuario con `~`).
+
+> Importar archivos del directorio home (`@~/.claude/mis-instrucciones.md`) es una forma conveniente de que cada miembro del equipo tenga instrucciones personales que **no se suben al repositorio**.
+
+**Cuándo usarlo:** instrucciones que Claude siempre debe tener presentes (convenciones de código, flujo de git, reglas del equipo).
+
+#### Path simple (sin `@`) — Mención de referencia opcional
+
+```md
+# En CLAUDE.md
+- Si tienes dudas sobre la API interna, revisa docs/api.md
+```
+
+- Claude lo ve como una **mención textual** a un archivo, pero **no lo carga automáticamente**.
+- Claude podrá leerlo con la herramienta `Read` si decide que lo necesita durante la sesión, o si tú se lo pides, pero no hay garantía de que lo haga y **no aparece en `/memory`**.
+
+**Cuándo usarlo:** documentación de referencia opcional que solo se necesita a veces, para ahorrar tokens de contexto.
+
+#### Comparativa
+
+| | `@path` (import) | Path simple |
+|---|---|---|
+| Carga al inicio | Sí, siempre | No |
+| Aparece en `/memory` | Sí | No |
+| Consume tokens desde el inicio | Sí | No (solo si Claude lo lee) |
+| Recursividad | Hasta 5 niveles | N/A |
+| Ideal para | Reglas y convenciones críticas | Documentación de consulta ocasional |
+
+> **Nota:** los imports `@path` no se evalúan dentro de code spans ni bloques de código en markdown. Por ejemplo, `@anthropic-ai/claude-code` en un bloque de código no se trata como import.
+
+Documentación oficial: [https://code.claude.com/docs/en/memory](https://code.claude.com/docs/en/memory)
 
 ---
 
