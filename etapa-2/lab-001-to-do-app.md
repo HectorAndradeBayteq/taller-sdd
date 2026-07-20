@@ -76,29 +76,44 @@ CLAUDE.md
 
 ## Paso 3: Herramientas para SDD
 
+Ejecutar en la consola ssh:
+
 ```bash
 # Nos sugiere skills para nuestro stack tecnológico
+# Para este ejercicio vamos a seleccionar los siguientes skills:
+# - react-best-practices
+# - composition-patterns
+# - next-best-practices
+# - next-cache-components
+# - tailwind-css-patterns
+# - playwright-best-practices
+# - vitest
+# - frontend-design
 npx autoskills
-
-# Instalacion de SDD-Devkit
-
-# Instalación como skills
-npx skills add https://github.com/juanca202/ai
-
-# Instalación como plugin
-/plugin marketplace add juanca202/ai
-/plugin install sdd-devkit@juanca202
 
 # Instalación de OpenSpec
 npm install -g @fission-ai/openspec@latest
+```
+
+Ejecutar dentro del agente de Claude Code, si estas usando otro agente como Cursor debes saltar este paso
+
+```bash
+# Instalacion de SDD-Devkit
+/plugin marketplace add juanca202/ai
+/plugin install sdd-devkit@juanca202
 
 # Instalación de Superpowers
-
-# Instalación como skills
-npx skills add https://github.com/obra/superpowers --skill brainstorming
-
-# Instalación como plugin
 /plugin install superpowers@claude-plugins-official
+```
+
+Si ya instalaste los plugins en Claude Code, puedes saltar este paso, si estas usando Cursor ejecuta los siguientes comandos en la consola ssh:
+
+```bash
+# Instalacion de SDD-Devkit
+npx skills add https://github.com/juanca202/ai
+
+# Instalación de Superpowers
+npx skills add https://github.com/obra/superpowers
 ```
 
 ## Paso 4: Definición de ADRs base
