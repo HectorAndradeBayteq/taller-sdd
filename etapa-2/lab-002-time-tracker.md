@@ -55,7 +55,7 @@ Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MC
 
 ```bash
 # Aclaremos que cree 4 historias de usuario: Layout, Proyectos, Tareas y Historial de registros
-/work-define [REQUERIMIENTO]
+/work-define [PATH DEL REQUERIMIENTO]
 ```
 
 # Paso 5: Definir casos de prueba
