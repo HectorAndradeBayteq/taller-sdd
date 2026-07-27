@@ -3,9 +3,10 @@
   "hooks": {
     "preToolUse": [
       {
-        "type": "prompt",
-        "prompt": "Se prohibe el uso de la herramienta `Delete`. Si es requerido indica que no puedes hacerlo y por que.",
-        "timeout": 5
+        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File \".cursor/hooks/guard-delete.ps1\"",
+        "matcher": "Delete",
+        "timeout": 5,
+        "failClosed": true
       }
     ],
     "postToolUse": [
@@ -17,10 +18,9 @@
     "beforeShellExecution": [
       {
         "type": "prompt",
-        "prompt": "¿Este comando es seguro para ejecutar? Solo se permiten operaciones de lectura. Patrones peligrosos en los comandos tales como `rm -rf`, `DROP TABLE`, `push --force` o reset con `--hard` no se deben ejecutar bajo ningún motivo.",
+        "prompt": "¿Este comando de shell es seguro? Solo permite operaciones de lectura (ls, dir, Get-ChildItem, cat, type, Get-Content, git status, git log, etc.). Deniega cualquier operación destructiva o de escritura: rm -rf, Remove-Item, del, DROP TABLE, git push --force, git reset --hard, formato de disco, o cualquier borrado/modificación de archivos. Entrada del hook: $ARGUMENTS",
         "timeout": 10
       }
-    ],
-    "beforeSubmitPrompt": []
+    ]
   }
 }
