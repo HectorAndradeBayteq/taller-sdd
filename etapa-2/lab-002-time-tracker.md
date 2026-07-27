@@ -9,7 +9,7 @@ Comprender cómo extender y gobernar un proceso de desarrollo basado en Specific
 ```bash
 git clone https://github.com/juanca202/exercise-time-tracker.git
 npm install -g pnpm
-npm install
+pnpm install
 ```
 
 # Paso 2: Integración con Figma y Chrome Devtools
