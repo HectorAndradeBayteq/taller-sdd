@@ -174,7 +174,7 @@ Necesitamos que el *stack* tecnológico quede claramente establecido en las inst
 Actualiza el stack tecnológico en AGENTS.md
 ```
 
-Ejecutar la auditoria de ADRs para validar que el código base sea coherente con los ADRs definidos:
+Ejecutar en el agente la auditoria de ADRs para validar que el código base sea coherente con los ADRs definidos:
 
 ```bash
 /adr-audit

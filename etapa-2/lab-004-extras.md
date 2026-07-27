@@ -40,6 +40,15 @@ Workflow
 
 # Integraciones
 
+## Herramientas ALM (Azure DevOps, Jira)
+
+A través de un servidor **MCP** te puedes conectar con Azure DevOps o Jira para sincronizar las historias de usuario, work items y tareas que gestionas en el flujo SDD: crear, leer y actualizar work items, mover su estado (To Do/Doing/Done), enlazar commits/PRs y mantener trazabilidad entre lo documentado (US-XXX, TK-XXX) y lo registrado en la herramienta ALM del equipo, sin salir del agente.
+
+```bash
+# Te guia y te ayuda a configurar el MCP en los agentes que lo requieran
+/alm-install
+```
+
 ## Indexado del proyecto
 
 **CodeGraph** es una herramienta de inteligencia de código con enfoque local-first. Analiza tu base de código utilizando Tree-sitter, almacena cada símbolo, relación y archivo en una base de datos local SQLite, y expone el resultado como un grafo de conocimiento consultable. 

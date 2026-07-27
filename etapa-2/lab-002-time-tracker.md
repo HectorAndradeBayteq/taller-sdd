@@ -55,7 +55,7 @@ Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MC
 
 ```bash
 # Aclaremos que cree 4 historias de usuario: Layout, Proyectos, Tareas y Historial de registros
-/work-define [REQUERIMIENTO]
+/work-define [PATH DEL REQUERIMIENTO]
 ```
 
 # Paso 5: Definir casos de prueba
@@ -75,7 +75,7 @@ Cuando ya esta el servidor **figma** Connected entonces ya esta habilitado el MC
 
 ```bash
 # Debemos aclarar que vamos a hacer una especificacion por user-story
-/openspec-propose [PATH DE HISTORIA DE USUARIO o docs/user-stories]
+/openspec-explore [PATH DE HISTORIA DE USUARIO o docs/user-stories]
 ```
 
 # Paso 8: Implementación de spec
@@ -87,11 +87,14 @@ feature/[NOMBRE DE SPEC]
 Luego ejecutar en el agente el siguiente skill:
 
 ```bash
-# Ejecutamos un loop con pasos que hayamos definido previamente, esto nos puede sugerir el uso de workflows
-/openspec-apply-change docs/specs/loop.md
+/openspec-apply-change
 ```
 
-# Paso 9: Preparar la entrega
+# Paso 9: Revisar implementación
+
+Hacemos una revisión de la implementación antes de generar el PR.
+
+# Paso 10: Preparar la entrega
 
 ```bash
 /pr-create
