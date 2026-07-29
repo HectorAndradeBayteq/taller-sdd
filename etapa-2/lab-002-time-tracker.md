@@ -11,11 +11,11 @@ El humano define la intención, las restricciones y las decisiones importantes; 
 | Nivel                     | Lo define normalmente | Asistido por IA   |
 | ------------------------- | --------------------- | ----------------- |
 | Problema de negocio       | Humano                | `/work-define`    |
-| Comportamiento esperado   | Humano                | `/work-plan` o Spec Framework     |
-| UX/UI (cómo debe verse)   | Humano o diseñador    |                   |
-| Modelo de dominio / datos | Humano o arquitecto   | `/design-define`  |
-| Arquitectura              | Humano o arquitecto   | `/adr-manage`     |
-| Implementación detallada  | Agente                | `/work-implement` o Spec Framework |
+| Comportamiento esperado   | Humano                | `Spec Framework     |
+| UX/UI (cómo debe verse)   | Humano (Diseñador)    |                   |
+| Modelo de dominio / datos | Humano (Arquitecto)   | `/design-define`  |
+| Arquitectura              | Humano (Arquitecto)   | `/adr-manage`     |
+| Implementación detallada  | Agente                | Spec Framework |
 
 
 # Paso 1: Instalar proyecto base
