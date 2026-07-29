@@ -11,7 +11,7 @@ El humano define la intención, las restricciones y las decisiones importantes; 
 | Nivel                     | Lo define normalmente | Asistido por IA   |
 | ------------------------- | --------------------- | ----------------- |
 | Problema de negocio       | Humano                | `/work-define`    |
-| Comportamiento esperado   | Humano                | `Spec Framework     |
+| Comportamiento esperado   | Humano                | Spec Framework     |
 | UX/UI (cómo debe verse)   | Humano (Diseñador)    |                   |
 | Modelo de dominio / datos | Humano (Arquitecto)   | `/design-define`  |
 | Arquitectura              | Humano (Arquitecto)   | `/adr-manage`     |
