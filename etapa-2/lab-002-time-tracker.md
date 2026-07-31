@@ -4,12 +4,26 @@
 
 Comprender cómo extender y gobernar un proceso de desarrollo basado en Specification-Driven Development (SDD) mediante la integración con otras plataformas del ecosistema de desarrollo. A diferencia del ejercicio inicial, este laboratorio no solo se enfocará en definir claramente **qué** se desea construir a través de especificaciones, requisitos y criterios de aceptación, sino también en establecer **cómo** debe ejecutarse el proceso de desarrollo mediante flujos, integraciones, automatizaciones y controles que guíen el comportamiento del agente de IA. El objetivo es aprovechar las capacidades del agente sin renunciar a la trazabilidad, la gobernanza y la alineación con los procesos, estándares y herramientas utilizados por el equipo de desarrollo.
 
+## Nivel de responsabilidades
+
+El humano define la intención, las restricciones y las decisiones importantes; el agente decide los detalles de implementación dentro de esos límites.
+
+| Nivel                     | Lo define normalmente | Asistido por IA   |
+| ------------------------- | --------------------- | ----------------- |
+| Problema de negocio       | Humano                | `/work-define`    |
+| Comportamiento esperado   | Humano                | Spec Framework     |
+| UX/UI (cómo debe verse)   | Humano (Diseñador)    |                   |
+| Modelo de dominio / datos | Humano (Arquitecto)   | `/design-define`  |
+| Arquitectura              | Humano (Arquitecto)   | `/adr-manage`     |
+| Implementación detallada  | Agente                | Spec Framework |
+
+
 # Paso 1: Instalar proyecto base
 
 ```bash
 git clone https://github.com/juanca202/exercise-time-tracker.git
 npm install -g pnpm
-npm install
+pnpm install
 ```
 
 # Paso 2: Integración con Figma y Chrome Devtools
