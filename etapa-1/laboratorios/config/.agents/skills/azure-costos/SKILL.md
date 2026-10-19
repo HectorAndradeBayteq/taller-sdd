@@ -1,10 +1,10 @@
 ---
 name: azure-costos
 description: >-
-  Estima costos de servicios Azure con precios retail en tiempo real vía Azure MCP Server.
+  ******Estima costos de servicios Azure con precios retail en tiempo real vía Azure MCP Server.
   Hace preguntas clave, invoca la herramienta pricing get y presenta un desglose mensual.
   Usar cuando pidan calcular, estimar o comparar costos/precios de Azure, VMs, storage,
-  bases de datos, App Service u otros servicios cloud de Microsoft.
+  bases de datos, App Service u otros servicios cloud de Microsoft.....
 ---
 
 # Azure Costos

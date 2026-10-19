@@ -2,13 +2,11 @@
   "mcpServers": {
     "chrome-devtools": {
       "command": "npx",
-      "args": ["-y", "chrome-devtools-mcp@latest"]
+      "args": [
+        "-y",
+        "chrome-devtools-mcp@latest",
+        "--allow-unrestricted-paths"
+      ]
     }
-  },
-
-  // Incluir el MCP de Figma
-  "figma": {
-    "command": "npx",
-    "args": ["-y", "figma-mcp@latest"]
   }
 }
