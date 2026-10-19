@@ -24,10 +24,14 @@ Centrado en **Claude Code** y el ecosistema de **skills**: comandos reutilizable
 
 Experimenta de forma observable cómo Cursor **compone y consume la ventana de contexto**: panel Context, categorías (system prompt, tools, rules, skills, MCP, subagentes, conversación) y el impacto de añadir `AGENTS.md`. El objetivo es entender por qué el modelo no “ve” todo el repo y cómo mantener una ventana de atención eficiente en trabajo diario.
 
-### [Laboratorio 4: MCP (Model Context Protocol)](./laboratorios/mcp/README.md)
+### [Laboratorio 4: MCP (Model Context Protocol)](./laboratorios/mcp/fundamentos/README.md)
 
 Conecta Cursor a un **servidor MCP** del proyecto — en este caso Chrome DevTools MCP — para que el agente automatice el navegador con herramientas tipadas (`navigate_page`, `evaluate_script`, capturas, consola). Configurarás `.cursor/mcp.json`, validarás la integración en ajustes del IDE y documentarás resultados de una sesión controlada.
 
+
+### [Laboratorio 4B: MCP avanzado (CodeGraph, Figma y Playwright)](./laboratorios/mcp/avanzado/README.md)
+
+Continúa el Laboratorio 4 con tres servidores MCP que cubren huecos distintos del ciclo de desarrollo: **CodeGraph** (explicación detallada del grafo de código local y medición de su efecto en llamadas y tokens), **Figma** (MCP remoto con OAuth para pasar de un frame a un componente con tokens; demostración del instructor con plan B) y **Playwright** (verificación por árbol de accesibilidad y generación de un spec ejecutable). Incluye rutas para Cursor y Claude Code, y cierra con un flujo integrado y una reflexión de seguridad.
 
 ### [Laboratorio 5: Hooks](./laboratorios/hooks/README.md)
 

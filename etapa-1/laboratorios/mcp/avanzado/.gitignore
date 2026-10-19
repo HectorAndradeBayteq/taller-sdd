@@ -1,0 +1,12 @@
+# URL personal del frame de Figma
+figma-url.txt
+
+# Índice local de CodeGraph (se regenera con `codegraph init`)
+.codegraph/
+.codegraph-*/
+
+# Playwright
+tests/node_modules/
+tests/test-results/
+tests/playwright-report/
+.playwright-mcp/
