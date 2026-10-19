@@ -1,0 +1,11 @@
+{
+    "url": "https://devportal-ui-apic.apps.itz-xlluxl.hub01-lb.techzone.ibm.com/portal/rest/v1/apis/",
+    "insecure": true,
+    "headers": {
+        "Authorization": "Basic YWRtaW5pc3RyYXRvcjpuWlYyU0tCOTY1SWg=",
+        "Accept": "application/json",
+        "Cookie": "bca8c157018bdcc1fd6f0486c1474a17=a651ebe261ab09606f8274f952887f64"
+    }
+}
+
+
