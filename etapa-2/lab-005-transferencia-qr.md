@@ -43,34 +43,7 @@ Panel de Powers → Add Custom Power → Import power from GitHub → pega `http
 - El zip del requerimiento: [SRS-001-transferencia-qr.zip](./assets/SRS-001-transferencia-qr.zip).
 - El script del túnel: [tunnel-qr.js](./assets/tunnel-qr.js).
 
-## Cómo leer los ejemplos
-
-Cada paso trae tres bloques:
-
-- **Llamado:** lo que escribes en el chat, dentro de la carpeta del ejercicio.
-- **Ejemplo de respuesta:** una respuesta real del agente ante ese llamado. La redacción puede variar; compara la decisión y los artefactos, no la frase exacta.
-- **Qué respondes:** la respuesta que mantiene el ejercicio alineado.
-
-Abre el chat en la carpeta `exercise-qrtransfer`, no en el repositorio del taller. Puedes seguir en el mismo chat o abrir uno nuevo al día siguiente. Si abres uno nuevo, incluye la ruta o el identificador, como en los ejemplos.
-
-```mermaid
-flowchart LR
-  A[Carpeta en blanco] --> B["Día 1<br/>SRS, historias, harness, tareas"]
-  B --> C["Día 2<br/>implementar, integrar y probar"]
-```
-
-
-
-
-| Día | Tiempo | Skills                                                            | Al cerrar el día                                          |
-| --- | ------ | ----------------------------------------------------------------- | --------------------------------------------------------- |
-| 1   | 2 h    | `/requirement-refine`, `/work-define`, `/arch-init`, `/work-plan` | Tareas en Ready, sobre el harness                         |
-| 2   | 2 h    | `/work-implement`, `/work-integrate`                              | Historias en `main` y transmisión probada con el teléfono |
-
-
----
-
-# Día 1 — Del requerimiento al plan (2 horas)
+# Del requerimiento al plan (2 horas)
 
 ## Paso 1. Carpeta en blanco (10 min)
 
@@ -101,7 +74,7 @@ Sin `.sdd-devkit/settings.json` el kit usa la ruta por defecto `docs/specs/chang
 ### Qué respondes
 
 ```text
-Impórtalo tal cual a docs/specs/changes/requirements/ y conserva el zip original en references/. No modifiques el contenido del SRS.
+Impórtalo tal cual a docs/specs/changes/requirements/
 ```
 
 ### Ejemplo de cierre
@@ -156,7 +129,7 @@ La propuesta de seis historias es válida. En este laboratorio el corte es otro:
 ### Qué respondes
 
 ```text
-Podemos separar en enviar, recibir e historial?
+Separar en 3 historias: enviar, recibir e historial
 ```
 
 ### Ejemplo de cierre
@@ -171,23 +144,13 @@ Podemos separar en enviar, recibir e historial?
 | US-003: Consultar y gestionar el historial de transferencias | El inicio y el historial: listar, filtrar, exportar y eliminar   | AC-001 a AC-007 | 5      |
 
 
-Detalles que el agente debe dejar explícitos y que conviene contrastar con tus carpetas:
-
-- La PWA no quedó como historia propia. NFR-001, NFR-002, NFR-010 y NFR-011 fueron a US-001; NFR-013 a US-002; NFR-004 a US-003.
-- US-002 depende del formato de fragmento de US-001. US-003 depende de las dos. Por eso Independiente queda en Partial en esas dos.
-- US-001 y US-002 tienen 24 criterios: la dimensión Pequeña queda en Partial. Se dividen en tareas en el paso 5, en este mismo día.
-- Los wireframes se enlazan desde la carpeta del SRS. No se copian.
-- El SRS no tenía sección 15. El agente la agrega con la tabla de historias derivadas. Es lo único que escribe fuera de las carpetas de las historias.
-- No hace falta `/design-define`: el protocolo ya está en la sección 2.6 del SRS.
-- FR-035 no existe en el SRS. Es un salto de numeración.
-
 Abre las tres historias y el SRS. Cada una debe estar en Ready, y la sección 15 del SRS debe apuntar a US-001, US-002 y US-003.
 
-El agente puede ofrecer casos de prueba, planificación o el harness. Hoy sigue el harness, en el mismo chat. `/test-define` queda fuera.
+El agente puede ofrecer `/test-define`, `/work-plan` o `/arch-init`. Hoy sigue `/arch-init`, en el mismo chat. `/test-define` queda fuera.
 
 ## Paso 4. Inicializar el harness (30 min)
 
-La carpeta tiene `docs/` y todavía no es el repositorio de la aplicación. `/arch-init` prepara el proyecto para los agentes: git, instrucciones persistentes, configuración del kit y el código base.
+La carpeta tiene `docs/` y todavía no es el repositorio de la aplicación. `/arch-init` prepara el proyecto para los agentes: git, instrucciones persistentes, configuración del devkit y el código base.
 
 El SRS define un solo repositorio, `exercise-qrtransfer`, a partir del proyecto base `angular-base`.
 
@@ -195,14 +158,6 @@ El SRS define un solo repositorio, `exercise-qrtransfer`, a partir del proyecto 
 
 ```text
 /arch-init
-```
-
-Si el chat es nuevo:
-
-```text
-/arch-init
-El SRS-001 está en docs/specs/changes/requirements/SRS-001-transferencia-archivos-qr.
-El repositorio del producto es exercise-qrtransfer y el proyecto base es https://github.com/juanca202/angular-base.
 ```
 
 El agente pregunta en tandas. Responde cada una antes de que cree el repo.
@@ -302,7 +257,7 @@ Con eso cierra el día 1. Mañana se implementan las tres historias de un tirón
 
 ---
 
-# Día 2 — Implementar, integrar y probar (2 horas)
+# Implementar, integrar y probar (2 horas)
 
 `/work-implement` escribe el código y las pruebas de las tareas en Ready. En estas dos horas las tres historias corren seguidas, en ramas apiladas, y al terminar se integran en `main`. No confirmes tarea por tarea: si el agente se detiene a preguntar si sigue, la respuesta es avanzar hasta el final. Después de integrar, se prueba la transmisión entre el computador y un teléfono.
 
@@ -417,8 +372,6 @@ node tunnel-qr.js http://localhost:4200
 El script abre un túnel de Cloudflare hacia esa dirección. Al quedar listo imprime en la consola un QR y la URL pública. Ese QR abre la app en el teléfono. La transmisión es la de la aplicación: en el computador, en `http://localhost:4200`, envía un archivo; en el teléfono, escanea el QR del túnel, abre la app y lo recibe con la cámara. El archivo pasa de la pantalla a la cámara. El túnel solo carga la app en el teléfono.
 
 Deja las dos consolas abiertas durante la prueba. Ctrl+C en la del túnel lo cierra.
-
-Si Node no encuentra el paquete `qrcode`, instálalo en la raíz de este repositorio (`npm install qrcode`) y vuelve a lanzar el túnel.
 
 ---
 
