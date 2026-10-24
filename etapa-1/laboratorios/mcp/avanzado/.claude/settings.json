@@ -1,0 +1,9 @@
+{
+    "hooks": {
+      "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+      "PostToolUse":      [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+      "PostToolUseFailure": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+      "SubagentStop":     [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+      "Stop":             [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }]
+    }
+  }

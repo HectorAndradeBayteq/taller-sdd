@@ -110,7 +110,7 @@ El README del proyecto publica un benchmark propio (7 repos, Claude Code, median
 
 - **Análisis estático:** no ve reflexión, inyección de dependencias en runtime ni código generado. Un test E2E que habla con la app por el navegador **no importa** el código fuente, así que el grafo de imports no lo conecta con los módulos que prueba (lo comprobarás con `codegraph affected` en la Fase D).
 - **Local-first:** el índice y las consultas no salen de tu máquina. El proyecto sí envía **telemetría anónima** de uso (herramientas y lenguajes, sin código ni rutas); se desactiva con `codegraph telemetry off`.
-- **Instalación:** el instalador oficial se ejecuta con `irm … | iex` (PowerShell). Es una práctica que debes evaluar en tu entorno; la alternativa es `npm i -g @colbymchenry/codegraph`.
+- **Instalación:** el instalador oficial se ejecuta con `irm … | iex` (PowerShell) o `curl … | sh` (macOS/Linux). Es una práctica que debes evaluar en tu entorno; la alternativa es `npm i -g @colbymchenry/codegraph`.
 
 ---
 
@@ -216,6 +216,8 @@ Estructura de archivos de este laboratorio:
 avanzado/
 ├── README.md                  # Este archivo
 ├── .cursor/mcp.json           # Servidores MCP (Cursor)
+├── .cursor/hooks.json         # Hooks de medición automática (Fase A)
+├── .cursor/hooks/metrics.mjs  # Registra tool calls, lecturas, MCP y tiempo → evidencia/metricas.md
 ├── .mcp.json                  # Servidores MCP (Claude Code)
 ├── .gitignore
 ├── serve.mjs                  # Servidor estático sin dependencias (puerto 5173)
@@ -232,6 +234,7 @@ avanzado/
 │   ├── playwright.config.ts
 │   └── specs/smoke.spec.ts
 └── evidencia/                 # Salida del ejercicio
+    ├── metricas.md            # Lo genera el hook al terminar cada respuesta (Fase A)
     └── informe.md             # Lo crea el agente (Fases A–D)
 ```
 
@@ -241,7 +244,9 @@ avanzado/
 
 ### Preparación
 
-1. Abre la carpeta `etapa-1/laboratorios/mcp/avanzado` como **workspace** en Cursor (`Archivo → Abrir carpeta`). Debe ser la raíz del workspace para que Cursor lea `.cursor/mcp.json` y CodeGraph indexe esta carpeta.
+1. Abre la carpeta `etapa-1/laboratorios/mcp/avanzado` como **workspace** en Cursor (`Archivo → Abrir carpeta`; en macOS, **File → Open…** o `Cmd+O`). Debe ser la raíz del workspace para que Cursor lea `.cursor/mcp.json` y CodeGraph indexe esta carpeta.
+
+   > **macOS:** los comandos de este laboratorio se muestran en PowerShell. Los de `node`, `npx`, `git` y `codegraph` funcionan igual en zsh/bash; donde difieren, se añade el bloque **En macOS/Linux**. **Cursor Settings → Tools & MCP** se abre desde **Cursor → Settings → Cursor Settings** (`Cmd+Shift+J`). Para detener un proceso en la terminal se usa también `Ctrl+C` (no `Cmd+C`).
 2. Comprueba Node y Chrome:
 
    ```powershell
@@ -249,7 +254,14 @@ avanzado/
    (Get-Item "$env:ProgramFiles\Google\Chrome\Application\chrome.exe").VersionInfo.ProductVersion
    ```
 
-   Necesitas Node **v20.19+** y una versión de Chrome actual (si Chrome está instalado solo para tu usuario, busca en `$env:LOCALAPPDATA\Google\Chrome\Application`).
+   En macOS/Linux:
+
+   ```bash
+   node -v
+   "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --version
+   ```
+
+   Necesitas Node **v20.19+** y una versión de Chrome actual (en Windows, si Chrome está instalado solo para tu usuario, busca en `$env:LOCALAPPDATA\Google\Chrome\Application`).
 3. Comprueba que la app demo arranca (cero instalación):
 
    ```powershell
@@ -299,6 +311,12 @@ avanzado/
    New-Item evidencia/informe.md -ItemType File
    ```
 
+   En macOS/Linux (`touch` no borra el contenido si el archivo ya existe):
+
+   ```bash
+   touch evidencia/informe.md
+   ```
+
 ---
 
 ### Fase A — CodeGraph: del código al grafo
@@ -315,11 +333,25 @@ avanzado/
    npm i -g @colbymchenry/codegraph
    ```
 
+   En macOS/Linux:
+
+   ```bash
+   # Opción 1 — instalador oficial (no requiere Node)
+   curl -fsSL https://raw.githubusercontent.com/colbymchenry/codegraph/main/install.sh | sh
+
+   # Opción 2 — si prefieres npm
+   npm i -g @colbymchenry/codegraph
+   ```
+
+   > En macOS, si `npm i -g` falla con `EACCES`, tu Node se instaló con el instalador oficial y el directorio global requiere permisos de administrador. No uses `sudo`: usa la opción 1 o instala Node con nvm o Homebrew.
+
    ```powershell
    codegraph version
    ```
 
-   > Ejecutar un script remoto con `iex` es una decisión de seguridad: léelo antes o usa la opción 2.
+   > Ejecutar un script remoto con `iex` (o `curl … | sh`) es una decisión de seguridad: léelo antes o usa la opción 2.
+
+   > **Reinicia el IDE tras instalar.** Cursor (o la terminal desde la que lanzaste Claude Code) hereda el `PATH` que tenía al abrirse, así que puede no “ver” `codegraph` aunque `codegraph version` funcione en una terminal nueva. Si el servidor **codegraph** aparece en rojo o sin tools en **Settings → Tools & MCP** (o en `/mcp`), cierra el IDE por completo y vuelve a abrirlo; en Claude Code, sal y ábrelo desde una terminal nueva.
 
 2. **(Opcional) Desactiva la telemetría anónima:**
 
@@ -360,30 +392,75 @@ avanzado/
 
 5. **Conecta el servidor al IDE.** Ve a **Cursor Settings → Tools & MCP** (en Claude Code, `/mcp`) y confirma que **codegraph** aparece activo (si no, reinicia el cliente). Debe listar una sola tool: `codegraph_explore`.
 
-6. **Consulta desde el agente (con CodeGraph).** Abre un chat nuevo en modo **Agent** y ejecuta:
+6. **Activa la medición automática (hooks).** Para no contar a mano, el laboratorio incluye un hook que registra cada sesión del agente: [`.cursor/hooks.json`](./.cursor/hooks.json) + [`.cursor/hooks/metrics.mjs`](./.cursor/hooks/metrics.mjs) (solo Node; los hooks se estudian en el [Laboratorio 5](../../hooks/README.md)). Cursor recarga `hooks.json` al abrir el workspace: confirma en **Customize → Hooks** (o en el canal de salida *Hooks*) que aparecen `beforeSubmitPrompt`, `postToolUse`, `postToolUseFailure`, `afterMCPExecution`, `subagentStop` y `stop`.
+
+   Ejecuta una vez, para partir de cero:
+
+   ```powershell
+   node .cursor/hooks/metrics.mjs --reset
+   ```
+
+   Qué registra y qué **no**:
+
+   | Lo registra (automático) | Lo que sigue siendo manual |
+   |--------------------------|----------------------------|
+   | Nº de tool calls, `Read`, archivos distintos leídos, búsquedas, shell | **Tokens**: los hooks no los reciben; léelos del panel Context |
+   | Llamadas por servidor MCP (`codegraph×N`) | Activar / desactivar el servidor MCP |
+   | Subagentes y las llamadas que hicieron | Valorar si la respuesta es correcta y completa |
+   | Tiempo total, modelo y estado de cada respuesta | |
+
+   > **Privacidad:** solo guarda metadatos (nombre de herramienta, ruta del archivo leído, servidor MCP, duración). **No** guarda el texto de tus prompts ni la salida de las tools. Los eventos crudos quedan en `.cursor/hooks/state/` (gitignored).
+
+   > **Claude Code:** el mismo script entiende sus eventos. Añade esto a `.claude/settings.json` (créalo solo si trabajas en Claude Code; si abres también el workspace en Cursor con hooks de terceros activados se duplicarían eventos de prompt y stop):
+   >
+   > ```json
+   > {
+   >   "hooks": {
+   >     "UserPromptSubmit": [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+   >     "PostToolUse":      [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+   >     "PostToolUseFailure": [{ "matcher": "*", "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+   >     "SubagentStop":     [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }],
+   >     "Stop":             [{ "hooks": [{ "type": "command", "command": "node \"$CLAUDE_PROJECT_DIR/.cursor/hooks/metrics.mjs\"" }] }]
+   >   }
+   > }
+   > ```
+
+7. **Consulta desde el agente (con CodeGraph).** Abre un chat nuevo en modo **Agent** y ejecuta (la etiqueta `#run:…` es solo para identificar la fila; el hook guarda la etiqueta, no el resto del prompt):
 
    ```prompt
    Si cambio la firma de formatDuration para que reciba segundos en vez de minutos,
    ¿qué archivos y funciones se ven afectados? Responde con la lista y el motivo.
-   No modifiques nada.
+   No modifiques nada. #run:con-codegraph
    ```
 
-   Observa que el agente invoca `codegraph_explore` y responde con pocas (o ninguna) lecturas de archivos. Anota en un cuadro: **nº de tool calls**, **archivos leídos** y el consumo en el panel **Context** (`/context` en Claude Code; [Laboratorio 3](../../context/README.md)).
+   Observa que el agente invoca `codegraph_explore` y responde con pocas (o ninguna) lecturas de archivos. Al terminar su respuesta se genera `evidencia/metricas.md`. **Lo único que anotas a mano** es el consumo de tokens del panel **Context** (`/context` en Claude Code; [Laboratorio 3](../../context/README.md)).
 
-7. **Repite sin CodeGraph (línea base).** En **Settings → Tools & MCP** apaga el interruptor de **codegraph** (en Claude Code, desactívalo desde `/mcp`), abre un chat **nuevo** y haz **la misma** pregunta. Compara:
+8. **Repite sin CodeGraph (línea base).** En **Settings → Tools & MCP** apaga el interruptor de **codegraph** (en Claude Code, desactívalo desde `/mcp`), abre un chat **nuevo**, usa el **mismo modelo** y haz **la misma** pregunta con otra etiqueta:
 
-   | Métrica | Con CodeGraph | Sin CodeGraph |
-   |---------|---------------|---------------|
-   | Tool calls totales | | |
-   | Archivos leídos | | |
-   | Tokens en panel Context | | |
-   | ¿Respuesta completa y correcta? | | |
+   ```prompt
+   Si cambio la firma de formatDuration para que reciba segundos en vez de minutos,
+   ¿qué archivos y funciones se ven afectados? Responde con la lista y el motivo.
+   No modifiques nada. #run:sin-codegraph
+   ```
+
+   Abre `evidencia/metricas.md`: tendrás una fila por corrida, por ejemplo (valores ilustrativos):
+
+   | # | Etiqueta | Tool calls | Read | Archivos distintos | Búsquedas | MCP (por servidor) | Tiempo (s) |
+   |---|----------|-----------:|-----:|-------------------:|----------:|--------------------|-----------:|
+   | 1 | con-codegraph | 1 | 0 | 0 | 0 | codegraph×1 | 18 |
+   | 2 | sin-codegraph | 9 | 6 | 6 | 2 | — | 41 |
+
+   Copia las filas a `evidencia/informe.md`, añade los **tokens** del panel Context y tu valoración de si la respuesta fue completa y correcta.
 
    > **Qué esperar:** en una app de 6 módulos la diferencia será pequeña o nula. El benchmark del proveedor muestra que la ventaja crece con el descubrimiento que exige la pregunta. Si el tiempo lo permite, repite la medición en un repositorio real tuyo (`codegraph init` allí) y compara.
+   >
+   > **Validez de la comparación:** mismo modelo y mismo prompt en ambas filas (la columna *Modelo* lo muestra). El tiempo incluye esperas de aprobación manual de tools, así que apruébalas rápido o activa la ejecución automática. Si el agente lanza un subagente, sus llamadas internas pueden ya estar en *Tool calls*: no las sumes.
+   >
+   > **Diagnóstico:** si `metricas.md` no aparece, abre el canal *Hooks* de Cursor; los eventos crudos están en `.cursor/hooks/state/events.jsonl` y puedes regenerar el reporte con `node .cursor/hooks/metrics.mjs --report`.
 
    Vuelve a activar **codegraph** al terminar.
 
-8. **Observa la sincronización automática.** Añade una función al final de `app-demo/src/format.js`:
+9. **Observa la sincronización automática.** Añade una función al final de `app-demo/src/format.js`:
 
    ```javascript
    export function formatPercentage(part, total) {
@@ -400,7 +477,7 @@ avanzado/
 
    El símbolo debe aparecer sin haber ejecutado `codegraph sync`. Si consultas inmediatamente, `status` puede mostrar el archivo como pendiente (ventana de *debounce*). Deshaz el cambio después (`git restore app-demo/src/format.js` si el archivo está versionado, o elimina la función).
 
-9. **Registra** en `evidencia/informe.md` una sección **A. CodeGraph** con la tabla comparativa y tu conclusión (¿cuándo valdría la pena?).
+10. **Registra** en `evidencia/informe.md` una sección **A. CodeGraph** con la tabla de `metricas.md`, los tokens y tu conclusión (¿cuándo valdría la pena?).
 
 ---
 
@@ -426,6 +503,12 @@ avanzado/
 
    ```powershell
    Copy-Item figma-url.example.txt figma-url.txt
+   ```
+
+   En macOS/Linux:
+
+   ```bash
+   cp figma-url.example.txt figma-url.txt
    ```
 
    Pega el enlace real en la primera línea no vacía de `figma-url.txt` (el archivo está en `.gitignore`).

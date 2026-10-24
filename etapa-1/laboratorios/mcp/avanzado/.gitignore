@@ -5,6 +5,9 @@ figma-url.txt
 .codegraph/
 .codegraph-*/
 
+# Eventos crudos de la medición por hooks (Fase A)
+.cursor/hooks/state/
+
 # Playwright
 tests/node_modules/
 tests/test-results/
