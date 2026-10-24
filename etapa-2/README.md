@@ -2,7 +2,7 @@
 
 La segunda etapa profundiza en **Specification-Driven Development (SDD)** aplicado a proyectos completos, guiada paso a paso junto al instructor. Los laboratorios recorren el ciclo completo: desde el scaffolding de un proyecto nuevo y la configuración del *AI Harness* (instrucciones persistentes, ADRs, skills), pasando por la definición de historias de usuario, specs y pruebas, hasta la gobernanza del proceso con integraciones (MCP, Figma), automatizaciones y optimización de contexto/tokens. Los dos primeros laboratorios construyen aplicaciones; el tercero y el cuarto cubren el ecosistema de *skills* y la optimización de SDD. El quinto es un ejercicio guiado de 4 horas (2 horas por día, 2 días) con [SDD Devkit](https://github.com/juanca202/sdd-devkit): parte de un SRS ya cerrado, lo planifica, lo implementa y lo integra en `main`, en un proyecto distinto al de los laboratorios anteriores. El sexto ocupa tres bloques (días 6, 7 y 8) sobre HelpDesk Lite: el grupo recibe el PRD y recorre el ciclo por su cuenta, en un multirepo de interfaz y API.
 
-Los laboratorios 1 a 4 se siguen en orden. El laboratorio 5 se puede hacer al terminar el 1, cuando SDD Devkit ya está instalado. El laboratorio 6 sigue al 5. El laboratorio 7 se puede hacer con SDD Devkit instalado y un proyecto con harness.
+Los laboratorios 1 a 4 se siguen en orden. El laboratorio 5 se puede hacer al terminar el 1, cuando SDD Devkit ya está instalado. El laboratorio 6 sigue al 5. El laboratorio 7 se puede hacer con SDD Devkit instalado; crea su propio proyecto de pruebas.
 
 ---
 
@@ -43,6 +43,6 @@ Ejercicio de **tres bloques** (1 h 45 min, 1 h 50 min y 1 h 50 min) sobre [PRD-h
 
 ### [Laboratorio 7: Automatización de pruebas](./lab-007-automatizacion-pruebas.md)
 
-Parte de una historia ya cerrada ([user-story-sample.md](./assets/user-story-sample.md), US-001 *Acceso demo de la aplicación*) y la lleva a pruebas automatizadas: `/test-define` deriva los casos de prueba de los criterios AC-001 a AC-011, `/work-implement` los automatiza 1:1 en una rama `test/`, y `/quality-check` y `/coverage-verify` dejan la matriz de cobertura antes de integrar con `/work-integrate`.
+`/arch-init` crea un proyecto de pruebas desde un proyecto base para un sistema alojado en Azure DevOps. Después `/work-define sync` trae desde ese tracker una historia ya cerrada (referencia: [user-story-sample.md](./assets/user-story-sample.md), US-001 *Acceso demo de la aplicación*) y se lleva a pruebas automatizadas: `/test-define` deriva los casos de prueba de los criterios AC-001 a AC-011, `/work-implement` los automatiza 1:1 en una rama `test/`, y `/quality-check` y `/coverage-verify` dejan la matriz de cobertura antes de integrar con `/work-integrate`.
 
 ---
