@@ -8,7 +8,7 @@ Abre cada carpeta como **workspace** en Cursor (o en la herramienta indicada) y 
 
 ## Índice de laboratorios
 
-### [Laboratorio 1: Agentes y subagentes](./laboratorios/agents/README.md)
+### [Laboratorio 1: Agentes y subagentes](./laboratorios/agents/cursor/README.md)
 
 Profundiza en **orquestación multiagente** sin skills: un coordinador delega en subagentes definidos en `.cursor/agents/` y políticas en `AGENTS.md`. El ejercicio práctico genera fichas de catálogo con trabajo en paralelo, subagentes anidados (por ejemplo, búsqueda de opiniones y análisis de sentimiento) y trazabilidad mediante logs y auditoría.
 
@@ -20,7 +20,7 @@ Contrasta el paralelo del Lab 1 (varios subagentes en **un** working tree) con *
 
 Centrado en **Claude Code** y el ecosistema de **skills**: comandos reutilizables versionables en `.claude/skills/` que inyectan instrucciones persistentes. Crearás y evaluarás una skill de ejemplo con el plugin `skill-creator`, contrastando slash commands nativos, skills de equipo y plugins.
 
-### [Laboratorio 3: Ventana de contexto y atención](./laboratorios/context/README.md)
+### [Laboratorio 3: Ventana de contexto y atención](./laboratorios/context/general/README.md)
 
 Experimenta de forma observable cómo Cursor **compone y consume la ventana de contexto**: panel Context, categorías (system prompt, tools, rules, skills, MCP, subagentes, conversación) y el impacto de añadir `AGENTS.md`. El objetivo es entender por qué el modelo no “ve” todo el repo y cómo mantener una ventana de atención eficiente en trabajo diario.
 

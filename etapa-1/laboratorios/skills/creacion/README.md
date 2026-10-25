@@ -282,7 +282,7 @@ creacion/
 - Evaluar con casos de prueba y medir varianza (Benchmark) o impacto (A/B) convierte la escritura de skills en un proceso iterativo con evidencia, no en prueba y error manual.
 - Una skill lista para el equipo debería vivir en scope **proyecto** (`.claude/skills/`), pasar por PR y tener al menos una evaluación registrada.
 
-Tras el taller, continúa con [Laboratorio 3: Ventana de contexto y atención](../../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
+Tras el taller, continúa con [Laboratorio 3: Ventana de contexto y atención](../../context/general/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
 
 ---
 

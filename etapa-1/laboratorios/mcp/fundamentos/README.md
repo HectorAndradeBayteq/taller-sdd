@@ -12,7 +12,7 @@ Al final del laboratorio podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — orquestación en Cursor.
+- [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md) — orquestación en Cursor.
 - Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas y quién ejecuta cada acción (IDE vs modelo).
 - **Node.js** v20.19 o superior (LTS reciente).
 - **Google Chrome** actual (el servidor soporta oficialmente Chrome / Chrome for Testing).

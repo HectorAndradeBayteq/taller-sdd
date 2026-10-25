@@ -7,12 +7,12 @@ Entender **git worktrees** como forma de aislar working trees y practicar **trab
 Al final del laboratorio podrás:
 
 1. Explicar qué es un worktree y cómo se diferencia de “cambiar de rama” en un solo checkout.
-2. Contrastar el paralelo del [Laboratorio 1](../agents/README.md) (varios subagentes, **un** working tree) con paralelo por worktrees (**un** agente por checkout).
+2. Contrastar el paralelo del [Laboratorio 1](../agents/cursor/README.md) (varios subagentes, **un** working tree) con paralelo por worktrees (**un** agente por checkout).
 3. Crear dos worktrees, lanzar tareas de agente distintas y **verificar el aislamiento** con `git status` / `git diff`.
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — idea de trabajo en paralelo *dentro* del mismo workspace.
+- [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md) — idea de trabajo en paralelo *dentro* del mismo workspace.
 - **Git** instalado y disponible en la terminal (`git --version`).
 - **Node.js** (opcional pero útil) para probar `node src/greeter.js` y `node src/calculator.js`.
 - Carpeta `etapa-1/laboratorios/worktrees` abierta como **workspace** en Cursor (o al menos accesible para ejecutar `setup.ps1`).
@@ -237,5 +237,5 @@ Tras el taller, cuando tengas dos iniciativas concurrentes (feature + hotfix) y 
 ## Referencias
 
 - [git-worktree — Git](https://git-scm.com/docs/git-worktree)
-- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — paralelo en el mismo workspace
+- [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md) — paralelo en el mismo workspace
 - [Laboratorio extra: Agent Loop](../agent-loop/README.md) — bucle agente–herramientas en Cursor

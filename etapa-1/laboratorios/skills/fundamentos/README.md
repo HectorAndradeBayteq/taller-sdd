@@ -13,7 +13,7 @@ Al final de esta parte podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agentes y subagentes](../../agents/README.md) — orquestación y delegación en Cursor.
+- [Laboratorio 1: Agentes y subagentes](../../agents/cursor/README.md) — orquestación y delegación en Cursor.
 - Opcional: [Laboratorio extra: Agent Loop](../../agent-loop/README.md) — marco teórico del bucle agente–herramientas.
 - Claude Code CLI instalado y autenticado.
 - Esta carpeta (`fundamentos/`) abierta como **workspace** (Cursor o terminal en la carpeta del lab).

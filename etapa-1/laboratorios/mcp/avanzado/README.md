@@ -13,7 +13,7 @@ Al final del laboratorio podrás:
 **Prerrequisitos:**
 
 - [Laboratorio 4: MCP (fundamentos)](../fundamentos/README.md) — configuración de `mcp.json` y primer servidor.
-- [Laboratorio 3: Ventana de contexto y atención](../../context/README.md) — para leer el panel Context al medir consumo.
+- [Laboratorio 3: Ventana de contexto y atención](../../context/general/README.md) — para leer el panel Context al medir consumo.
 - **Node.js** v20.19 o superior y **Google Chrome** actual (ya requeridos en el Laboratorio 4).
 - **Cursor** (ruta principal) o **Claude Code** (ruta alternativa, ver [Fase 0](#preparación)).
 - **Figma:** *no es obligatorio.* La Fase B la **demuestra el instructor**; quien no tenga acceso sigue el **Plan B** con [`fixtures/figma-referencia.md`](./fixtures/figma-referencia.md).
@@ -433,7 +433,7 @@ avanzado/
    No modifiques nada. #run:con-codegraph
    ```
 
-   Observa que el agente invoca `codegraph_explore` y responde con pocas (o ninguna) lecturas de archivos. Al terminar su respuesta se genera `evidencia/metricas.md`. **Lo único que anotas a mano** es el consumo de tokens del panel **Context** (`/context` en Claude Code; [Laboratorio 3](../../context/README.md)).
+   Observa que el agente invoca `codegraph_explore` y responde con pocas (o ninguna) lecturas de archivos. Al terminar su respuesta se genera `evidencia/metricas.md`. **Lo único que anotas a mano** es el consumo de tokens del panel **Context** (`/context` en Claude Code; [Laboratorio 3](../../context/general/README.md)).
 
 8. **Repite sin CodeGraph (línea base).** En **Settings → Tools & MCP** apaga el interruptor de **codegraph** (en Claude Code, desactívalo desde `/mcp`), abre un chat **nuevo**, usa el **mismo modelo** y haz **la misma** pregunta con otra etiqueta:
 

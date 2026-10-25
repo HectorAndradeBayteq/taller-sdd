@@ -6,7 +6,7 @@ Aprender a definir, versionar y evaluar **skills** (comandos reutilizables con i
 
 **Prerrequisitos generales:**
 
-- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — orquestación y delegación en Cursor.
+- [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md) — orquestación y delegación en Cursor.
 - Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — marco teórico del bucle agente–herramientas.
 - Claude Code CLI instalado y autenticado.
 
@@ -59,4 +59,4 @@ skills/
 
 ## Siguiente laboratorio
 
-Tras completar ambas partes, continúa con [Laboratorio 3: Ventana de contexto y atención](../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
+Tras completar ambas partes, continúa con [Laboratorio 3: Ventana de contexto y atención](../context/general/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
