@@ -1,0 +1,1123 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:07.921Z",
+        "line": 10,
+        "name": "Crear un pedido con datos validos",
+        "description": "",
+        "id": "gestion-de-pedidos;crear-un-pedido-con-datos-validos",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'pedidos'",
+            "result": {
+              "duration": 210000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 11
+          },
+          {
+            "name": "request read('classpath:data/pedido-valido.json')",
+            "result": {
+              "duration": 1900000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 12
+          },
+          {
+            "name": "method post",
+            "result": {
+              "duration": 284300000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 13,
+            "doc_string": {
+              "content_type": "",
+              "value": "1 > [request] 281 ms\n1 > POST https://api-qa.tienda-demo.local/pedidos\n1 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n1 > Content-Type: application/json; charset=UTF-8\n1 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n{\"clienteId\": \"CLI-1001\", \"items\": [{\"sku\": \"LAP-14-001\", \"cantidad\": 1}], \"medioPago\": \"TARJETA\"}\n\n1 < 201\n1 < Content-Type: application/json\n1 < X-Request-Id: 7f3c0001-aa21-4c0e-9d1e-0b1c000001\n{\"pedidoId\": \"PED-50021\", \"estado\": \"CREADO\", \"total\": 899.99}\n",
+              "line": 13
+            }
+          },
+          {
+            "name": "status 201",
+            "result": {
+              "duration": 300000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 14
+          },
+          {
+            "name": "match response == { pedidoId: '#string', estado: 'CREADO', total: '#number' }",
+            "result": {
+              "duration": 3100000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 15
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 9
+          },
+          {
+            "name": "@pedidos",
+            "line": 9
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:08.333Z",
+        "line": 18,
+        "name": "Consultar un pedido existente",
+        "description": "",
+        "id": "gestion-de-pedidos;consultar-un-pedido-existente",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'pedidos', 'PED-50021'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 19
+          },
+          {
+            "name": "method get",
+            "result": {
+              "duration": 97800000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 20,
+            "doc_string": {
+              "content_type": "",
+              "value": "2 > [request] 95 ms\n2 > GET https://api-qa.tienda-demo.local/pedidos/PED-50021\n2 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n2 > Content-Type: application/json; charset=UTF-8\n2 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n\n2 < 200\n2 < Content-Type: application/json\n2 < X-Request-Id: 7f3c0002-aa21-4c0e-9d1e-0b1c000002\n{\"pedidoId\": \"PED-50021\", \"estado\": \"CREADO\", \"clienteId\": \"CLI-1001\", \"total\": 899.99}\n",
+              "line": 20
+            }
+          },
+          {
+            "name": "status 200",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 21
+          },
+          {
+            "name": "match response.estado == 'CREADO'",
+            "result": {
+              "duration": 900000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 22
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 17
+          },
+          {
+            "name": "@pedidos",
+            "line": 17
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:08.712Z",
+        "line": 25,
+        "name": "Consultar un pedido que no existe",
+        "description": "",
+        "id": "gestion-de-pedidos;consultar-un-pedido-que-no-existe",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'pedidos', 'PED-99999'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 26
+          },
+          {
+            "name": "method get",
+            "result": {
+              "duration": 64400000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 27,
+            "doc_string": {
+              "content_type": "",
+              "value": "3 > [request] 62 ms\n3 > GET https://api-qa.tienda-demo.local/pedidos/PED-99999\n3 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n3 > Content-Type: application/json; charset=UTF-8\n3 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n\n3 < 404\n3 < Content-Type: application/json\n3 < X-Request-Id: 7f3c0003-aa21-4c0e-9d1e-0b1c000003\n{\"codigo\": \"PEDIDO_NO_ENCONTRADO\", \"mensaje\": \"No existe el pedido PED-99999\"}\n",
+              "line": 27
+            }
+          },
+          {
+            "name": "status 404",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 28
+          },
+          {
+            "name": "match response.codigo == 'PEDIDO_NO_ENCONTRADO'",
+            "result": {
+              "duration": 700000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 29
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regresion",
+            "line": 24
+          },
+          {
+            "name": "@pedidos",
+            "line": 24
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:10.903Z",
+        "line": 33,
+        "name": "Rechazar un pedido cuando no hay stock suficiente",
+        "description": "",
+        "id": "gestion-de-pedidos;rechazar-un-pedido-cuando-no-hay-stock-suficiente",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'pedidos'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 34
+          },
+          {
+            "name": "request { clienteId: 'CLI-1001', items: [{ sku: 'MON-27-004', cantidad: 50 }], medioPago: 'TARJETA' }",
+            "result": {
+              "duration": 1100000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 35
+          },
+          {
+            "name": "method post",
+            "result": {
+              "duration": 1876200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 36,
+            "doc_string": {
+              "content_type": "",
+              "value": "4 > [request] 1873 ms\n4 > POST https://api-qa.tienda-demo.local/pedidos\n4 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n4 > Content-Type: application/json; charset=UTF-8\n4 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n{\"clienteId\": \"CLI-1001\", \"items\": [{\"sku\": \"MON-27-004\", \"cantidad\": 50}], \"medioPago\": \"TARJETA\"}\n\n4 < 500\n4 < Content-Type: application/json\n4 < X-Request-Id: 7f3c0004-aa21-4c0e-9d1e-0b1c000004\n{\"timestamp\": \"2026-10-23T15:42:09.871+00:00\", \"status\": 500, \"error\": \"Internal Server Error\", \"path\": \"/pedidos\"}\n",
+              "line": 36
+            }
+          },
+          {
+            "name": "status 409",
+            "result": {
+              "duration": 400000,
+              "status": "failed",
+              "error_message": "status code was: 500, expected: 409, response time in milliseconds: 1873, url: https://api-qa.tienda-demo.local/pedidos, response: \n{\"timestamp\": \"2026-10-23T15:42:09.871+00:00\", \"status\": 500, \"error\": \"Internal Server Error\", \"path\": \"/pedidos\"}\nclasspath:features/pedidos/pedidos.feature:37"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 37
+          },
+          {
+            "name": "match response.codigo == 'STOCK_INSUFICIENTE'",
+            "result": {
+              "duration": 0,
+              "status": "skipped"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 38
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regresion",
+            "line": 32
+          },
+          {
+            "name": "@pedidos",
+            "line": 32
+          },
+          {
+            "name": "@inventario",
+            "line": 32
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:11.441Z",
+        "line": 49,
+        "name": "Crear pedido con diferentes medios de pago",
+        "description": "",
+        "id": "gestion-de-pedidos;crear-pedido-con-diferentes-medios-de-pago;;2",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "name": "path 'pedidos'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 43
+          },
+          {
+            "name": "request { clienteId: 'CLI-2002', items: [{ sku: 'AUD-BT-010', cantidad: 2 }], medioPago: 'TARJETA' }",
+            "result": {
+              "duration": 900000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 44
+          },
+          {
+            "name": "method post",
+            "result": {
+              "duration": 223500000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 45,
+            "doc_string": {
+              "content_type": "",
+              "value": "5 > [request] 221 ms\n5 > POST https://api-qa.tienda-demo.local/pedidos\n5 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n5 > Content-Type: application/json; charset=UTF-8\n5 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n{\"clienteId\": \"CLI-2002\", \"items\": [{\"sku\": \"AUD-BT-010\", \"cantidad\": 2}], \"medioPago\": \"TARJETA\"}\n\n5 < 201\n5 < Content-Type: application/json\n5 < X-Request-Id: 7f3c0005-aa21-4c0e-9d1e-0b1c000005\n{\"pedidoId\": \"PED-50023\", \"estado\": \"CREADO\", \"medioPago\": \"TARJETA\"}\n",
+              "line": 45
+            }
+          },
+          {
+            "name": "status 201",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 46
+          },
+          {
+            "name": "match response.medioPago == 'TARJETA'",
+            "result": {
+              "duration": 600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 47
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regresion",
+            "line": 48
+          },
+          {
+            "name": "@pagos",
+            "line": 48
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:11.993Z",
+        "line": 50,
+        "name": "Crear pedido con diferentes medios de pago",
+        "description": "",
+        "id": "gestion-de-pedidos;crear-pedido-con-diferentes-medios-de-pago;;3",
+        "type": "scenario",
+        "keyword": "Scenario Outline",
+        "steps": [
+          {
+            "name": "path 'pedidos'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 43
+          },
+          {
+            "name": "request { clienteId: 'CLI-2002', items: [{ sku: 'AUD-BT-010', cantidad: 2 }], medioPago: 'TRANSFERENCIA' }",
+            "result": {
+              "duration": 900000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 44
+          },
+          {
+            "name": "method post",
+            "result": {
+              "duration": 236500000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 45,
+            "doc_string": {
+              "content_type": "",
+              "value": "6 > [request] 234 ms\n6 > POST https://api-qa.tienda-demo.local/pedidos\n6 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n6 > Content-Type: application/json; charset=UTF-8\n6 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n{\"clienteId\": \"CLI-2002\", \"items\": [{\"sku\": \"AUD-BT-010\", \"cantidad\": 2}], \"medioPago\": \"TRANSFERENCIA\"}\n\n6 < 201\n6 < Content-Type: application/json\n6 < X-Request-Id: 7f3c0006-aa21-4c0e-9d1e-0b1c000006\n{\"pedidoId\": \"PED-50024\", \"estado\": \"CREADO\", \"medioPago\": \"TRANSFERENCIA\"}\n",
+              "line": 45
+            }
+          },
+          {
+            "name": "status 201",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 46
+          },
+          {
+            "name": "match response.medioPago == 'TRANSFERENCIA'",
+            "result": {
+              "duration": 600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 47
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regresion",
+            "line": 49
+          },
+          {
+            "name": "@pagos",
+            "line": 49
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:12.452Z",
+        "line": 53,
+        "name": "Cancelar un pedido en estado CREADO",
+        "description": "",
+        "id": "gestion-de-pedidos;cancelar-un-pedido-en-estado-creado",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'pedidos', 'PED-50021', 'cancelacion'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 54
+          },
+          {
+            "name": "request { motivo: 'Cliente desiste de la compra' }",
+            "result": {
+              "duration": 500000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 55
+          },
+          {
+            "name": "method post",
+            "result": {
+              "duration": 143900000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 56,
+            "doc_string": {
+              "content_type": "",
+              "value": "7 > [request] 141 ms\n7 > POST https://api-qa.tienda-demo.local/pedidos/PED-50021/cancelacion\n7 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n7 > Content-Type: application/json; charset=UTF-8\n7 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n{\"motivo\": \"Cliente desiste de la compra\"}\n\n7 < 200\n7 < Content-Type: application/json\n7 < X-Request-Id: 7f3c0007-aa21-4c0e-9d1e-0b1c000007\n{\"pedidoId\": \"PED-50021\", \"estado\": \"PENDIENTE_CANCELACION\", \"fechaCancelacion\": null}\n",
+              "line": 56
+            }
+          },
+          {
+            "name": "status 200",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 57
+          },
+          {
+            "name": "match response.estado == 'CANCELADO'",
+            "result": {
+              "duration": 1400000,
+              "status": "failed",
+              "error_message": "match failed: EQUALS\n  $ | not equal (STRING:STRING)\n  'PENDIENTE_CANCELACION'\n  'CANCELADO'\n\nclasspath:features/pedidos/pedidos.feature:58"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 58
+          },
+          {
+            "name": "match response.fechaCancelacion == '#notnull'",
+            "result": {
+              "duration": 0,
+              "status": "skipped"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 59
+          }
+        ],
+        "tags": [
+          {
+            "name": "@regresion",
+            "line": 52
+          },
+          {
+            "name": "@pedidos",
+            "line": 52
+          }
+        ]
+      },
+      {
+        "line": 4,
+        "name": "",
+        "description": "",
+        "type": "background",
+        "keyword": "Background",
+        "steps": [
+          {
+            "name": "url baseUrl",
+            "result": {
+              "duration": 420000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 5
+          },
+          {
+            "name": "def token = call read('classpath:auth/login.feature') { usuario: 'qa-bot' }",
+            "result": {
+              "duration": 312600000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 6
+          },
+          {
+            "name": "header Authorization = 'Bearer ' + token.accessToken",
+            "result": {
+              "duration": 180000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "*",
+            "line": 7
+          }
+        ]
+      },
+      {
+        "start_timestamp": "2026-10-23T15:42:12.890Z",
+        "line": 62,
+        "name": "Listar los pedidos de un cliente",
+        "description": "",
+        "id": "gestion-de-pedidos;listar-los-pedidos-de-un-cliente",
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "name": "path 'clientes', 'CLI-1001', 'pedidos'",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Given",
+            "line": 63
+          },
+          {
+            "name": "param pagina = 1",
+            "result": {
+              "duration": 100000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 64
+          },
+          {
+            "name": "method get",
+            "result": {
+              "duration": 121700000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "When",
+            "line": 65,
+            "doc_string": {
+              "content_type": "",
+              "value": "8 > [request] 119 ms\n8 > GET https://api-qa.tienda-demo.local/clientes/CLI-1001/pedidos?pagina=1\n8 > Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJxYS1ib3QifQ.REDACTED-DEMO\n8 > Content-Type: application/json; charset=UTF-8\n8 > User-Agent: Apache-HttpClient/4.5.14 (Java/17.0.12)\n\n8 < 200\n8 < Content-Type: application/json\n8 < X-Request-Id: 7f3c0008-aa21-4c0e-9d1e-0b1c000008\n[{\"pedidoId\": \"PED-50021\"}, {\"pedidoId\": \"PED-50023\"}, {\"pedidoId\": \"PED-50024\"}]\n",
+              "line": 65
+            }
+          },
+          {
+            "name": "status 200",
+            "result": {
+              "duration": 200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "Then",
+            "line": 66
+          },
+          {
+            "name": "match each response contains { pedidoId: '#string' }",
+            "result": {
+              "duration": 2200000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "karate",
+              "arguments": []
+            },
+            "keyword": "And",
+            "line": 67
+          }
+        ],
+        "tags": [
+          {
+            "name": "@smoke",
+            "line": 61
+          },
+          {
+            "name": "@pedidos",
+            "line": 61
+          }
+        ]
+      }
+    ],
+    "name": "features/pedidos/pedidos.feature",
+    "description": "Gestion de pedidos\nComo cliente de la tienda quiero crear, consultar y cancelar pedidos",
+    "id": "gestion-de-pedidos",
+    "keyword": "Feature",
+    "uri": "features/pedidos/pedidos.feature",
+    "tags": [
+      {
+        "name": "@api",
+        "line": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,6 @@
+# Reportes generados durante el laboratorio
+evidencias/
+
+# Entorno virtual local de Python
+.venv/
+__pycache__/
