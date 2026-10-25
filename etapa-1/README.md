@@ -33,6 +33,10 @@ Conecta Cursor a un **servidor MCP** del proyecto — en este caso Chrome DevToo
 
 Continúa el Laboratorio 4 con tres servidores MCP que cubren huecos distintos del ciclo de desarrollo: **CodeGraph** (explicación detallada del grafo de código local y medición de su efecto en llamadas y tokens), **Figma** (MCP remoto con OAuth para pasar de un frame a un componente con tokens; demostración del instructor con plan B) y **Playwright** (verificación por árbol de accesibilidad y generación de un spec ejecutable). Incluye rutas para Cursor y Claude Code, y cierra con un flujo integrado y una reflexión de seguridad.
 
+### [Laboratorio 4C: Tipos de MCP — locales y remotos](./laboratorios/mcp/tipos/README.md)
+
+Contrasta los dos tipos de servidor MCP con foco en **Kiro** y equivalencias en Cursor y Claude Code: **Playwright** como MCP **local** (stdio, `npx`, versión fijada) y **Azure DevOps** como MCP **remoto** (Streamable HTTP + OAuth con Microsoft Entra). Incluye mínimo privilegio con toolsets, solo lectura y `autoApprove`, y un plan B con el servidor local de Azure DevOps.
+
 ### [Laboratorio 5: Hooks](./laboratorios/hooks/README.md)
 
 Explora **hooks** como middleware del agente: scripts que Cursor ejecuta antes o después de eventos clave (`beforeShellExecution`, `postToolUse`, etc.). Implementarás observabilidad (registro en archivo) y controles preventivos (bloqueo de comandos peligrosos) sobre la ejecución real de herramientas.

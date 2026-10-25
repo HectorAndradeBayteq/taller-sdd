@@ -1,0 +1,6 @@
+# Salidas del MCP de Playwright (capturas, trazas temporales)
+.playwright-mcp/
+
+# Evidencia personal del participante (se conserva solo la plantilla)
+evidencia/*
+!evidencia/README.md

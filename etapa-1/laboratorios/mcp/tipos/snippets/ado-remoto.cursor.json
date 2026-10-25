@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "azure-devops": {
+      "url": "https://mcp.dev.azure.com/{organization}",
+      "type": "http",
+      "headers": {
+        "X-MCP-Toolsets": "wit,repos",
+        "X-MCP-Readonly": "true"
+      },
+      "auth": {
+        "CLIENT_ID": "{client-id}"
+      }
+    }
+  }
+}
