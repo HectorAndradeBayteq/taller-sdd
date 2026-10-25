@@ -45,6 +45,10 @@ Explora **hooks** como middleware del agente: scripts que Cursor ejecuta antes o
 
 Muestra cómo **trasladar configuración de proyecto** entre Cursor y Claude Code: equivalencias entre `AGENTS.md` y `CLAUDE.md`, `.cursor/mcp.json` y `.mcp.json`, y skills copiando `.cursor/skills` a `.claude/skills`. El flujo práctico mantiene instrucciones y un servidor MCP de laboratorio alineados en ambos clientes.
 
+### [Laboratorio 6B: Plugins y Powers (Kiro, Claude Code y Cursor)](./laboratorios/plugins/README.md)
+
+Explica qué es un **plugin** —en Kiro, un **Power**—, de qué se compone (manifiesto, skills, MCP, hooks, steering) y cómo se instala, con citas a la documentación oficial de cada fabricante. Se centra en Kiro y compara con Claude Code y Cursor: formato abierto **Agent Plugins**, activación por keywords frente a carga permanente, scopes y marketplaces custom. En la práctica se instala el Power **API Testing with Postman** desde el catálogo oficial de Kiro para probar una API de demo, y el plugin **Playwright** desde los marketplaces oficiales de Claude Code y Cursor.
+
 ### [Laboratorio 7: Seguridad](./laboratorios/security/README.md)
 
 Cierra la secuencia principal con **inyección de prompt indirecta** vía resultados de herramientas MCP en un entorno controlado: provocar exfiltración simulada, comparar comportamiento entre plataformas y mitigar con hooks (`beforeMCPExecution`, `beforeShellExecution`) y reglas de uso de herramientas. Requiere haber completado los laboratorios de MCP y Hooks.

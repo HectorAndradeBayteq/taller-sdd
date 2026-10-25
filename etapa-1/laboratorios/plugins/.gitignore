@@ -1,0 +1,7 @@
+# Artefactos generados por los participantes durante el laboratorio
+evidencia/
+.postman.json
+.kiro/
+.claude/
+.cursor/
+.playwright-mcp/

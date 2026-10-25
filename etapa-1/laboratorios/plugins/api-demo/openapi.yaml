@@ -1,0 +1,97 @@
+openapi: 3.0.3
+info:
+  title: api-demo (Laboratorio de plugins)
+  version: 1.0.0
+  description: API en memoria para practicar pruebas de API con el Power de Postman.
+servers:
+  - url: http://localhost:3100
+paths:
+  /health:
+    get:
+      summary: Estado del servicio
+      responses:
+        "200":
+          description: Servicio operativo
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status: { type: string, example: ok }
+  /api/tasks:
+    get:
+      summary: Listar tareas
+      responses:
+        "200":
+          description: Lista de tareas
+          content:
+            application/json:
+              schema:
+                type: array
+                items: { $ref: "#/components/schemas/Task" }
+    post:
+      summary: Crear tarea
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema: { $ref: "#/components/schemas/NewTask" }
+      responses:
+        "201":
+          description: Tarea creada
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Task" }
+        "400":
+          description: Validación fallida
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+  /api/tasks/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema: { type: integer }
+    get:
+      summary: Obtener tarea
+      responses:
+        "200":
+          description: Tarea encontrada
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Task" }
+        "404":
+          description: No existe
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+    delete:
+      summary: Eliminar tarea
+      responses:
+        "204": { description: Eliminada }
+        "404":
+          description: No existe
+          content:
+            application/json:
+              schema: { $ref: "#/components/schemas/Error" }
+components:
+  schemas:
+    NewTask:
+      type: object
+      required: [title]
+      properties:
+        title: { type: string, minLength: 1, maxLength: 120 }
+        done: { type: boolean, default: false }
+    Task:
+      allOf:
+        - $ref: "#/components/schemas/NewTask"
+        - type: object
+          required: [id, done]
+          properties:
+            id: { type: integer }
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error: { type: string }
