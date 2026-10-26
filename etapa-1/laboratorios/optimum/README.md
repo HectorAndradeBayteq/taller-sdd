@@ -14,7 +14,7 @@ Al final del laboratorio podrás:
 **Prerrequisitos:**
 
 - [Laboratorio 3: Ventana de contexto y atención](../context/general/README.md) — panel Context, categorías de coste fijo y variable.
-- [Laboratorio 4: MCP (Model Context Protocol)](../mcp/README.md) — configuración de servidores en `.cursor/mcp.json`.
+- [Laboratorio 4: MCP (Model Context Protocol)](../mcp/fundamentos/README.md) — configuración de servidores en `.cursor/mcp.json`.
 - Cursor con modo **Agent** y panel **Context** visible.
 - **Node.js** v18+ (Caveman, MarkItDown MCP).
 - **Python 3.10+** (instalación nativa de MarkItDown MCP).
@@ -214,7 +214,7 @@ Instalación paso a paso en archivos separados bajo `tools/`. Ejecuta los comand
 - **MarkItDown MCP** integra la conversión en el agent loop sin scripts ad hoc en el repo; nativo y Docker comparten el mismo contrato de herramienta.
 - **Caveman** reduce tokens de **salida**; combínalo con entradas ligeras para sesiones largas, pero mide el coste fijo que añade la skill (~1–1.5k tokens/turno según upstream).
 - **CCHV** y **Langfuse** cierran el ciclo de observabilidad: historial del IDE vs trazas centralizadas con tokens y costes por run.
-- Las tres palancas (formato, conversión, estilo) se apoyan en el marco del [Laboratorio 3](../context/general/README.md) y en MCP del [Laboratorio 4](../mcp/README.md).
+- Las tres palancas (formato, conversión, estilo) se apoyan en el marco del [Laboratorio 3](../context/general/README.md) y en MCP del [Laboratorio 4](../mcp/fundamentos/README.md).
 
 Tras el taller, vuelve a [Laboratorio 5: Hooks](../hooks/README.md) para ver cómo interceptar tool calls (p. ej. bloquear lecturas de rutas sensibles) o a [Laboratorio 7: Seguridad](../security/README.md) para gobernanza de MCP en entornos con datos reales.
 

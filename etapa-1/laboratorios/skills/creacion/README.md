@@ -18,7 +18,7 @@ Al final de esta parte podrás:
 - Esta carpeta (`creacion/`) abierta como **workspace** (Cursor o terminal en la carpeta del lab).
 - *(Solo si usas la alternativa vskill)* Node.js 18+ y una API key de proveedor LLM (p. ej. Anthropic) para evals/A/B en Studio.
 
-**Material técnico del laboratorio:** configuración local en [`.claude/settings.local.json`](./.claude/settings.local.json) (plugin `skill-creator` habilitado). Skills de ejemplo opcionales en [`skills/`](./skills/).
+**Material técnico del laboratorio:** configuración local en [`.claude/settings.local.json`](./.claude/settings.local.json) (plugin `skill-creator` habilitado). Skills de ejemplo opcionales en [`.claude/skills/`](./.claude/skills/).
 
 ---
 
