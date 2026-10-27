@@ -2,19 +2,11 @@
 
 Este laboratorio recorre con [SDD Devkit](https://github.com/juanca202/sdd-devkit) el camino de una historia de usuario ya cerrada a sus pruebas automatizadas: casos de prueba documentados, automatización 1:1 en Katalon Studio, ejecución de la suite, reporte de los defectos encontrados y publicación de la corrida en Azure DevOps.
 
-El insumo es la historia 34266 de Azure DevOps, que se sincroniza al proyecto como US-34266. Su contenido de referencia está en [user-story-sample.md](./assets/user-story-sample.md): la historia *Acceso demo de la aplicación*, un modo demo de solo lectura, alimentado por archivos JSON en `public/data/demos`, que intercepta las mutaciones y deriva al flujo de autenticación. La historia está en Ready y trae once criterios (AC-001 a AC-011) con reglas de negocio enlazadas (BR-01 a BR-09).
+**US-34266 (Azure DevOps #34266): Acceso demo de la aplicación.** Es un modo de solo lectura que toma sus datos de los JSON de `public/data/demos`. Cuando el usuario intenta modificar algo, la acción se bloquea y se le envía al flujo de autenticación.
 
 ## Objetivo
 
-Dejar cada criterio de US-34266 con un caso de prueba documentado, automatizado, ejecutado y con su resultado publicado en Azure DevOps.
-
-1. Crear el proyecto de pruebas desde el proyecto base de Katalon, enlazado al sistema externo en Azure DevOps.
-2. Sincronizar la historia a automatizar desde Azure DevOps.
-3. Derivar los casos de prueba de los criterios de aceptación.
-4. Automatizar esos casos en Katalon en una rama `test/`, sin inventar casos nuevos.
-5. Ejecutar la suite en Katalon Studio y validar cada fallo: corregir los falsos positivos y reportar los defectos.
-6. Publicar la corrida en Azure DevOps con sus evidencias.
-7. Ejecutar la compuerta de calidad y verificar la cobertura de AC-001 a AC-011.
+Cubrir cada criterio de US-34266 con un caso de prueba automatizado en Katalon, ejecutado y con el resultado publicado en Azure DevOps.
 
 ## Pre-requisitos
 
@@ -28,7 +20,7 @@ Dejar cada criterio de US-34266 con un caso de prueba documentado, automatizado,
 ## Definition of Done
 
 - Cada criterio de US-34266 tiene al menos un caso de prueba documentado.
-- Cada caso automatizado o asistido tiene un caso de Katalon que se ejecuta en su Test Suite. Los casos manuales, si quedan, tienen su motivo escrito.
+- Cada caso automatizado o asistido tiene un caso de Katalon que se ejecuta en su Test Suite.
 - Cada fallo de la ejecución quedó clasificado: los falsos positivos, corregidos; los defectos, reportados como bug en Azure DevOps.
 - La corrida está publicada en el Test Plan de Azure DevOps con sus evidencias.
 - `/quality-check` termina en verde.
@@ -75,6 +67,8 @@ flowchart TD
 - `npm install` terminó sin errores.
 
 ## Paso 2. Obtener la historia (10 min)
+
+La historia describe una feature de [Tripot](https://factor.ec/tripot), una aplicación de finanzas personales para web y web móvil. Las pruebas se ejecutan contra la aplicación desplegada en `https://factor.ec/tripot`; su código no vive en el proyecto de pruebas.
 
 `/work-define` con el modificador `sync` trae la historia desde Azure DevOps y crea la US local en la carpeta de cambios del proyecto.
 
