@@ -8,11 +8,13 @@ Este laboratorio recorre con [SDD Devkit](https://github.com/juanca202/sdd-devki
 
 Cubrir cada criterio de US-34266 con un caso de prueba automatizado en Katalon, ejecutado y con el resultado publicado en Azure DevOps.
 
+**Duración:** 1 hora 40 minutos.
+
 ## Pre-requisitos
 
-- Cursor, Node.js 22+ y Git.
+- [Kiro](https://kiro.dev), Node.js 22+ y Git.
 - [Katalon Studio](https://katalon.com/download).
-- SDD Devkit instalado (ver [laboratorio 6](./lab-006-helpdesk.md#pre-requisitos)).
+- Una cuenta de Figma.
 - Acceso al proyecto de Azure DevOps [Bayteq IA](https://dev.azure.com/BayteqDev/Bayteq%20IA) y al proyecto base [katalon-base](https://github.com/juanca202/katalon-base.git).
 - Permiso de lectura sobre la historia 34266 y de escritura sobre work items (para crear los bugs) en Azure DevOps.
 - Un Personal Access Token de Azure DevOps con permiso *Test Management (Read & write)* y el ID del Test Plan donde están los Test Cases de la historia.
@@ -30,7 +32,7 @@ Cubrir cada criterio de US-34266 con un caso de prueba automatizado en Katalon, 
 
 ```mermaid
 flowchart TD
-    P1["1. Creación del proyecto<br/>/arch-init (katalon-base)"] --> P2["2. Obtener la historia<br/>/work-define sync 34266"]
+    P0["0. Preparación del entorno<br/>plugins y acceso a ADO y Figma"] --> P1["1. Creación del proyecto<br/>/arch-init (katalon-base)"] --> P2["2. Obtener la historia<br/>/work-define sync 34266"]
     P2 --> P3["3. Lectura de la historia<br/>(en grupo)"]
     P3 --> P4["4. Casos de prueba<br/>/test-define US-34266"]
     P4 --> P5["5. Automatización<br/>/work-implement (rama test/)"]
@@ -49,7 +51,37 @@ flowchart TD
     P10 --> P11["11. Integración<br/>/work-integrate"]
 ```
 
-## Paso 1. Creación del proyecto (15 min)
+## Paso 0. Preparación del entorno (5 min)
+
+### Plugins
+
+Instalen en Kiro [SDD Devkit](https://github.com/juanca202/sdd-devkit) y [SDD Utils](https://github.com/juanca202/sdd-utils). Para cada uno: panel de Powers → *Add Custom Power* → *Import power from GitHub* → peguen la URL del repositorio.
+
+### Katalon Studio
+
+En Katalon Studio, entren en *Katalon Store*, busquen **Chrome DevTools Protocol Integration** y pulsen *Install*.
+
+### Servidores MCP
+
+Los servidores MCP vienen declarados en el proyecto base (`.kiro/settings/mcp.json` y `.mcp.json`): `ado-bayteq` (Azure DevOps), `katalon-studio` y `figma`. No hay que agregarlos; solo configurar el acceso a Azure DevOps y a Figma:
+
+- **Azure DevOps.** `ado-bayteq` se autentica con el Personal Access Token de la variable de entorno `ADO_PAT_BAYTEQ`. El token necesita permiso de *Work Items (Read & write)* y *Test Management (Read & write)*. Exporten la variable antes de abrir Kiro; si Kiro ya estaba abierto, reinícienlo.
+
+  ```bash
+  export ADO_PAT_BAYTEQ="<su-token>"
+  ```
+
+- **Figma.** `figma` se autentica con su cuenta de Figma por OAuth. La primera vez que se conecte, Kiro abre el navegador para que inicien sesión y autoricen el acceso.
+
+`katalon-studio` no requiere configuración, pero responde solo con Katalon Studio abierto.
+
+### Antes de seguir
+
+- SDD Devkit y SDD Utils aparecen en el panel de Powers.
+- Chrome DevTools Protocol Integration aparece instalado en Katalon Studio.
+- `echo $ADO_PAT_BAYTEQ` muestra el token en la terminal desde la que abren Kiro.
+
+## Paso 1. Creación del proyecto (10 min)
 
 `/arch-init` crea el proyecto de pruebas a partir del proyecto base e inicializa su harness, con el sistema bajo prueba alojado en Azure DevOps.
 
@@ -63,10 +95,11 @@ flowchart TD
 
 - El repositorio tiene `AGENTS.md`, `.agents/MEMORY.md` y `.sdd-devkit/settings.json`.
 - El stack de pruebas quedó declarado (Katalon Studio) y la compuerta de calidad corre sobre el proyecto base.
-- `.env` existe a partir de `.env.example`, con las credenciales de prueba, `ADO_PAT` y `ADO_TEST_PLAN_ID`. No se versiona.
+- `.env` existe a partir de `.env.example`, con las credenciales de prueba. No se versiona. `ADO_PAT` y `ADO_TEST_PLAN_ID` se completan en el Paso 5.
 - `npm install` terminó sin errores.
+- En el panel *MCP Servers* de Kiro, `ado-bayteq`, `figma` y `katalon-studio` aparecen conectados (este último, con Katalon Studio abierto).
 
-## Paso 2. Obtener la historia (10 min)
+## Paso 2. Obtener la historia (5 min)
 
 La historia describe una feature de [Tripot](https://factor.ec/tripot), una aplicación de finanzas personales para web y web móvil. Las pruebas se ejecutan contra la aplicación desplegada en `https://factor.ec/tripot`; su código no vive en el proyecto de pruebas.
 
@@ -83,11 +116,11 @@ La historia describe una feature de [Tripot](https://factor.ec/tripot), una apli
 - La historia existe en la carpeta de cambios, con sus criterios de aceptación y reglas de negocio.
 - El contenido coincide con el del tracker. [user-story-sample.md](./assets/user-story-sample.md) sirve de referencia.
 
-## Paso 3. Lectura de la historia (10 min)
+## Paso 3. Lectura de la historia (5 min)
 
 Lean la historia US-34266 en grupo antes de llamar a un skill. Identifiquen qué criterios son de interfaz (AC-001, AC-004, AC-005, AC-008, AC-009), cuáles de datos (AC-002, AC-010) y cuáles de comportamiento transversal (AC-003, AC-007, AC-011). Esa clasificación orienta el nivel de prueba: unitaria, integración o e2e.
 
-## Paso 4. Casos de prueba (20 min)
+## Paso 4. Casos de prueba (10 min)
 
 `/test-define` deriva los casos de los criterios según IEEE 29119-4: camino feliz, error y límite.
 
@@ -97,9 +130,20 @@ Lean la historia US-34266 en grupo antes de llamar a un skill. Identifiquen qué
 /test-define US-34266
 ```
 
+Además de los casos de interfaz, pidan dos casos específicos:
+
+- **Prueba de API** (AC-002, AC-010): una petición `GET` a `https://factor.ec/tripot/data/demos/demo-user-us.json` responde `200` con un JSON que trae las ocho entidades de BR-03.
+- **Prueba visual de fidelidad** (AC-001, AC-004, AC-008, AC-009): las pantallas de `/auth`, el indicador de modo demo y el modal de autenticación coinciden con su diseño en [Figma](https://www.figma.com/design/gqc8Qb6Zh5oGdR5Ds08k4m/Untitled). Antes, activen el MCP `figma` en el panel *MCP Servers* de Kiro.
+
+```text
+/test-define agrega a US-34266 un caso de prueba de API que valide el JSON de demo-user-us.json (AC-002, AC-010)
+/test-define agrega a US-34266 un caso de prueba visual que compare /auth, el indicador demo y el modal de autenticación con su diseño en https://www.figma.com/design/gqc8Qb6Zh5oGdR5Ds08k4m/Untitled
+```
+
 ### Antes de seguir
 
 - Existe `test-cases/` con los casos generados.
+- Hay un caso de API y un caso visual; este último cita el frame de Figma de cada pantalla que compara.
 - Cada AC de la historia enlaza sus casos de prueba.
 - Cada caso declara precondiciones, pasos, datos y resultado esperado verificable.
 - Cada caso tiene su Test Case en Azure DevOps (`TC-<id>`), dentro del Test Suite de la historia en el Test Plan del proyecto. Ese es el plan que va en `ADO_TEST_PLAN_ID`.
@@ -116,9 +160,30 @@ Cada caso de prueba se ejecuta de una de tres formas:
 
 **Los casos manuales, en lo posible, no deben existir.** Antes de dejar un caso como manual, busquen cómo automatizarlo y, si un paso depende de una persona, conviértanlo en asistido. Un caso queda manual solo cuando ninguna de las dos opciones es viable, y el motivo queda escrito.
 
-## Paso 5. Automatización (40 min)
+## Paso 5. Automatización (20 min)
 
 `/work-implement` traduce cada caso documentado a un caso de Katalon, 1:1, en una rama `test/`.
+
+### Antes de implementar
+
+Envíen al agente estos dos mensajes, uno a la vez.
+
+Primero, la URL de la aplicación bajo prueba como variable de la automatización. La misma URL sirve para los casos de interfaz y para la prueba de API:
+
+```text
+Establece como variable para la automatización la URL de la app a probar: https://factor.ec/tripot. Esa misma URL es la base para la validación de API.
+```
+
+Después, las variables de Azure DevOps en `.env`, para publicar la corrida en el Paso 9:
+
+```text
+Configura en .env ADO_PAT con el valor de la variable de entorno ADO_PAT_BAYTEQ, la misma que usa el MCP ado-bayteq. Para ADO_TEST_PLAN_ID, consulta en Azure DevOps el ID del Test Plan donde se crearon los Test Cases de US-34266.
+```
+
+Comprueben que:
+
+- La URL `https://factor.ec/tripot` quedó en el Execution Profile, no escrita en los scripts.
+- `.env` tiene `ADO_PAT` y `ADO_TEST_PLAN_ID` con valor, y sigue fuera del control de versiones.
 
 ### Llamado
 
@@ -139,7 +204,7 @@ Cada caso de prueba se ejecuta de una de tres formas:
 - Los casos asistidos usan `askHuman()`, llevan la etiqueta `human` y están en su propia Test Suite.
 - No hay pruebas sin caso documentado ni casos automatizados o asistidos sin prueba.
 
-## Paso 6. Ejecución en Katalon Studio (20 min)
+## Paso 6. Ejecución en Katalon Studio (10 min)
 
 El agente no ejecuta la suite: Katalon Studio corre en local y la ejecución la hacen ustedes.
 
@@ -160,7 +225,7 @@ El agente no ejecuta la suite: Katalon Studio corre en local y la ejecución la 
 - El reporte de Allure muestra el árbol Historia → Criterio → Caso de prueba.
 - Tienen la lista de los casos en rojo.
 
-## Paso 7. Validación de los fallos (20 min)
+## Paso 7. Validación de los fallos (10 min)
 
 Cada caso en rojo es un falso positivo o un defecto del sistema. El agente revisa la evidencia de la ejecución contra el caso de prueba documentado y clasifica cada fallo.
 
@@ -190,7 +255,7 @@ Para corregir un falso positivo:
 - Los falsos positivos están corregidos y en verde en una nueva ejecución de la suite.
 - Ninguna prueba se marcó como omitida ni se relajó su aserción para ponerla en verde.
 
-## Paso 8. Reporte de bugs (15 min)
+## Paso 8. Reporte de bugs (5 min)
 
 `/work-plan` registra cada defecto como incidente `BUG-XXX`: qué está mal, con los pasos del caso de prueba, lo esperado, lo observado y la evidencia de la ejecución. No propone la corrección: esa se planifica en el repositorio de la aplicación. Con la integración de Azure DevOps activa, crea además el work item `Bug`.
 
@@ -206,7 +271,7 @@ Para corregir un falso positivo:
 - Cada incidente tiene su work item `Bug` en Azure DevOps, enlazado a la historia y al Test Case.
 - La línea del defecto en `Hallazgos` de `test-cases-automation.md` cita su `BUG-XXX`.
 
-## Paso 9. Publicación en Azure DevOps (10 min)
+## Paso 9. Publicación en Azure DevOps (5 min)
 
 `npm run ado:publish` toma el `JUnit_Report.xml` más reciente de `tests/katalon/Reports/`, crea un test run en el Test Plan de `ADO_TEST_PLAN_ID`, registra el resultado de cada Test Case a partir del `TC-<id>` del nombre del caso y adjunta las evidencias: capturas y video por caso, y el JUnit y el log en el run. Los casos sin `TC-<id>` no se publican.
 
@@ -231,7 +296,7 @@ Para publicar una ejecución que no es la última, pasen la ruta de su reporte: 
 - Ningún `TC-<id>` quedó sin test point en el plan. Si alguno quedó fuera, agréguenlo al Test Suite de la historia y vuelvan a publicar.
 - Desde el resultado en rojo pueden enlazar el `Bug` del paso 8.
 
-## Paso 10. Calidad y cobertura (15 min)
+## Paso 10. Calidad y cobertura (10 min)
 
 `/quality-check` revisa el código del repositorio (lint, formato, validaciones de arquitectura y CodeNarc). No ejecuta la suite de Katalon: un caso en rojo es un hallazgo sobre el sistema bajo prueba, no un fallo de este repositorio.
 
@@ -247,7 +312,7 @@ Para publicar una ejecución que no es la última, pasen la ruta de su reporte: 
 - El veredicto de `/quality-check` es verde.
 - `criteria-coverage.md` lista AC-001 a AC-011 con su caso de prueba, su estado y su resultado. Un caso con un defecto reportado queda `COVERED`, con resultado `FAIL` y su `BUG-XXX` enlazado.
 
-## Paso 11. Integración (10 min)
+## Paso 11. Integración (5 min)
 
 `/work-integrate` repite las puertas de cierre y hace merge de la rama `test/` hacia su rama de origen.
 
