@@ -108,7 +108,7 @@ La historia describe una feature de [Tripot](https://factor.ec/tripot), una apli
 ### Llamado
 
 ```text
-/work-define sync 34266
+/work-define sync [PEGAR ID DE LA HISTORIA DE USUARIO]
 ```
 
 ### Antes de seguir
@@ -127,7 +127,7 @@ Lean la historia US-34266 en grupo antes de llamar a un skill. Identifiquen qué
 ### Llamado
 
 ```text
-/test-define US-34266
+/test-define [RUTA DE LA HISTORIA DE USUARIO LOCAL]
 ```
 
 Además de los casos de interfaz, pidan dos casos específicos:
@@ -177,7 +177,7 @@ Establece como variable para la automatización la URL de la app a probar: https
 Después, las variables de Azure DevOps en `.env`, para publicar la corrida en el Paso 9:
 
 ```text
-Configura en .env ADO_PAT con el valor de la variable de entorno ADO_PAT_BAYTEQ, la misma que usa el MCP ado-bayteq. Para ADO_TEST_PLAN_ID, consulta en Azure DevOps el ID del Test Plan donde se crearon los Test Cases de US-34266.
+Para ADO_TEST_PLAN_ID, consulta en Azure DevOps el ID del Test Plan donde se crearon los Test Cases.
 ```
 
 Comprueben que:
@@ -188,7 +188,7 @@ Comprueben que:
 ### Llamado
 
 ```text
-/work-implement casos de prueba de US-34266
+/work-implement casos de prueba
 ```
 
 ### Qué cierran ustedes
