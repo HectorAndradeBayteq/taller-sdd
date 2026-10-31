@@ -30,26 +30,7 @@ Cubrir cada criterio de US-34266 con un caso de prueba automatizado en Katalon, 
 
 ## Flujo
 
-```mermaid
-flowchart TD
-    P0["0. Preparación del entorno<br/>plugins y acceso a ADO y Figma"] --> P1["1. Creación del proyecto<br/>/arch-init (katalon-base)"] --> P2["2. Obtener la historia<br/>/work-define sync 34266"]
-    P2 --> P3["3. Lectura de la historia<br/>(en grupo)"]
-    P3 --> P4["4. Casos de prueba<br/>/test-define US-34266"]
-    P4 --> P5["5. Automatización<br/>/work-implement (rama test/)"]
-    P5 --> P6["6. Ejecución en Katalon Studio<br/>npm run allure:katalon"]
-    P6 --> Q{"¿Hay casos<br/>en rojo?"}
-    Q -->|"Sí"| P7["7. Validación de los fallos<br/>/work-research"]
-    P7 --> C{"Clasificación<br/>del fallo"}
-    C -->|"Falso positivo"| FIX["Corregir la prueba<br/>/work-implement"]
-    FIX -.->|"volver a ejecutar"| P6
-    C -->|"Caso mal definido"| TD["Corregir el caso<br/>/test-define"]
-    TD -.-> P5
-    C -->|"Defecto"| P8["8. Reporte de bugs<br/>/work-plan (BUG-XXX + Bug en ADO)"]
-    P8 --> P9["9. Publicación en Azure DevOps<br/>npm run ado:publish"]
-    Q -->|"No"| P9
-    P9 --> P10["10. Calidad y cobertura<br/>/quality-check · /coverage-verify"]
-    P10 --> P11["11. Integración<br/>/work-integrate"]
-```
+![Flujo del laboratorio 7](./assets/workflow.png)
 
 ## Paso 0. Preparación del entorno (5 min)
 
