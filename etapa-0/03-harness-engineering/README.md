@@ -152,26 +152,22 @@ Cuatro empresas, cuatro métricas distintas — mismo patrón:
 
 **De lo general al detalle:** los 3 pilares agrupan por propósito; spec y estado son "convención del proyecto" — idénticos en cualquier IDE, a diferencia de la configuración (que cambia de sintaxis según la herramienta).
 
-### Comparación de harness entre Cursor y Claude Code
+### Comparación de harness entre herramientas
 
-Un mismo proyecto (Quarkus, transferencias bancarias) implementado con el mismo harness conceptual en dos IDEs distintos:
+Los mismos pilares del harness (guía base, skills, hooks, subagentes) existen en las principales herramientas del mercado — lo que cambia es la ruta y la sintaxis con la que cada una los reconoce:
 
-| | **Claude Code** (agente de terminal) | **Cursor** (IDE de edición) |
-|---|---|---|
-| Índice del proyecto | `CLAUDE.md` — qué stack + comandos | `AGENTS.md` — qué stack + comandos |
-| Reglas | `.claude/rules/arquitectura.md`, `stack.md`, `estandares-banco.md`, `tests.md` | `.cursor/rules/*.mdc` (arquitectura, stack, estándares, tests con scope de globs) |
-| Workflows | `commands/` — ej. `/revisar` | `commands/` — ej. `/revisar` |
-| Hooks + permisos | `settings.json` (allow/deny) | `hooks/` + allowlist |
-| Subagentes / skills | `agents/` · `skills/` | `agents/` · `skills/` |
-| Datos vivos / memoria | `.mcp.json` · `memory` | `mcp.json` · `memories` |
-| Contrato (spec) | `specs/transferencia.md` | `specs/transferencia.md` |
-| Estado del proyecto | `estado/` · `init.sh` — `feature_list`, `progress`, `checkpoints` | `estado/` · `init.sh` — idéntico |
+| Configuración | Cursor | Claude Code | Codex (OpenAI) | GitHub Copilot |
+|---|---|---|---|---|
+| **Instrucciones persistentes** | `AGENTS.md` (también legado: `.cursorrules`) | `CLAUDE.md` — ⚠️ no lee `AGENTS.md` nativamente | `AGENTS.md` | `.github/copilot-instructions.md` |
+| **Skills** | `.cursor/skills/` · `.claude/skills/` · `.agents/skills/` | `.claude/skills/` | `.agents/skills/` · `.codex/skills/` | `.github/skills/` |
+| **Hooks** | `.cursor/hooks.json` | Se configuran en `.claude/settings.json` (clave `"hooks"`) — ⚠️ `.claude/hooks/` es solo convención para guardar los scripts, no la ruta que Claude Code lee | `.codex/hooks.json` | `.github/hooks/*.json` |
+| **Subagentes** | `.cursor/agents/` | `.claude/agents/` | `.codex/agents/` | `.github/agents/*.agent.md` — señala la compatibilidad de los agentes con el directorio `.agents` para subagentes |
 
-**Dos tipos de archivos, ambos parte del harness:**
-- **Config** (guía, reglas, hooks, permisos, subagentes, skills, MCP) — cambia de sintaxis según el IDE.
-- **Estado del proyecto** (spec, feature_list, progress, checkpoints) — es convención de proyecto, idéntico en ambos.
+**Dos lecturas importantes de esta tabla:**
+- **`.agents/` y `AGENTS.md` se están consolidando como convención cruzada** — Cursor y Codex ya lo adoptan como ruta nativa (o alternativa) para instrucciones y skills; Claude Code es la excepción notable: usa su propio `CLAUDE.md` y no lee `AGENTS.md`.
+- **Un mismo concepto no siempre vive donde "debería"** — el ejemplo más claro son los hooks de Claude Code: el directorio `.claude/hooks/` es solo una convención para guardar los scripts, pero la configuración real que los dispara vive en `.claude/settings.json`. Vale la pena verificar la documentación oficial de cada herramienta antes de asumir la ruta por analogía con otra.
 
-**Mismo modelo, misma spec:** solo cambia cómo cada IDE envuelve al agente; la spec en `/specs` es idéntica e interoperable entre ambas herramientas.
+**Mismo modelo, distinta sintaxis:** el harness conceptual (guía, reglas, hooks, subagentes, skills) es portable entre herramientas — lo que no es portable automáticamente es el archivo o carpeta exacto que cada una espera. Ver también el [Laboratorio 6: Compatibilidad de configuración entre agentes](../../etapa-1/laboratorios/config/README.md) para un ejercicio práctico de esta migración.
 
 ### Configuración de los agentes
 

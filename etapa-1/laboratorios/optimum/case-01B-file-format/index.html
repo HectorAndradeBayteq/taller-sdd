@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Requirements Engineering - 3 Pantallas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .slides-wrapper {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateX(100%);
+            transition: all 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .slide.prev {
+            transform: translateX(-100%);
+        }
+
+        /* Colores por pantalla */
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .slide-2 {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+        }
+
+        .slide-3 {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            line-height: 1.6;
+        }
+
+        .content-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .list-item {
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .list-item:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .highlight {
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        /* Controles de navegación */
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 50px;
+            background: #f8f9fa;
+        }
+
+        .nav-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .nav-button:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-button:active {
+            transform: translateY(0);
+        }
+
+        .nav-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        .slide-indicator {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #ccc;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: #667eea;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .dot:hover {
+            background: #667eea;
+        }
+
+        .slide-number {
+            font-weight: 600;
+            color: #667eea;
+            margin-left: 15px;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            .slides-wrapper {
+                height: 400px;
+            }
+
+            .slide {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.8em;
+            }
+
+            .subtitle {
+                font-size: 1.05em;
+            }
+
+            .content-text {
+                font-size: 0.95em;
+            }
+
+            .controls {
+                padding: 20px 30px;
+                flex-wrap: wrap;
+                gap: 15px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="slides-wrapper">
+            <!-- Pantalla 1: Introducción -->
+            <div class="slide slide-1 active">
+                <h1>Software Requirements Engineering</h1>
+                <p class="subtitle">Una guía completa sobre la ingeniería de requisitos de software</p>
+                <div class="content-text">
+                    <p>Este documento te introduce en el mundo del <span class="highlight">Software Requirements Engineering (SRE)</span>, un proceso fundamental en el ciclo de vida del desarrollo de software.</p>
+                </div>
+                <div class="list-item">
+                    <strong>¿De qué trata?</strong> La definición, recopilación y documentación de las necesidades del sistema desde la perspectiva del cliente.
+                </div>
+                <div class="list-item">
+                    <strong>¿Por qué es importante?</strong> Actúa como puente entre clientes, usuarios y desarrolladores, transformando ideas vagas en especificaciones precisas y formales.
+                </div>
+            </div>
+
+            <!-- Pantalla 2: Conceptos y Procesos Clave -->
+            <div class="slide slide-2">
+                <h2>Conceptos y Procesos Clave</h2>
+                <div class="list-item">
+                    <strong>Elicitación de Requisitos:</strong> Recopilación de información del cliente sobre lo que necesita el sistema.
+                </div>
+                <div class="list-item">
+                    <strong>Análisis y Validación:</strong> Análisis detallado y verificación de que los requisitos sean correctos y completos.
+                </div>
+                <div class="list-item">
+                    <strong>Documentación:</strong> Creación de especificaciones formales de requisitos de software.
+                </div>
+                <div class="list-item">
+                    <strong>Gestión de Requisitos:</strong> Seguimiento y control de cambios durante todo el proyecto.
+                </div>
+                <div class="content-text" style="margin-top: 20px;">
+                    Estos procesos garantizan que los requisitos sean <span class="highlight">claros, completos y correctos</span> antes de iniciar el desarrollo.
+                </div>
+            </div>
+
+            <!-- Pantalla 3: Aplicaciones e Impacto -->
+            <div class="slide slide-3">
+                <h2>Aplicaciones e Impacto en el Desarrollo</h2>
+                <div class="list-item">
+                    <strong>Modelos de Procesos:</strong> Diferentes enfoques como Waterfall, Agile y otros, según las necesidades del proyecto.
+                </div>
+                <div class="list-item">
+                    <strong>Requisitos Funcionales:</strong> Funcionalidades específicas que el sistema debe realizar.
+                </div>
+                <div class="list-item">
+                    <strong>Requisitos No-Funcionales:</strong> Atributos como rendimiento, seguridad y usabilidad.
+                </div>
+                <div class="list-item">
+                    <strong>Aseguramiento de Calidad:</strong> Garantizar que el producto final cumpla con todas las especificaciones.
+                </div>
+                <div class="content-text" style="margin-top: 20px;">
+                    El dominio de SRE es esencial para desarrollar <span class="highlight">software efectivo y eficiente</span> que satisfaga las expectativas del cliente.
+                </div>
+            </div>
+        </div>
+
+        <!-- Controles de Navegación -->
+        <div class="controls">
+            <button class="nav-button" id="prevBtn" onclick="prevSlide()">← Anterior</button>
+
+            <div class="slide-indicator">
+                <span class="dot active" onclick="goToSlide(0)"></span>
+                <span class="dot" onclick="goToSlide(1)"></span>
+                <span class="dot" onclick="goToSlide(2)"></span>
+                <span class="slide-number"><span id="currentSlide">1</span> / 3</span>
+            </div>
+
+            <button class="nav-button" id="nextBtn" onclick="nextSlide()">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'prev');
+            });
+
+            if (n >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            }
+            if (n < 0) {
+                currentSlide = 0;
+            }
+
+            slides[currentSlide].classList.add('active');
+            document.getElementById('currentSlide').textContent = currentSlide + 1;
+            updateDots();
+            updateButtons();
+        }
+
+        function nextSlide() {
+            currentSlide++;
+            if (currentSlide >= totalSlides) {
+                currentSlide = totalSlides - 1;
+            }
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide--;
+            if (currentSlide < 0) {
+                currentSlide = 0;
+            }
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(n) {
+            currentSlide = n;
+            showSlide(currentSlide);
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.remove('active');
+                if (index === currentSlide) {
+                    dot.classList.add('active');
+                }
+            });
+        }
+
+        function updateButtons() {
+            document.getElementById('prevBtn').disabled = currentSlide === 0;
+            document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Inicializar
+        showSlide(0);
+    </script>
+</body>
+</html>

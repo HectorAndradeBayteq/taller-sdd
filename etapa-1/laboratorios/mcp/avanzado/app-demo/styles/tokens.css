@@ -1,0 +1,35 @@
+/*
+ * Design tokens de la app demo.
+ * Fase B del laboratorio: el agente debe alinear estos valores con las
+ * variables que devuelve Figma (get_variable_defs), sin añadir valores sueltos.
+ */
+:root {
+  /* Color */
+  --color-primary: #2563eb;
+  --color-primary-contrast: #ffffff;
+  --color-background: #f4f5f7;
+  --color-surface: #ffffff;
+  --color-text: #1f2937;
+  --color-muted: #6b7280;
+  --color-border: #e5e7eb;
+  --color-danger: #b91c1c;
+  --color-priority-low: #16a34a;
+  --color-priority-medium: #d97706;
+  --color-priority-high: #dc2626;
+
+  /* Espaciado */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+
+  /* Forma */
+  --radius-md: 8px;
+
+  /* Tipografía */
+  --font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 20px;
+}

@@ -1,0 +1,6 @@
+# Worktrees generados por setup.ps1 (no versionar)
+wt-feature/
+wt-fix/
+
+# Repo git del sandbox (se crea en Preparación; no versionar el .git anidado)
+sandbox/.git/

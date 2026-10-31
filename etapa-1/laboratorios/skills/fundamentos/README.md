@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Entender la diferencia entre un **prompt** y una **skill**, conocer la estructura de una skill y trabajar con una skill ya creada (`/daily-summary`) en Claude Code.
+Entender la diferencia entre un **prompt** y una **skill**, conocer la estructura de una skill y trabajar con una skill ya creada (`/daily-summary`) en Claude Code o en Kiro.
 
 Al final de esta parte podrás:
 
@@ -13,12 +13,19 @@ Al final de esta parte podrás:
 
 **Prerrequisitos:**
 
-- [Laboratorio 1: Agentes y subagentes](../../agents/README.md) — orquestación y delegación en Cursor.
+- [Laboratorio 1: Agentes y subagentes](../../agents/cursor/README.md) — orquestación y delegación en Cursor.
 - Opcional: [Laboratorio extra: Agent Loop](../../agent-loop/README.md) — marco teórico del bucle agente–herramientas.
-- Claude Code CLI instalado y autenticado.
-- Esta carpeta (`fundamentos/`) abierta como **workspace** (Cursor o terminal en la carpeta del lab).
+- Claude Code CLI instalado y autenticado, **o** Kiro (IDE o CLI) instalado y autenticado.
+- Esta carpeta (`fundamentos/`) abierta como **workspace** (Cursor, Kiro o terminal en la carpeta del lab).
 
-**Material técnico del laboratorio:** skill de ejemplo en [`.claude/skills/daily-summary/SKILL.md`](./.claude/skills/daily-summary/SKILL.md).
+**Material técnico del laboratorio:** la misma skill de ejemplo, en la ruta que lee cada herramienta:
+
+| Herramienta | Ruta |
+|-------------|------|
+| Claude Code | [`.claude/skills/daily-summary/SKILL.md`](./.claude/skills/daily-summary/SKILL.md) |
+| Kiro (IDE y CLI) | [`.kiro/skills/daily-summary/SKILL.md`](./.kiro/skills/daily-summary/SKILL.md) |
+
+> Ambos archivos tienen el mismo contenido: siguen el formato abierto [Agent Skills](https://agentskills.io) (`SKILL.md` con `name` y `description`). Si modificas uno, replica el cambio en el otro.
 
 ---
 
@@ -57,7 +64,7 @@ Regla práctica: si te descubres escribiendo el mismo prompt más de dos veces, 
 Cada skill vive en su propio directorio con al menos un archivo `SKILL.md`:
 
 ```
-.claude/
+.kiro/
 └── skills/
     └── daily-summary/
         ├── SKILL.md          # requerido — instrucciones y metadatos
@@ -81,12 +88,14 @@ description: Genera un resumen de trabajo del día basado en los commits de git
 2. ...
 ```
 
-| Scope | Ruta | Cuándo usarla |
-|-------|------|----------------|
-| **Proyecto** (solo este repo) | `.claude/skills/<nombre>/` | Skills del equipo, versionadas con git |
-| **Global** (todos los proyectos) | `~/.claude/skills/<nombre>/` | Skills personales de uso general |
+| Scope | Claude Code | Kiro | Cuándo usarla |
+|-------|-------------|------|----------------|
+| **Proyecto** (solo este repo) | `.claude/skills/<nombre>/` | `.kiro/skills/<nombre>/` | Skills del equipo, versionadas con git |
+| **Global** (todos los proyectos) | `~/.claude/skills/<nombre>/` | `~/.kiro/skills/<nombre>/` | Skills personales de uso general |
 
-Referencia conceptual: **[Extend Claude with skills](https://code.claude.com/docs/en/skills)** (documentación oficial).
+En Kiro, el `name` del frontmatter **debe coincidir con el nombre de la carpeta** (minúsculas, números y guiones). Si una skill de proyecto y una global se llaman igual, gana la de proyecto.
+
+Referencia conceptual: **[Extend Claude with skills](https://code.claude.com/docs/en/skills)** y **[Kiro — Skills](https://kiro.dev/docs/skills/)** (documentación oficial).
 
 ---
 
@@ -96,10 +105,13 @@ Diagrama de componentes de esta parte:
 
 ```mermaid
 flowchart TD
-    U[Usuario] --> CC[Claude Code CLI]
-    U --> DS["/daily-summary"]
-    DS --> SK[.claude/skills/daily-summary/SKILL.md]
+    U[Usuario] --> DS["/daily-summary"]
+    DS --> CC[Claude Code CLI]
+    DS --> KR[Kiro IDE / CLI]
+    CC --> SK[.claude/skills/daily-summary/SKILL.md]
+    KR --> SKK[.kiro/skills/daily-summary/SKILL.md]
     SK --> CTX[Contexto inyectado al modelo]
+    SKK --> CTX
 ```
 
 Estructura de archivos en esta parte:
@@ -107,10 +119,14 @@ Estructura de archivos en esta parte:
 ```
 fundamentos/
 ├── README.md                           # Este archivo
-└── .claude/
+├── .claude/
+│   └── skills/
+│       └── daily-summary/
+│           └── SKILL.md                # Skill de ejemplo (Claude Code)
+└── .kiro/
     └── skills/
         └── daily-summary/
-            └── SKILL.md                # Skill de ejemplo del laboratorio
+            └── SKILL.md                # Misma skill (Kiro IDE y CLI)
 ```
 
 ---
@@ -119,8 +135,12 @@ fundamentos/
 
 ### Preparación
 
-1. Abre la carpeta `etapa-1/laboratorios/skills/fundamentos` como workspace en Cursor (o navega ahí en tu terminal).
-2. Confirma que tienes un repositorio git con al menos un commit reciente (para probar `/daily-summary` con datos reales).
+1. Abre la carpeta `etapa-1/laboratorios/skills/fundamentos` como workspace en Cursor o Kiro (o navega ahí en tu terminal).
+2. Elige la herramienta con la que harás el laboratorio:
+   - **Claude Code:** ejecuta `claude` en la carpeta del lab.
+   - **Kiro IDE:** abre el chat del agente con la carpeta como workspace.
+   - **Kiro CLI:** ejecuta `kiro-cli chat` en la carpeta del lab (usa el agente por defecto: los [agentes personalizados no cargan skills](https://kiro.dev/docs/skills/) salvo que las declares en `resources` con `skill://`).
+3. Confirma que tienes un repositorio git con al menos un commit reciente (para probar `/daily-summary` con datos reales).
 
 ---
 
@@ -128,7 +148,7 @@ fundamentos/
 
 **Meta:** experimentar el costo de repetir instrucciones a mano antes de ver la alternativa persistente.
 
-1. Abre Claude Code y pide un resumen del día escribiendo un prompt libre, por ejemplo:
+1. Abre Claude Code o Kiro y pide un resumen del día escribiendo un prompt libre, por ejemplo:
 
    ```prompt
    Revisa los commits de hoy con git log y hazme un resumen del trabajo del día,
@@ -144,9 +164,11 @@ fundamentos/
 
 **Meta:** entender cómo una skill inyecta instrucciones persistentes y cómo se invoca desde el CLI.
 
-1. Revisa el contenido de [`.claude/skills/daily-summary/SKILL.md`](./.claude/skills/daily-summary/SKILL.md): frontmatter, instrucciones y formato de salida esperado. Comprueba que el `name` del frontmatter coincide con el comando `/daily-summary`.
+1. Revisa el contenido de [`.claude/skills/daily-summary/SKILL.md`](./.claude/skills/daily-summary/SKILL.md) (o su copia en [`.kiro/skills/daily-summary/SKILL.md`](./.kiro/skills/daily-summary/SKILL.md)): frontmatter, instrucciones y formato de salida esperado. Comprueba que el `name` del frontmatter coincide con el comando `/daily-summary` y con el nombre de la carpeta.
 
-2. Verifica que Claude detecta la skill. Escribe `/` en el CLI y busca `daily-summary` en la lista.
+2. Verifica que la herramienta detecta la skill. Escribe `/` en el chat (Claude Code, Kiro IDE o Kiro CLI) y busca `daily-summary` en la lista.
+
+   > En Kiro la skill también se activa sola cuando tu pedido coincide con su `description` (p. ej. "¿qué hice hoy?").
 
 3. Prueba la skill desde un repo con commits de hoy:
 
@@ -184,7 +206,7 @@ fundamentos/
 - Un **prompt** resuelve una necesidad puntual; una **skill** convierte esa necesidad en un contrato repetible, versionable y compartible con el equipo.
 - Una **skill** encapsula instrucciones en Markdown; se invoca con `/nombre` y complementa (no sustituye) los slash commands nativos del CLI.
 - El **frontmatter** (`name`, `description`) y el **cuerpo** definen el contrato de la skill; cuanto más explícitos sean formato, pasos y límites, más predecible será el comportamiento.
-- El scope **proyecto** (`.claude/skills/`) permite alinear skills con el repo y revisarlas en PR; el scope **global** sirve para convenciones personales transversales.
+- El scope **proyecto** (`.claude/skills/` en Claude Code, `.kiro/skills/` en Kiro) permite alinear skills con el repo y revisarlas en PR; el scope **global** sirve para convenciones personales transversales.
 - Las skills se relacionan con el **agent loop** (ver [Laboratorio extra](../../agent-loop/README.md)): son contexto persistente que el agente carga bajo demanda, similar en espíritu a reglas y prompts reutilizables en Cursor.
 
 Continúa con la [Parte 2: Creación de skills](../creacion/README.md) para crear tus propias skills y cerrar el ciclo de calidad con `skill-creator`.
@@ -196,5 +218,7 @@ Continúa con la [Parte 2: Creación de skills](../creacion/README.md) para crea
 | Tema | Fuente |
 |------|--------|
 | Skills en Claude Code | [Extend Claude with skills](https://code.claude.com/docs/en/skills) |
+| Skills en Kiro | [Kiro — Skills](https://kiro.dev/docs/skills/) |
+| Formato abierto | [Agent Skills](https://agentskills.io) |
 | Skills públicas de ejemplo | [anthropics/skills](https://github.com/anthropics/skills) |
 | Guía de creación | [How to create custom Skills — Help Center](https://support.claude.com/en/articles/12512198-how-to-create-custom-skills) |

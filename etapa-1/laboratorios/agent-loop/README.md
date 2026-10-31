@@ -415,7 +415,7 @@ Controles adicionales en planes Teams/Enterprise: [Cursor · Pricing](https://cu
 - **Privacy Mode** limita retención y entrenamiento, pero no elimina el paso por backend ni todas las transferencias.
 - Los **system prompts internos** y parte del ranking de contexto son **opacos**; las reglas y el `@` son las palancas principales que sí controlas desde el repo.
 
-Si aún no lo hiciste, recorre antes la secuencia numerada empezando por [Laboratorio 1: Agentes y subagentes](../agents/README.md), donde se aplica este bucle con delegación y subagentes en la práctica.
+Si aún no lo hiciste, recorre antes la secuencia numerada empezando por [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md), donde se aplica este bucle con delegación y subagentes en la práctica.
 
 ---
 

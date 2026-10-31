@@ -6,7 +6,7 @@ Aprender a definir, versionar y evaluar **skills** (comandos reutilizables con i
 
 **Prerrequisitos generales:**
 
-- [Laboratorio 1: Agentes y subagentes](../agents/README.md) — orquestación y delegación en Cursor.
+- [Laboratorio 1: Agentes y subagentes](../agents/cursor/README.md) — orquestación y delegación en Cursor.
 - Opcional: [Laboratorio extra: Agent Loop](../agent-loop/README.md) — marco teórico del bucle agente–herramientas.
 - Claude Code CLI instalado y autenticado.
 
@@ -34,7 +34,17 @@ Creación de skills desde cero (manual y asistida) y ciclo de calidad **Create �
 | **Material** | [`creacion/.claude/settings.local.json`](./creacion/.claude/settings.local.json) (plugin `skill-creator` habilitado) |
 | **Workspace** | `etapa-1/laboratorios/skills/creacion` |
 
-> Las partes son secuenciales: completa **Fundamentos** antes de pasar a **Creación**, ya que la segunda parte asume que conoces la anatomía de una skill y el comportamiento de `/daily-summary`.
+### [Parte 3 — Skills con recursos: reporte de pruebas en Word](./reportes/README.md)
+
+Skill para **Kiro** que combina instrucciones, un script Python y una plantilla Word para convertir el resultado de pruebas de **Karate** (Cucumber JSON) en un reporte de evidencia entendible por usuarios no técnicos.
+
+| | |
+|---|---|
+| **Enfoque** | Práctico: skills con `scripts/` y `assets/`, reparto de trabajo entre script y agente |
+| **Material** | [`reportes/.kiro/skills/reporte-pruebas/`](./reportes/.kiro/skills/reporte-pruebas/SKILL.md) y [`reportes/target/karate-reports/`](./reportes/target/karate-reports/features.pedidos.pedidos.json) |
+| **Workspace** | `etapa-1/laboratorios/skills/reportes` |
+
+> Las partes son secuenciales: completa **Fundamentos** antes de pasar a **Creación**, ya que la segunda parte asume que conoces la anatomía de una skill y el comportamiento de `/daily-summary`. La **Parte 3** solo requiere Fundamentos.
 
 ---
 
@@ -49,14 +59,20 @@ skills/
 │       └── skills/
 │           └── daily-summary/
 │               └── SKILL.md            # Skill de ejemplo del laboratorio
-└── creacion/                           # Parte 2 — Creación de skills
+├── creacion/                           # Parte 2 — Creación de skills
+│   ├── README.md
+│   └── .claude/
+│       └── settings.local.json         # Plugin skill-creator habilitado
+└── reportes/                           # Parte 3 — Skills con recursos (Kiro)
     ├── README.md
-    └── .claude/
-        └── settings.local.json         # Plugin skill-creator habilitado
+    ├── target/karate-reports/          # Resultado de Karate (entrada)
+    └── .kiro/
+        └── skills/
+            └── reporte-pruebas/        # SKILL.md + scripts/ + assets/plantilla-reporte.docx
 ```
 
 ---
 
 ## Siguiente laboratorio
 
-Tras completar ambas partes, continúa con [Laboratorio 3: Ventana de contexto y atención](../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
+Tras completar ambas partes, continúa con [Laboratorio 3: Ventana de contexto y atención](../context/general/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.

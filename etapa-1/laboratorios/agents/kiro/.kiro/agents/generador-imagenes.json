@@ -1,0 +1,37 @@
+{
+  "name": "generador-imagenes",
+  "description": "Genera la imagen principal de catálogo de un producto como ilustración SVG. Usar cuando se necesite ilustración o asset visual para la ficha.",
+  "prompt": "file://./prompts/generador-imagenes.md",
+  "tools": [
+    "read",
+    "write",
+    "shell"
+  ],
+  "allowedTools": [
+    "read"
+  ],
+  "resources": [
+    "file://AGENTS.md"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "./output/*/imagen-producto.svg",
+        "./output/*/log/generador-imagenes.md"
+      ],
+      "deniedPaths": [
+        "./.kiro/**",
+        "./AGENTS.md",
+        "./README.md",
+        "./output/*/README.md"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "powershell -NoProfile -Command \"Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'\"",
+        "date \\+\"%Y-%m-%dT%H:%M:%S\""
+      ],
+      "denyByDefault": true
+    }
+  }
+}

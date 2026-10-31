@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tareas QA</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 520px; margin: 2rem auto; padding: 0 1rem; }
+    form { display: flex; gap: .5rem; }
+    input { flex: 1; padding: .4rem; }
+    li.done { text-decoration: line-through; color: #666; }
+    [role="alert"] { color: #b00020; min-height: 1.2em; }
+  </style>
+</head>
+<body>
+  <h1>Tareas QA</h1>
+  <form id="task-form">
+    <label for="title">Nueva tarea</label>
+    <input id="title" name="title" maxlength="120">
+    <button type="submit">Agregar</button>
+  </form>
+  <p role="alert" id="error"></p>
+  <ul id="tasks" aria-label="Lista de tareas"></ul>
+  <script>
+    const list = document.getElementById("tasks");
+    const error = document.getElementById("error");
+
+    async function load() {
+      const tasks = await (await fetch("/api/tasks")).json();
+      list.innerHTML = "";
+      for (const t of tasks) {
+        const li = document.createElement("li");
+        li.textContent = t.title;
+        if (t.done) li.className = "done";
+        list.append(li);
+      }
+    }
+
+    document.getElementById("task-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const input = document.getElementById("title");
+      const res = await fetch("/api/tasks", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ title: input.value })
+      });
+      if (!res.ok) {
+        error.textContent = (await res.json()).error;
+        return;
+      }
+      error.textContent = "";
+      input.value = "";
+      load();
+    });
+
+    load();
+  </script>
+</body>
+</html>

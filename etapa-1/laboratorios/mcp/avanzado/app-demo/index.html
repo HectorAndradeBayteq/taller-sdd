@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Time Tracker — Demo MCP</title>
+  <link rel="stylesheet" href="styles/tokens.css">
+  <link rel="stylesheet" href="styles/app.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>Time Tracker</h1>
+    <p>Demo del laboratorio MCP avanzado</p>
+  </header>
+
+  <main class="app-main">
+    <section class="panel" aria-labelledby="form-title">
+      <h2 id="form-title">Nueva tarea</h2>
+
+      <form id="task-form" novalidate>
+        <div class="field">
+          <label for="task-title">Título</label>
+          <input id="task-title" name="title" type="text" autocomplete="off" aria-describedby="task-title-error">
+          <p id="task-title-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="task-minutes">Minutos</label>
+          <input id="task-minutes" name="minutes" type="number" inputmode="numeric" aria-describedby="task-minutes-error">
+          <p id="task-minutes-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <div class="field">
+          <label for="task-priority">Prioridad</label>
+          <select id="task-priority" name="priority" aria-describedby="task-priority-error">
+            <option value="">Selecciona…</option>
+            <option value="low">Baja</option>
+            <option value="medium">Media</option>
+            <option value="high">Alta</option>
+          </select>
+          <p id="task-priority-error" class="field-error" role="alert" hidden></p>
+        </div>
+
+        <button type="submit" class="button-primary">Agregar tarea</button>
+      </form>
+    </section>
+
+    <section class="panel" aria-labelledby="list-title">
+      <h2 id="list-title">Tareas</h2>
+      <p id="stats" class="stats" aria-live="polite"></p>
+      <ul id="task-list" class="task-list"></ul>
+      <p id="empty-state" class="empty-state">Aún no hay tareas registradas.</p>
+    </section>
+  </main>
+
+  <script type="module" src="src/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+# URL personal del frame de Figma
+figma-url.txt
+
+# Índice local de CodeGraph (se regenera con `codegraph init`)
+.codegraph/
+.codegraph-*/
+
+# Eventos crudos de la medición por hooks (Fase A)
+.cursor/hooks/state/
+
+# Playwright
+tests/node_modules/
+tests/test-results/
+tests/playwright-report/
+.playwright-mcp/

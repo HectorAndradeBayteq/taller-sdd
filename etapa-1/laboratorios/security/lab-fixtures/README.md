@@ -9,9 +9,9 @@ Al final del laboratorio podrás:
 1. Provocar (en entorno controlado) un comportamiento no deseado: filtrar contenido de `lab-fixtures/.env.lab` hacia el chat o la terminal.
 2. Mitigar el riesgo con **hooks** (`beforeMCPExecution`, `beforeShellExecution`) y reglas de uso de herramientas.
 
-**Prerrequisitos:** [Laboratorio 4: MCP](../mcp/README.md), [Laboratorio 5: Hooks](../hooks/README.md).
+**Prerrequisitos:** [Laboratorio 4: MCP](../../mcp/fundamentos/README.md), [Laboratorio 5: Hooks](../../hooks/README.md).
 
-**Material técnico del servidor:** [mcp-server-inseguro/README.md](./mcp-server-inseguro/README.md) (instalación, `mcp.json`, comprobaciones).
+**Material técnico del servidor:** [mcp-server-inseguro/README.md](../mcp-server-inseguro/README.md) (instalación, `mcp.json`, comprobaciones).
 
 ---
 
@@ -58,7 +58,7 @@ Referencia conceptual: **OWASP LLM01:2025 Prompt Injection** (subtipo indirecto 
 ### 0. Preparación
 
 1. Clona o abre el repositorio `taller-sdd` como **workspace** en Cursor.
-2. Sigue **[Instalación del MCP inseguro](./mcp-server-inseguro/README.md)** hasta ver `lab-inseguro` activo con la herramienta `get_integration_context`.
+2. Sigue **[Instalación del MCP inseguro](../mcp-server-inseguro/README.md)** hasta ver `lab-inseguro` activo con la herramienta `get_integration_context`.
 3. **No copies aún** la carpeta `defensa/` a `.cursor/` (solo en la fase de protección).
 
 ---
@@ -128,9 +128,9 @@ Referencia conceptual: **OWASP LLM01:2025 Prompt Injection** (subtipo indirecto 
 
 | Ruta | Uso |
 |------|-----|
-| [mcp-server-inseguro/](./mcp-server-inseguro/) | Servidor MCP de demostración |
-| [lab-fixtures/](./lab-fixtures/) | `.env.lab` con secretos ficticios |
-| [defensa/](./defensa/) | `hooks.json` y scripts para copiar a `.cursor/` |
+| [mcp-server-inseguro/](../mcp-server-inseguro/) | Servidor MCP de demostración |
+| [lab-fixtures/](./) | `.env.lab` con secretos ficticios |
+| [defensa/](../defensa/) | `hooks.json` y scripts para copiar a `.cursor/` |
 
 ---
 

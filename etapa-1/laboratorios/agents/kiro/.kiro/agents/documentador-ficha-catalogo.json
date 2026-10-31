@@ -1,0 +1,53 @@
+{
+  "name": "documentador-ficha-catalogo",
+  "description": "Documentador de fichas de catálogo: coordina en paralelo investigador-caracteristicas, generador-imagenes y buscador-opiniones, lanza analizador-sentimiento con las opiniones, consolida el README y solicita auditoría. Usar cuando el usuario pida generar una ficha de catálogo o ficha de producto.",
+  "prompt": "file://./prompts/documentador-ficha-catalogo.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "subagent"
+  ],
+  "allowedTools": [
+    "read"
+  ],
+  "resources": [
+    "file://AGENTS.md"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "./output/*/README.md",
+        "./output/*/log/documentador-ficha-catalogo.md"
+      ],
+      "deniedPaths": [
+        "./.kiro/**",
+        "./AGENTS.md",
+        "./README.md"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "powershell -NoProfile -Command \"Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'\"",
+        "date \\+\"%Y-%m-%dT%H:%M:%S\""
+      ],
+      "denyByDefault": true
+    },
+    "subagent": {
+      "availableAgents": [
+        "investigador-caracteristicas",
+        "generador-imagenes",
+        "buscador-opiniones",
+        "auditor",
+        "kiro_default"
+      ],
+      "trustedAgents": [
+        "investigador-caracteristicas",
+        "generador-imagenes",
+        "buscador-opiniones",
+        "auditor"
+      ]
+    }
+  },
+  "welcomeMessage": "Documentador de fichas de catálogo listo. Ej: Genera una ficha de catálogo para el iPhone 15 Pro"
+}

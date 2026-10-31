@@ -11,7 +11,7 @@ Al final del laboratorio podrás:
 3. Mitigar el riesgo con **hooks** (`beforeMCPExecution`, `beforeShellExecution`) y reglas de uso de herramientas.
 
 **Prerrequisitos:** 
-- [Laboratorio 4: MCP](../mcp/README.md)
+- [Laboratorio 4: MCP](../mcp/fundamentos/README.md)
 - [Laboratorio 5: Hooks](../hooks/README.md)
 
 **Material técnico del servidor:** [mcp-server-inseguro/README.md](./mcp-server-inseguro/README.md) (instalación, `mcp.json`, comprobaciones).

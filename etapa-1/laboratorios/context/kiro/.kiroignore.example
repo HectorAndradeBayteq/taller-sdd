@@ -1,0 +1,10 @@
+# Copia este archivo a `.kiroignore` en la Fase E del laboratorio.
+# Sintaxis igual a .gitignore.
+
+# Secretos y configuración sensible
+*.env
+config/
+
+# Ruido: logs y artefactos generados
+logs/
+*.log

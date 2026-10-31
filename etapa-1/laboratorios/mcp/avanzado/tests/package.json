@@ -1,0 +1,12 @@
+{
+  "name": "mcp-avanzado-tests",
+  "private": true,
+  "description": "Specs de Playwright del laboratorio MCP avanzado (única dependencia instalable del lab).",
+  "scripts": {
+    "test": "playwright test",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

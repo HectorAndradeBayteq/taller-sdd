@@ -1,0 +1,39 @@
+{
+  "name": "buscador-opiniones",
+  "description": "Busca opiniones y reseñas de usuarios sobre un producto y las devuelve en formato estructurado para su análisis de sentimiento. Usar cuando se necesiten reviews o valoraciones de usuarios.",
+  "prompt": "file://./prompts/buscador-opiniones.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch"
+  ],
+  "allowedTools": [
+    "read",
+    "web_search"
+  ],
+  "resources": [
+    "file://AGENTS.md"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "./output/*/log/buscador-opiniones.md"
+      ],
+      "deniedPaths": [
+        "./.kiro/**",
+        "./AGENTS.md",
+        "./README.md",
+        "./output/*/README.md"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "powershell -NoProfile -Command \"Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'\"",
+        "date \\+\"%Y-%m-%dT%H:%M:%S\""
+      ],
+      "denyByDefault": true
+    }
+  }
+}

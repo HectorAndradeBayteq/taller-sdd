@@ -1,0 +1,40 @@
+{
+  "name": "investigador-caracteristicas",
+  "description": "Investiga y estructura las características técnicas y comerciales de un producto para su ficha de catálogo. Usar cuando se necesiten specs, descripción o datos de producto.",
+  "prompt": "file://./prompts/investigador-caracteristicas.md",
+  "tools": [
+    "read",
+    "write",
+    "shell",
+    "web_search",
+    "web_fetch"
+  ],
+  "allowedTools": [
+    "read",
+    "web_search"
+  ],
+  "resources": [
+    "file://AGENTS.md"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "./output/*/log/investigador-caracteristicas.md",
+        "./output/*/caracteristicas.json"
+      ],
+      "deniedPaths": [
+        "./.kiro/**",
+        "./AGENTS.md",
+        "./README.md",
+        "./output/*/README.md"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "powershell -NoProfile -Command \"Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'\"",
+        "date \\+\"%Y-%m-%dT%H:%M:%S\""
+      ],
+      "denyByDefault": true
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "azure-devops": {
+      "url": "https://mcp.dev.azure.com/{organization}",
+      "headers": {
+        "X-MCP-Toolsets": "wit,repos",
+        "X-MCP-Readonly": "true"
+      },
+      "oauth": {
+        "clientId": "{client-id}",
+        "redirectUri": "http://localhost:3119/oauth/callback"
+      },
+      "disabled": false,
+      "autoApprove": []
+    }
+  }
+}

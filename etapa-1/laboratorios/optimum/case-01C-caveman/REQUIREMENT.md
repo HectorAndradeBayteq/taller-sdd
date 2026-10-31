@@ -1,0 +1,1 @@
+A partir del documento en ./docs genera un HTML que explique en 3 pantallas de lo que trata.

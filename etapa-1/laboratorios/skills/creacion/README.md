@@ -18,7 +18,7 @@ Al final de esta parte podrás:
 - Esta carpeta (`creacion/`) abierta como **workspace** (Cursor o terminal en la carpeta del lab).
 - *(Solo si usas la alternativa vskill)* Node.js 18+ y una API key de proveedor LLM (p. ej. Anthropic) para evals/A/B en Studio.
 
-**Material técnico del laboratorio:** configuración local en [`.claude/settings.local.json`](./.claude/settings.local.json) (plugin `skill-creator` habilitado). Skills de ejemplo opcionales en [`skills/`](./skills/).
+**Material técnico del laboratorio:** configuración local en [`.claude/settings.local.json`](./.claude/settings.local.json) (plugin `skill-creator` habilitado). Skills de ejemplo opcionales en [`.claude/skills/`](./.claude/skills/).
 
 ---
 
@@ -282,7 +282,7 @@ creacion/
 - Evaluar con casos de prueba y medir varianza (Benchmark) o impacto (A/B) convierte la escritura de skills en un proceso iterativo con evidencia, no en prueba y error manual.
 - Una skill lista para el equipo debería vivir en scope **proyecto** (`.claude/skills/`), pasar por PR y tener al menos una evaluación registrada.
 
-Tras el taller, continúa con [Laboratorio 3: Ventana de contexto y atención](../../context/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
+Tras el taller, continúa con [Laboratorio 3: Ventana de contexto y atención](../../context/general/README.md) para entender cómo el tamaño y la selección de contexto afectan el comportamiento del agente cuando usas skills, reglas y recuperación de código.
 
 ---
 

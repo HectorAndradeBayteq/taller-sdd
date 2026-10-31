@@ -1,0 +1,37 @@
+{
+  "name": "auditor",
+  "description": "Audita la trazabilidad de una ficha de catálogo leyendo los logs de output/<slug>/log/ y genera informe.md con diagrama de secuencia Mermaid. Usar cuando el documentador-ficha-catalogo necesite el informe de ejecución tras consolidar el README.",
+  "prompt": "file://./prompts/auditor.md",
+  "tools": [
+    "read",
+    "write",
+    "shell"
+  ],
+  "allowedTools": [
+    "read"
+  ],
+  "resources": [
+    "file://AGENTS.md"
+  ],
+  "toolsSettings": {
+    "write": {
+      "allowedPaths": [
+        "./output/*/log/auditor.md",
+        "./output/*/log/informe.md"
+      ],
+      "deniedPaths": [
+        "./.kiro/**",
+        "./AGENTS.md",
+        "./README.md",
+        "./output/*/README.md"
+      ]
+    },
+    "shell": {
+      "allowedCommands": [
+        "powershell -NoProfile -Command \"Get-Date -Format 'yyyy-MM-ddTHH:mm:ss'\"",
+        "date \\+\"%Y-%m-%dT%H:%M:%S\""
+      ],
+      "denyByDefault": true
+    }
+  }
+}

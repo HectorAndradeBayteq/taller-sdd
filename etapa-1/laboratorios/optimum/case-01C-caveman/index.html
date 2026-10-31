@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Software Requirements Engineering</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .screen {
+            display: none;
+            padding: 60px 40px;
+            min-height: 600px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .screen.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .screen h1 {
+            color: #667eea;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        .screen h2 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        .screen p {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .screen ul {
+            margin-left: 30px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+
+        .screen li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .screen-1 {
+            background: linear-gradient(to bottom, #f5f7fa, #ffffff);
+        }
+
+        .screen-2 {
+            background: linear-gradient(to bottom, #ffffff, #f0e6ff);
+        }
+
+        .screen-3 {
+            background: linear-gradient(to bottom, #f0f4ff, #ffffff);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #f8f9fa;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #764ba2;
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .pagination {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .breadcrumb {
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: #999;
+        }
+
+        .breadcrumb span {
+            color: #667eea;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- PANTALLA 1: INTRODUCCIÓN -->
+        <div class="screen screen-1 active">
+            <div class="breadcrumb">
+                <span>Pantalla 1 de 3</span>
+            </div>
+            <h1>Software Requirements Engineering</h1>
+
+            <h2>¿Qué es?</h2>
+            <p>
+                Software Requirements Engineering es el proceso de describir las características y funcionalidades
+                de un sistema de software. Se trata de <strong>definir, recopilar y documentar las necesidades del sistema</strong>
+                de manera clara y precisa.
+            </p>
+
+            <h2>Definición de Requisito de Software</h2>
+            <p>
+                Un requisito es una <strong>condición y capacidad que debe poseer un sistema</strong> de acuerdo
+                a estándares establecidos. Los requisitos pueden ser:
+            </p>
+            <ul>
+                <li><strong>Obvios u ocultos:</strong> El cliente puede o no expresarlos explícitamente</li>
+                <li><strong>Conocidos o desconocidos:</strong> Dependen del análisis inicial</li>
+                <li><strong>Esperados o inesperados:</strong> Varían según la perspectiva del cliente</li>
+            </ul>
+
+            <h2>¿Por qué es importante?</h2>
+            <p>
+                Sin una ingeniería de requisitos sólida, los proyectos de software pueden sufrir de:
+            </p>
+            <ul>
+                <li>Mala comunicación entre clientes y desarrolladores</li>
+                <li>Productos que no cumplen expectativas</li>
+                <li>Sobrecostos y retrasos en el desarrollo</li>
+                <li>Baja calidad y confiabilidad del software</li>
+            </ul>
+        </div>
+
+        <!-- PANTALLA 2: TEMAS PRINCIPALES -->
+        <div class="screen screen-2">
+            <div class="breadcrumb">
+                <span>Pantalla 2 de 3</span>
+            </div>
+            <h1>Temas Principales</h1>
+
+            <h2>1. Elicitación de Requisitos</h2>
+            <p>
+                Proceso de <strong>recopilar requisitos de los clientes y stakeholders</strong>. Incluye técnicas como:
+            </p>
+            <ul>
+                <li>Entrevistas y cuestionarios</li>
+                <li>Observación y análisis de procesos existentes</li>
+                <li>Talleres y sesiones de brainstorming</li>
+                <li>Análisis de documentos y sistemas legados</li>
+            </ul>
+
+            <h2>2. Validación y Verificación</h2>
+            <p>
+                Garantizar que los requisitos sean <strong>correctos, completos y consistentes</strong>:
+            </p>
+            <ul>
+                <li>Revisión con stakeholders</li>
+                <li>Pruebas de consistencia</li>
+                <li>Detección de conflictos y ambigüedades</li>
+            </ul>
+
+            <h2>3. Análisis de Requisitos</h2>
+            <p>
+                <strong>Examinar y procesar</strong> los requisitos recopilados para:
+            </p>
+            <ul>
+                <li>Comprender dependencias y relaciones</li>
+                <li>Diferenciar requisitos funcionales de no funcionales</li>
+                <li>Evaluar feasibilidad técnica y económica</li>
+            </ul>
+
+            <h2>4. Gestión de Requisitos</h2>
+            <p>
+                <strong>Mantener y controlar</strong> los requisitos a lo largo del ciclo de vida del proyecto,
+                incluyendo cambios y trazabilidad.
+            </p>
+        </div>
+
+        <!-- PANTALLA 3: APLICACIÓN Y CONCLUSIÓN -->
+        <div class="screen screen-3">
+            <div class="breadcrumb">
+                <span>Pantalla 3 de 3</span>
+            </div>
+            <h1>Tipos y Modelos</h1>
+
+            <h2>Requisitos Funcionales vs No Funcionales</h2>
+            <p>
+                <strong>Funcionales:</strong> Describen las acciones que el sistema debe realizar (ej: login, búsqueda)
+            </p>
+            <p>
+                <strong>No Funcionales:</strong> Describen atributos de calidad (desempeño, seguridad, escalabilidad)
+            </p>
+
+            <h2>Modelos de Proceso</h2>
+            <p>
+                El libro cubre diferentes modelos de desarrollo de software:
+            </p>
+            <ul>
+                <li><strong>Modelo Cascada:</strong> Fases secuenciales y lineales</li>
+                <li><strong>Modelo Iterativo:</strong> Desarrollo en ciclos repetitivos</li>
+                <li><strong>Modelo Ágil:</strong> Flexible y adaptativo a cambios</li>
+                <li><strong>Modelos híbridos:</strong> Combinaciones de los anteriores</li>
+            </ul>
+
+            <h2>Fases Complementarias</h2>
+            <ul>
+                <li><strong>Diseño del Sistema:</strong> Arquitectura y estructura técnica</li>
+                <li><strong>Desarrollo y Configuración:</strong> Implementación y control de versiones</li>
+                <li><strong>Aseguramiento de Calidad:</strong> Pruebas y validación del producto</li>
+            </ul>
+
+            <h2>Conclusión</h2>
+            <p>
+                La ingeniería de requisitos es fundamental para el éxito de cualquier proyecto de software.
+                Establece las bases para que desarrolladores y clientes compartan una visión común del producto final.
+            </p>
+        </div>
+
+        <!-- CONTROLES -->
+        <div class="controls">
+            <button id="prevBtn" onclick="changeScreen(-1)">← Anterior</button>
+            <span class="pagination"><span id="currentScreen">1</span> / 3</span>
+            <button id="nextBtn" onclick="changeScreen(1)">Siguiente →</button>
+        </div>
+    </div>
+
+    <script>
+        let currentScreen = 1;
+
+        function showScreen(n) {
+            const screens = document.querySelectorAll('.screen');
+
+            if (n > screens.length) {
+                currentScreen = screens.length;
+            }
+            if (n < 1) {
+                currentScreen = 1;
+            }
+
+            screens.forEach(screen => screen.classList.remove('active'));
+            screens[currentScreen - 1].classList.add('active');
+
+            document.getElementById('currentScreen').textContent = currentScreen;
+            document.getElementById('prevBtn').disabled = currentScreen === 1;
+            document.getElementById('nextBtn').disabled = currentScreen === screens.length;
+        }
+
+        function changeScreen(n) {
+            currentScreen += n;
+            showScreen(currentScreen);
+        }
+
+        // Teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeScreen(-1);
+            if (e.key === 'ArrowRight') changeScreen(1);
+        });
+
+        showScreen(currentScreen);
+    </script>
+</body>
+</html>
