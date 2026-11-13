@@ -30,26 +30,7 @@ Cubrir cada criterio de US-34266 con un caso de prueba automatizado en Katalon, 
 
 ## Flujo
 
-```mermaid
-flowchart TD
-    P0["0. Preparación del entorno<br/>plugins y acceso a ADO y Figma"] --> P1["1. Creación del proyecto<br/>/arch-init (katalon-base)"] --> P2["2. Obtener la historia<br/>/work-define sync 34266"]
-    P2 --> P3["3. Lectura de la historia<br/>(en grupo)"]
-    P3 --> P4["4. Casos de prueba<br/>/test-define US-34266"]
-    P4 --> P5["5. Automatización<br/>/work-implement (rama test/)"]
-    P5 --> P6["6. Ejecución en Katalon Studio<br/>npm run allure:katalon"]
-    P6 --> Q{"¿Hay casos<br/>en rojo?"}
-    Q -->|"Sí"| P7["7. Validación de los fallos<br/>/work-research"]
-    P7 --> C{"Clasificación<br/>del fallo"}
-    C -->|"Falso positivo"| FIX["Corregir la prueba<br/>/work-implement"]
-    FIX -.->|"volver a ejecutar"| P6
-    C -->|"Caso mal definido"| TD["Corregir el caso<br/>/test-define"]
-    TD -.-> P5
-    C -->|"Defecto"| P8["8. Reporte de bugs<br/>/work-plan (BUG-XXX + Bug en ADO)"]
-    P8 --> P9["9. Publicación en Azure DevOps<br/>npm run ado:publish"]
-    Q -->|"No"| P9
-    P9 --> P10["10. Calidad y cobertura<br/>/quality-check · /coverage-verify"]
-    P10 --> P11["11. Integración<br/>/work-integrate"]
-```
+![Flujo del laboratorio 7](./assets/workflow.png)
 
 ## Paso 0. Preparación del entorno (5 min)
 
@@ -108,7 +89,7 @@ La historia describe una feature de [Tripot](https://factor.ec/tripot), una apli
 ### Llamado
 
 ```text
-/work-define sync 34266
+/work-define sync [PEGAR ID DE LA HISTORIA DE USUARIO]
 ```
 
 ### Antes de seguir
@@ -127,7 +108,7 @@ Lean la historia US-34266 en grupo antes de llamar a un skill. Identifiquen qué
 ### Llamado
 
 ```text
-/test-define US-34266
+/test-define [RUTA DE LA HISTORIA DE USUARIO LOCAL]
 ```
 
 Además de los casos de interfaz, pidan dos casos específicos:
@@ -177,7 +158,7 @@ Establece como variable para la automatización la URL de la app a probar: https
 Después, las variables de Azure DevOps en `.env`, para publicar la corrida en el Paso 9:
 
 ```text
-Configura en .env ADO_PAT con el valor de la variable de entorno ADO_PAT_BAYTEQ, la misma que usa el MCP ado-bayteq. Para ADO_TEST_PLAN_ID, consulta en Azure DevOps el ID del Test Plan donde se crearon los Test Cases de US-34266.
+Para ADO_TEST_PLAN_ID, consulta en Azure DevOps el ID del Test Plan donde se crearon los Test Cases.
 ```
 
 Comprueben que:
@@ -188,7 +169,7 @@ Comprueben que:
 ### Llamado
 
 ```text
-/work-implement casos de prueba de US-34266
+/work-implement casos de prueba
 ```
 
 ### Qué cierran ustedes
