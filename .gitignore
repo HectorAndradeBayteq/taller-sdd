@@ -1,2 +1,13 @@
 .DS_Store
 .tmp/
+.tmp-*
+
+# Configuración local del IDE y herramientas
+.idea/
+.awb/
+
+# Logs generados por los hooks de los laboratorios
+**/hooks/activity.log
+
+# MCP local de JetBrains (no compartir)
+etapa-1/laboratorios/hooks/.mcp.json
