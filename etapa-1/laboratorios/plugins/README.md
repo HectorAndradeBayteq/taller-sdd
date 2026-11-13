@@ -1,5 +1,7 @@
 # Laboratorio 6B: Plugins y Powers (Kiro, Claude Code y Cursor)
 
+> Esta es la **ruta Kiro**. El mismo laboratorio con otro cliente como ruta principal: [Claude Code](./README.claude.md) · [Cursor](./README.cursor.md).
+
 ## Objetivo
 
 Entender qué es un **plugin** de agente —en Kiro se llama **Power**—, de qué piezas se compone y cómo se distribuye e instala desde marketplaces oficiales, comparando cómo lo resuelven **Kiro**, **Claude Code** y **Cursor**. El laboratorio se centra en Kiro y usa los otros dos clientes como contraste. Cada afirmación del marco teórico enlaza a la documentación oficial del fabricante.
