@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "azure-devops-local": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@azure-devops/mcp@2.11.0",
+        "{organization}",
+        "-d", "core", "work-items", "repositories"
+      ]
+    }
+  }
+}

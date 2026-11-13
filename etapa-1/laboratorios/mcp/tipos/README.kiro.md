@@ -1,5 +1,7 @@
 # Laboratorio 4C: Tipos de MCP — locales y remotos (Kiro, Cursor y Claude Code)
 
+> Esta es la **ruta Kiro**. El mismo laboratorio con el cliente como ruta principal: [Cursor](./README.cursor.md) · [Claude Code](./README.claude.md).
+
 ## Objetivo
 
 Distinguir en la práctica los dos tipos de servidor MCP — **local (stdio)** y **remoto (HTTP + OAuth)** — instalando uno de cada tipo en **Kiro**: el MCP de **Playwright** como ejemplo local y el MCP remoto de **Azure DevOps** como ejemplo remoto. Cada paso incluye su equivalente en **Cursor** y **Claude Code**, para que la configuración sea portable entre clientes.
@@ -16,7 +18,8 @@ Al final del laboratorio podrás:
 - Opcional: [Laboratorio 6: Compatibilidad de configuración entre agentes](../../config/README.md) — equivalencias de archivos entre clientes.
 - **Kiro IDE** instalado (ruta principal). Opcional: **Cursor** y/o **Claude Code** para las equivalencias.
 - **Node.js** v20 o superior y **npm**.
-- Para la Fase B: una **organización de Azure DevOps conectada a Microsoft Entra ID** (las organizaciones con cuenta personal MSA no son compatibles) y el **Client ID** de un *App Registration* que el instructor comparte (ver [Preparación del instructor](#preparación-del-instructor-fase-b)).
+- Para la Fase B remota: una **organización de Azure DevOps conectada a Microsoft Entra ID** (las organizaciones con cuenta personal MSA no son compatibles) y el **Client ID** de un *App Registration* que el instructor comparte (ver [Preparación del instructor](#preparación-del-instructor-fase-b)).
+- Si la organización **no** tiene la aplicación **Azure DevOps MCP**, la Fase B se hace con la [alternativa con PAT](#alternativa-con-pat--mcp-local): un token de solo lectura en la variable de usuario `ADO_PAT`. No hace falta Client ID.
 
 **Material técnico del laboratorio:** [`.kiro/settings/mcp.json`](./.kiro/settings/mcp.json) (Kiro), [`.cursor/mcp.json`](./.cursor/mcp.json) (Cursor), [`.mcp.json`](./.mcp.json) (Claude Code), [`snippets/`](./snippets/) (configuraciones de Azure DevOps por cliente) y [`evidencia/`](./evidencia/README.md) (salidas del ejercicio).
 
@@ -56,7 +59,7 @@ Al conectarse a un MCP remoto protegido, el cliente necesita un **Client ID** pa
 
 Por eso el MCP de Azure DevOps funciona “sin configuración” en VS Code y Visual Studio (Microsoft ya registró esos clientes), mientras que **Cursor, Claude Code y Kiro** necesitan un App Registration propio en Entra. El protocolo es el mismo; lo que cambia es quién tiene un Client ID reconocido por el proveedor de identidad.
 
-> Kiro no aparece todavía en la lista de clientes documentados por Microsoft. Este laboratorio aplica a Kiro el mismo patrón que Microsoft documenta para Cursor y Claude Code, usando el campo `oauth.clientId` de Kiro. Si en tu tenant no funciona, usa el [Plan B](#plan-b--mcp-local-de-azure-devops).
+> Kiro no aparece todavía en la lista de clientes documentados por Microsoft. Este laboratorio aplica a Kiro el mismo patrón que Microsoft documenta para Cursor y Claude Code, usando el campo `oauth.clientId` de Kiro. Si en tu tenant no funciona el remoto, usa el [Plan B](#plan-b--mcp-local-de-azure-devops) o, si la organización no tiene la aplicación Azure DevOps MCP, la [alternativa con PAT](#alternativa-con-pat--mcp-local).
 
 ### Equivalencias entre clientes
 
@@ -106,16 +109,23 @@ Estructura de archivos:
 
 ```
 tipos/
-├── README.md                       # Este archivo
-├── .kiro/settings/mcp.json         # Kiro: Playwright (local)
-├── .cursor/mcp.json                # Cursor: Playwright (local)
-├── .mcp.json                       # Claude Code: Playwright (local)
+├── README.kiro.md                     # Este archivo (ruta Kiro)
+├── README.cursor.md                   # Misma práctica, ruta Cursor
+├── README.claude.md                   # Misma práctica, ruta Claude Code
+├── .kiro/settings/mcp.json            # Kiro: Playwright (local)
+├── .cursor/mcp.json                   # Cursor: Playwright (local)
+├── .mcp.json                          # Claude Code: Playwright (local)
 ├── snippets/
-│   ├── ado-remoto.kiro.json        # Azure DevOps remoto para Kiro
-│   ├── ado-remoto.cursor.json      # Azure DevOps remoto para Cursor
-│   ├── ado-remoto.claude.json      # Azure DevOps remoto para Claude Code
-│   └── ado-local.plan-b.kiro.json  # Plan B: Azure DevOps local (stdio)
-└── evidencia/                      # Salidas (gitignored salvo README)
+│   ├── ado-remoto.kiro.json           # Azure DevOps remoto para Kiro
+│   ├── ado-remoto.cursor.json         # Azure DevOps remoto para Cursor
+│   ├── ado-remoto.claude.json         # Azure DevOps remoto para Claude Code
+│   ├── ado-local.plan-b.kiro.json     # Plan B: Azure DevOps local (stdio)
+│   ├── ado-local.plan-b.cursor.json   # Plan B para Cursor
+│   ├── ado-local.plan-b.claude.json   # Plan B para Claude Code
+│   ├── ado-local-pat.kiro.json        # Alternativa: Azure DevOps local con PAT
+│   ├── ado-local-pat.cursor.json      # PAT para Cursor
+│   └── ado-local-pat.claude.json      # PAT para Claude Code
+└── evidencia/                         # Salidas (gitignored salvo README)
 ```
 
 ---
@@ -223,6 +233,8 @@ El MCP remoto de Azure DevOps exige un *App Registration* en Microsoft Entra. Lo
 
 **Meta:** conectar un servidor que **no corre en tu máquina**, autenticarte con OAuth y restringir lo que el agente puede hacer.
 
+> Si tu organización no tiene la aplicación **Azure DevOps MCP**, sáltate esta fase remota y sigue la [alternativa con PAT](#alternativa-con-pat--mcp-local).
+
 1. Abre la configuración **de usuario** de Kiro: paleta → **Kiro: Open user MCP config (JSON)** (`~/.kiro/settings/mcp.json`).
 
    > Usamos el nivel de usuario porque la organización y el Client ID son **personales o del tenant**, no del repositorio. Playwright, en cambio, vive en el proyecto porque todo el equipo lo usa igual.
@@ -300,6 +312,84 @@ Si tu organización no está en Entra, o no es posible crear el App Registration
 
 > Observa que el Plan B convierte el ejemplo “remoto” en uno **local**: el tipo de MCP depende de **dónde corre el servidor**, no de qué servicio consulta. Un MCP local también puede hablar con la nube.
 
+#### Alternativa con PAT — MCP local
+
+Si la organización **no tiene aprovisionada la aplicación Azure DevOps MCP**, el servidor remoto `https://mcp.dev.azure.com` no está disponible. Usa el mismo servidor local, autenticado con un **Personal Access Token** en lugar del login interactivo. `npx` corre en tu máquina y cada llamada sale hacia Azure DevOps con ese token.
+
+El PAT es un secreto. Vive en una variable de entorno de tu usuario y el JSON solo la **referencia**. No lo pegues en el repositorio ni en el chat.
+
+1. En Azure DevOps abre **User settings → Personal access tokens → New Token**. Ámbito: solo tu organización. Expiración corta, la del taller. Scopes personalizados, únicamente de lectura:
+   - **Work Items**: Read
+   - **Code**: Read
+   - **Project and Team**: Read
+2. El servidor no acepta el PAT en claro. `PERSONAL_ACCESS_TOKEN` debe ser el **base64** de `correo:pat`. El correo puede ser cualquier valor no vacío; en este laboratorio usa `participante@contoso.com`.
+3. Guarda ese valor en la variable de usuario `ADO_PAT`. En PowerShell el PAT no se muestra al pegarlo:
+
+   ```powershell
+   $correo = "participante@contoso.com"
+   $pat = Read-Host "Pega el PAT" -AsSecureString
+   $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($pat)
+   try {
+     $plain = [Runtime.InteropServices.Marshal]::PtrToStringBSTR($bstr)
+     $encoded = [Convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes("${correo}:${plain}"))
+     [Environment]::SetEnvironmentVariable("ADO_PAT", $encoded, "User")
+   } finally {
+     [Runtime.InteropServices.Marshal]::ZeroFreeBSTR($bstr)
+     $plain = $null
+   }
+   ```
+
+   Cierra Kiro por completo y ábrelo de nuevo: el proceso solo hereda variables de usuario que ya existían al arrancar. Comprueba en una terminal nueva, sin imprimir el valor:
+
+   ```powershell
+   if ([string]::IsNullOrEmpty([Environment]::GetEnvironmentVariable("ADO_PAT", "User"))) {
+     "ADO_PAT no está definida"
+   } else {
+     "ADO_PAT está definida"
+   }
+   ```
+
+4. En *Mcp Approved Env Vars* aprueba `ADO_PAT`. Sin esa aprobación Kiro no interpola `${ADO_PAT}` y el servidor arranca sin token.
+5. Abre la config de usuario (**Kiro: Open user MCP config (JSON)**) y usa [`snippets/ado-local-pat.kiro.json`](./snippets/ado-local-pat.kiro.json) **en lugar** del bloque remoto `azure-devops`. Reemplaza `{organization}` (el nombre de `https://dev.azure.com/{organization}`):
+
+   ```json
+   {
+     "mcpServers": {
+       "azure-devops": {
+         "command": "npx",
+         "args": [
+           "-y",
+           "@azure-devops/mcp",
+           "{organization}",
+           "--authentication", "pat",
+           "-d", "core", "work-items", "repositories"
+         ],
+         "env": {
+           "PERSONAL_ACCESS_TOKEN": "${ADO_PAT}"
+         },
+         "disabled": false,
+         "autoApprove": []
+       }
+     }
+   }
+   ```
+
+   | Campo | Qué hace |
+   |-------|----------|
+   | `command` / `args` | Kiro lanza el servidor local; no hay `url` |
+   | `--authentication pat` | Lee el token de `PERSONAL_ACCESS_TOKEN` en lugar del login interactivo |
+   | `${ADO_PAT}` | Kiro interpola la variable de usuario ya aprobada. El JSON no contiene el token |
+   | `-d core work-items repositories` | Equivale a `X-MCP-Toolsets`: solo esos dominios |
+   | `autoApprove: []` | Ninguna tool de este servidor se ejecuta sin confirmación |
+
+   Cuando conecte, fija en `args` la versión que resolvió npm (`npm view @azure-devops/mcp version`), del mismo modo que Playwright usa `@0.0.83`.
+
+6. En **MCP Servers**, `azure-devops` debe aparecer conectado. Repite el comando del paso A.4 con el filtro `azure-devops/mcp`: tiene que aparecer un proceso `node` local.
+7. Repite los prompts del paso B.6.
+8. Pide crear un work item, como en el paso B.7. Con el remoto y `X-MCP-Readonly` la tool de escritura no existe. Con un PAT de solo lectura la tool **puede aparecer**, y es la API de Azure DevOps la que rechaza la llamada. El control está en los scopes del token.
+
+> En Cursor la misma variable se escribe `${env:ADO_PAT}`. En Claude Code también es `${ADO_PAT}`, dentro de la config de usuario. Los JSON están en `snippets/ado-local-pat.cursor.json` y `snippets/ado-local-pat.claude.json`.
+
 ---
 
 ### Fase C — Comparación y reflexión
@@ -327,7 +417,7 @@ Si tu organización no está en Entra, o no es posible crear el App Registration
 ## Conclusiones del laboratorio
 
 - **Local vs remoto es una cuestión de transporte y ubicación**, no del servicio: un MCP local (`command`) corre como proceso en tu máquina; uno remoto (`url`) es un servicio de terceros al que llegas por HTTPS.
-- **Los MCP remotos trasladan la complejidad a la autenticación**: sin instalación ni versiones que mantener, pero con OAuth, Client IDs y dependencia del proveedor de identidad (Entra no soporta DCR, por eso Kiro, Cursor y Claude Code necesitan un App Registration).
+- **Los MCP remotos trasladan la complejidad a la autenticación**: sin instalación ni versiones que mantener, pero con OAuth, Client IDs y dependencia del proveedor de identidad (Entra no soporta DCR, por eso Kiro, Cursor y Claude Code necesitan un App Registration). Si la organización no tiene la aplicación Azure DevOps MCP, el camino es el servidor local con PAT: el secreto queda en `ADO_PAT` y el JSON solo escribe `${ADO_PAT}`.
 - **La configuración es portable entre clientes**: Kiro, Cursor y Claude Code comparten el formato `mcpServers`; cambian la ruta del archivo, la forma de declarar el tipo (`type`) y el campo del Client ID.
 - **El mínimo privilegio se aplica en el servidor y en el cliente**: toolsets y solo lectura (servidor), `autoApprove` / `disabledTools` / `disabled` (cliente) y el alcance proyecto vs usuario según quién debe compartir la configuración.
 
@@ -344,3 +434,4 @@ Tras el taller, revisa los MCP que usa tu equipo y clasifícalos en locales y re
 - [Set up the remote Azure DevOps MCP Server — Microsoft Learn](https://learn.microsoft.com/azure/devops/mcp-server/remote-mcp-server)
 - [Azure DevOps Remote MCP Server GA — DevBlogs](https://devblogs.microsoft.com/devops/azure-devops-remote-mcp-server-ga/)
 - [Azure DevOps MCP Server local (microsoft/azure-devops-mcp)](https://github.com/microsoft/azure-devops-mcp)
+- [Azure DevOps MCP local — Personal Access Token](https://github.com/microsoft/azure-devops-mcp/blob/main/docs/GETTINGSTARTED.md#personal-access-token)
