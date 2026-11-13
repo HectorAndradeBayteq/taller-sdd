@@ -1,0 +1,15 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Log activity",
+      "description": "Registra cada uso de herramienta",
+      "trigger": "PostToolUse",
+      "timeout": 10,
+      "action": {
+        "type": "command",
+        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .kiro/hooks/log-activity.ps1"
+      }
+    }
+  ]
+}

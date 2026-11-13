@@ -1,0 +1,53 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/log-activity.ps1"
+            ],
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "¿Este comando de shell es seguro? Solo permite operaciones de lectura (ls, dir, Get-ChildItem, cat, type, Get-Content, git status, git log, etc.). Deniega cualquier operación destructiva o de escritura: rm -rf, Remove-Item, del, DROP TABLE, git push --force, git reset --hard, formato de disco, o cualquier borrado/modificación de archivos. Entrada del hook: $ARGUMENTS",
+            "timeout": 30,
+            "continueOnBlock": true
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "powershell.exe",
+            "args": [
+              "-NoProfile",
+              "-ExecutionPolicy",
+              "Bypass",
+              "-File",
+              "${CLAUDE_PROJECT_DIR}/.claude/hooks/guard-shell.ps1"
+            ],
+            "timeout": 10,
+            "onFailure": "block"
+          }
+        ]
+      }
+    ]
+  }
+}

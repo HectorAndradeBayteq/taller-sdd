@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Guard shell",
+      "description": "Bloquea comandos de shell destructivos",
+      "trigger": "PreToolUse",
+      "matcher": "shell",
+      "timeout": 10,
+      "action": {
+        "type": "command",
+        "command": "powershell.exe -NoProfile -ExecutionPolicy Bypass -File .kiro/hooks/guard-shell.ps1"
+      }
+    }
+  ]
+}

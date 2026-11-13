@@ -1,5 +1,7 @@
 # Laboratorio 5: Hooks en Cursor
 
+> Esta es la **ruta Cursor**. La ruta Claude Code está en [README.claude.md](./README.claude.md). La ruta Kiro está en [README.kiro.md](./README.kiro.md).
+
 ## Objetivo
 
 Explorar cómo usar hooks para observar, controlar y ampliar el bucle del agente en Cursor: procesos que se comunican por JSON (stdin/stdout) antes o después de etapas definidas del ciclo de vida.
@@ -120,7 +122,11 @@ Un `matcher` es una expresión regular (estilo JavaScript) que filtra **cuándo*
 
 Sin matcher, el hook se ejecuta en **todos** los disparos de ese evento.
 
-Referencia: [Documentación de Cursor Hooks](https://cursor.com/es/docs/hooks).
+Referencias:
+
+- [Documentación de Cursor Hooks](https://cursor.com/es/docs/hooks)
+- [Documentación de Claude Code Hooks](https://code.claude.com/docs/en/hooks)
+- [Documentación de Kiro Hooks](https://kiro.dev/docs/hooks/)
 
 ---
 
@@ -233,7 +239,9 @@ README.md                   # Este archivo
    - `preToolUse` — reescribir o bloquear llamadas concretas a herramientas.
 
 2. Usa la documentación oficial para revisar eventos disponibles, matchers, `failClosed` y campos de salida:
-   - [https://cursor.com/es/docs/hooks](https://cursor.com/es/docs/hooks)
+   - [Documentación de Cursor Hooks](https://cursor.com/es/docs/hooks)
+   - [Documentación de Claude Code Hooks](https://code.claude.com/docs/en/hooks)
+   - [Documentación de Kiro Hooks](https://kiro.dev/docs/hooks/)
 
 ---
 
@@ -246,4 +254,4 @@ README.md                   # Este archivo
 - Un hook de logging (`postToolUse`) aporta visibilidad inmediata; los preventivos (`beforeShellExecution`, `preToolUse`) reducen riesgo operativo.
 - Versionar `.cursor/hooks.json` y los scripts en el repo comparte la política con el equipo (hooks de proyecto).
 
-Tras el taller, puedes consolidar esta base añadiendo hooks por dominio (seguridad, calidad, cumplimiento) y revisar eventos adicionales en la [documentación oficial](https://cursor.com/es/docs/hooks).
+Tras el taller, puedes consolidar esta base añadiendo hooks por dominio (seguridad, calidad, cumplimiento) y revisar eventos adicionales en la documentación oficial de [Cursor](https://cursor.com/es/docs/hooks), [Claude Code](https://code.claude.com/docs/en/hooks) y [Kiro](https://kiro.dev/docs/hooks/).

@@ -1,0 +1,16 @@
+{
+  "version": "v1",
+  "hooks": [
+    {
+      "name": "Politica de shell",
+      "description": "Orientacion en lenguaje natural. No bloquea por si sola.",
+      "trigger": "PreToolUse",
+      "matcher": "shell",
+      "enabled": false,
+      "action": {
+        "type": "agent",
+        "prompt": "¿Este comando de shell es seguro? Solo permite operaciones de lectura (ls, dir, Get-ChildItem, cat, type, Get-Content, git status, git log, etc.). Si es destructivo (rm -rf, Remove-Item, del, DROP TABLE, git push --force, git reset --hard, formato de disco o cualquier borrado), no lo ejecutes y explica el rechazo."
+      }
+    }
+  ]
+}
