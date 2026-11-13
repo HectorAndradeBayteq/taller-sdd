@@ -191,23 +191,23 @@ Diagrama de componentes del laboratorio:
 
 ```mermaid
 flowchart LR
-    U[Usuario / Instructor] --> A[Agente<br/>Cursor o Claude Code]
+    U["Usuario / Instructor"] --> A["Agente<br/>Cursor o Claude Code"]
 
-    A -->|stdio| CG[codegraph serve --mcp]
-    CG --> DB[(.codegraph/<br/>SQLite)]
+    A -->|stdio| CG["codegraph serve --mcp"]
+    CG --> DB[(".codegraph/<br/>SQLite")]
     DB --- APP
 
-    A -->|HTTP + OAuth| FG[Figma MCP remoto]
-    FG --> FIG[(Archivo de Figma)]
+    A -->|"HTTP + OAuth"| FG["Figma MCP remoto"]
+    FG --> FIG[("Archivo de Figma")]
 
-    A -->|stdio| PW[@playwright/mcp]
-    PW --> CH[Chrome]
-    CH --> APP[app-demo<br/>servida por serve.mjs :5173]
+    A -->|stdio| PW["@playwright/mcp"]
+    PW --> CH["Chrome"]
+    CH --> APP["app-demo<br/>servida por serve.mjs :5173"]
 
     A -->|edita| APP
-    A -->|escribe| EV[evidencia/<br/>informe.md + capturas]
-    A -->|genera| SPEC[tests/specs/*.spec.ts]
-    SPEC -->|npx playwright test| CH
+    A -->|escribe| EV["evidencia/<br/>informe.md + capturas"]
+    A -->|genera| SPEC["tests/specs/*.spec.ts"]
+    SPEC -->|"npx playwright test"| CH
 ```
 
 Estructura de archivos de este laboratorio:

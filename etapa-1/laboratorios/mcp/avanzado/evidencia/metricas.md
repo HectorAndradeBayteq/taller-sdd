@@ -1,13 +1,14 @@
 # Métricas de sesiones del agente
 
 > Generado automáticamente por `.cursor/hooks/metrics.mjs` (no lo edites a mano: se sobrescribe).
-> Última actualización: 20/10/2026, 10:03:50 a. m..
+> Última actualización: 7/11/2026, 8:42:20 a. m..
 > **No incluye tokens:** los hooks no los reciben. Anótalos desde el panel Context en `evidencia/informe.md`.
 
 | # | Chat | Etiqueta | Modelo | Tool calls | Read | Archivos distintos | Búsquedas | Shell | MCP (por servidor) | Subagentes (tool calls) | Fallos | Tiempo (s) | Estado |
 |---|------|----------|--------|-----------:|-----:|-------------------:|----------:|------:|--------------------|------------------------:|-------:|-----------:|--------|
 | 1 | 464ad3a6 | — | — | 1 | 0 | 0 | 0 | 1 | — | 0 (0) | 0 | 47.4 | completed |
 | 2 | 4a8a97f7 | con-codegraph | — | 2 | 0 | 0 | 0 | 0 | codegraph×2 | 0 (0) | 0 | 27.3 | completed |
+| 3 | a493dbff | — | claude-sonnet-5-5-high | 5 | 3 | 1 | 1 | 1 | — | 0 (0) | 0 | 37.8 | completed |
 
 ### Cómo leerla
 
